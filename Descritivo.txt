@@ -2,7 +2,7 @@ Livraria
 Isabeli dos Santos Machado, Jenifer da Silva Vieira, Rafaela Amboni Ghellere.
 
 Objetivo:
-O aplicativo vai apresentar uma navegação fácil através de um menu inferior com acesso direto à página inicial, listagens de livros e quadrinhos e ao carrinho de compras. Os usuários poderão adicionar os produtos ao carrinho e clicá-los para ver mais informações, além de remover eles na tela do carrinho.
+O aplicativo vai apresentar uma navegação fácil através de um menu inferior com acesso direto à página inicial, listagens de livros e quadrinhos e ao carrinho de compras. Os usuários poderão adicionar os produtos ao carrinho e clicá-los para ver mais informações, além de remover eles na tela do carrinho. Para o administrador, ele terá um login que vai possibilitar o cadastro de novos produtos no app.
 
 Telas:
 Stack - Login admin, Cadastrar produtos, Cadastro, Login, BottomTabs.
