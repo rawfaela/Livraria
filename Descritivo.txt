@@ -1,14 +1,16 @@
 Livraria
-Isabeli Machado, Jenifer Vieira, Rafaela Ghellere.
-
-objetivo
-telas
-opções
+Isabeli dos Santos Machado, Jenifer da Silva Vieira, Rafaela Amboni Ghellere.
 
 Objetivo:
 
 Telas:
-Stack - Cadastro, Login, BottomTabs.
+Stack - Login admin, Cadastrar produtos, Cadastro, Login, BottomTabs.
 Bottom - Home, Livros, Quadrinhos, Carrinho.
+
+Opções: 
+Cadastrar produtos (para admin);
+Mais informações - clicar para ver descrição do livro;
+Adicionar ao carrinho;
+Remover do carrinho (na tela do carrinho);
 
 Telas no figma: https://www.figma.com/design/yRFGKe5dQz2q0WXn0JLmUJ/LIVRARIA-ISABELI-JENIFER-E-RAFA?node-id=0-1&t=fozBKM0SfEObwOqO-1
