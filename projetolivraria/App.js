@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
+import Cadastro from './Screens/Cadastro';
 // ! TODOS OS DESIGNS E CONFIGURAÇÕES SAO DO OUTRO -- MUDAR!!!
 function BottomTabs(){
   const Bottom = createBottomTabNavigator();
@@ -30,14 +31,17 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShadowVisible: false, headerStyle: {margin:0}, headerTitleStyle: {fontWeight: 'bold', fontSize: 20} }}>
-        <Stack.Screen name='Login' component={Login} options={{}} />
+
 
         <Stack.Screen name='Cadastro' component={Cadastro} options={{}} />
 
-        <Stack.Screen name='ADMProdutos' component={ADMProdutos} options={{}} />
 
-        <Stack.Screen name='BottomTabs' component={BottomTabs} options={{headerShown: false}} />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
+{/* <Stack.Screen name='Login' component={Login} options={{}} />
+
+<Stack.Screen name='ADMProdutos' component={ADMProdutos} options={{}} />
+
+<Stack.Screen name='BottomTabs' component={BottomTabs} options={{headerShown: false}} /> */}
