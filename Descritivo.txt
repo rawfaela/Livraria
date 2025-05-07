@@ -1,6 +1,14 @@
 Livraria
 Isabeli Machado, Jenifer Vieira, Rafaela Ghellere.
 
-Aplicativo para vender livros, 
+objetivo
+telas
+opções
 
-https://www.figma.com/design/yRFGKe5dQz2q0WXn0JLmUJ/LIVRARIA-ISABELI-JENIFER-E-RAFA?node-id=0-1&t=fozBKM0SfEObwOqO-1
+Objetivo:
+
+Telas:
+Stack - Cadastro, Login, BottomTabs.
+Bottom - Home, Livros, Quadrinhos, Carrinho.
+
+Telas no figma: https://www.figma.com/design/yRFGKe5dQz2q0WXn0JLmUJ/LIVRARIA-ISABELI-JENIFER-E-RAFA?node-id=0-1&t=fozBKM0SfEObwOqO-1
