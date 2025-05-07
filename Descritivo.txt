@@ -1,6 +1,17 @@
 Livraria
-Isabeli Machado, Jenifer Vieira, Rafaela Ghellere.
+Isabeli dos Santos Machado, Jenifer da Silva Vieira, Rafaela Amboni Ghellere.
 
-Aplicativo para vender livros, 
+Objetivo:
+O aplicativo vai apresentar uma navegação fácil através de um menu inferior com acesso direto à página inicial, listagens de livros e quadrinhos e ao carrinho de compras. Os usuários poderão adicionar os produtos ao carrinho e clicá-los para ver mais informações, além de remover eles na tela do carrinho. Para o administrador, ele terá um login que vai possibilitar o cadastro de novos produtos no app.
 
-https://www.figma.com/design/yRFGKe5dQz2q0WXn0JLmUJ/LIVRARIA-ISABELI-JENIFER-E-RAFA?node-id=0-1&t=fozBKM0SfEObwOqO-1
+Telas:
+Stack - Login admin, Cadastrar produtos, Cadastro, Login, BottomTabs.
+Bottom - Home, Livros, Quadrinhos, Carrinho.
+
+Opções: 
+Cadastrar produtos (para admin);
+Mais informações - clicar para ver descrição do livro;
+Adicionar ao carrinho;
+Remover do carrinho (na tela do carrinho);
+
+Telas no figma: https://www.figma.com/design/yRFGKe5dQz2q0WXn0JLmUJ/LIVRARIA-ISABELI-JENIFER-E-RAFA?node-id=0-1&t=fozBKM0SfEObwOqO-1
