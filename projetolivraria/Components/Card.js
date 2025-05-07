@@ -1,14 +1,26 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from "react-native";
+import React from "react";
 
 export default function Cards({titulo, autor, preco, img}){
+/*     const showInfo = () => {
+        console.log("Alerta foi acionado!");
+        Alert.alert(
+            titulo,
+            `Autor: ${autor}\nPreço: R$${preco}`,
+            [{ text: "Fechar", style: "cancel" }]
+        );
+    }; */ //! NAO FUNCIONA
+
     return(
-        <View style={styles.prod}>       
-            <Image source={{uri: img}}style={styles.imgprods}/>
-            <View style={{flex: 1, marginLeft:5 }}>
-                <Text style={styles.txtprod}>{titulo} </Text>
-                <Text style={styles.txtprod}>{autor} </Text>
-                <Text style={styles.txtprod}>R${preco}</Text>
-            </View>
+        <View style={styles.prod}>
+            <TouchableOpacity /* onPress={showInfo} */>  
+                <Image source={{uri: img}}style={styles.imgprods}/>
+                <View style={{flex: 1, marginLeft:5 }}>
+                    <Text style={styles.txtprod}>{titulo} </Text>
+                    <Text style={styles.txtprod}>{autor} </Text>
+                    <Text style={styles.txtprod}>R${preco}</Text>
+                </View>
+            </TouchableOpacity> 
         </View>
     )
 }
