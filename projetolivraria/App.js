@@ -17,7 +17,12 @@ function BottomTabs(){
       tabBarActiveTintColor: '#fff', animation: 'fade' }}> 
 
       <Bottom.Screen name='Home' component={Home} options={{}}/>
+      
+{/*       <Bottom.Screen name='Livros' component={Livros} options={{}}/>
 
+      <Bottom.Screen name='Quadrinhos' component={Quadrinhos} options={{}}/>
+
+      <Bottom.Screen name='Carrinho' component={Carrinho} options={{}}/> */}
     </Bottom.Navigator>
   )
 }
