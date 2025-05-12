@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
+import Login from './Screens/Login';
 import Cadastro from './Screens/Cadastro';
 import Home from './Screens/Home';
 import Login from './Screens/Login';
@@ -36,16 +37,16 @@ export default function App() {
       <Stack.Navigator screenOptions={{ headerShadowVisible: false, headerStyle: {margin:0}, headerTitleStyle: {fontWeight: 'bold', fontSize: 20} }}>
 
         <Stack.Screen name='Login' component={Login} options={{headerShown: false}} />
-        
-        <Stack.Screen name='Cadastro' component={Cadastro} options={{headerShown: false}} />
 
+
+        <Stack.Screen name='Cadastro' component={Cadastro} options={{headerShown: false}} />
+        
         <Stack.Screen name='BottomTabs' component={BottomTabs} options={{headerShown: false}} />
 
-        <Stack.Screen name="ShowInfo" component={ShowInfo} options={{ title:'Detalhes do Livro', hezaderBackTitle: 'Voltar' }}/>
+        <Stack.Screen name="ShowInfo" component={ShowInfo} options={{ title:'Detalhes do Livro', headerBackTitle: 'Voltar' }}/>
+
 
         {/* <Stack.Screen name='ADMProdutos' component={ADMProdutos} options={{}} /> */}
-
-
       </Stack.Navigator>
     </NavigationContainer>
   )
