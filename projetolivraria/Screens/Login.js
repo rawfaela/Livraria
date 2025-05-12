@@ -25,56 +25,54 @@ export default function Login({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <View style={styles.tudo}>
-                {/* <Image
-                source={require('../assets/logogenerica.png')}
-                style={{ width: 100, height: 100,top:150,left:150}}
-                
-                logo generica dps muda pra a q fizer
-            /> */}
-                <Text style={styles.title}>Livraria Tal</Text>
-                <Text style={styles.text1}>Login</Text>
+            {/* <Image
+            source={require('../assets/logogenerica.png')}
+            style={{ width: 100, height: 100,top:150,left:150}}
+            
+            logo generica dps muda pra a q fizer
+        /> */}
+            <Text style={styles.title}>Livraria Tal</Text>
+            <Text style={styles.text1}>Login</Text>
 
-                <View style={styles.inputs}>
-                    <Text style={styles.text2}><b>Email</b></Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Email"
-                        value={email}
-                        onChangeText={setEmail}
-                    />
-                    <Text style={styles.text2}><b>Senha</b></Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Senha"
-                        value={senha}
-                        onChangeText={setSenha}
-                        secureTextEntry={true}
-                    />
-                </View>
-                <View>
-                    <View style={styles.botoes}>
-                        <View style={styles.botao}>
+            <View style={styles.inputs}>
+                <Text style={styles.text2}><b>Email</b></Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Email"
+                    value={email}
+                    onChangeText={setEmail}
+                />
+                <Text style={styles.text2}><b>Senha</b></Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Senha"
+                    value={senha}
+                    onChangeText={setSenha}
+                    secureTextEntry={true}
+                />
+            </View>
+            <View>
+                <View style={styles.botoes}>
+                    <View style={styles.botao}>
 
-                            <Button
-                                title="Entrar"
-                                color="#532d0b"
-                                onPress={VerificarUser}
-                            />
-                        </View>
+                        <Button
+                            title="Entrar"
+                            color="#532d0b"
+                            onPress={VerificarUser}
+                        />
                     </View>
-
                 </View>
-                <br></br>
-                <View style={styles.cadastro}>
-                    <Text style={{ fontSize: 24 }}>Não tem cadastro? </Text>
-                    <Text style={{ color: 'red', fontSize: 22 }}
 
-                        onPress={() => navigation.navigate('Cadastro')}
-                    >
-                        Cadastre-se agora!
-                    </Text>
-                </View>
+            </View>
+            <br></br>
+            <View style={styles.cadastro}>
+                <Text style={{ fontSize: 24 }}>Não tem cadastro? </Text>
+                <Text style={{ color: 'red', fontSize: 22 }}
+
+                    onPress={() => navigation.navigate('Cadastro')}
+                >
+                    Cadastre-se agora!
+                </Text>
             </View>
         </View>
     )
@@ -86,12 +84,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#F4A460',
     },
 
-    tudo: {
-        bottom: 100
-    },
-
     inputs: {
-        paddingLeft: 60
+        alignSelf: 'center',
     },
     input: {
         height: 50,
@@ -103,14 +97,13 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: 'bold',
-        paddingTop: 250,
+        paddingTop: 150,
         fontSize: 30,
         paddingBottom: 10,
         alignSelf: 'center',
     },
     text1: {
         fontWeight: 'bold',
-
         fontSize: 23,
         paddingBottom: 40,
         alignSelf: 'center',
