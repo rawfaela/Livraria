@@ -39,7 +39,14 @@ export default function App() {
         <Stack.Screen name='BottomTabs' component={BottomTabs} options={{headerShown: false}} />
 
         <Stack.Screen name='Cadastro' component={Cadastro} options={{}} />
- 
+        
+        <Stack.Screen name="ShowInfo" component={ShowInfo} options={{ title:'Detalhes do Livro', headerBackTitle: 'Voltar' }}/>
+
+{/*         <Stack.Screen name='Login' component={Login} options={{}} />
+
+        <Stack.Screen name='ADMProdutos' component={ADMProdutos} options={{}} />
+
+ */}
       </Stack.Navigator>
     </NavigationContainer>
   )
