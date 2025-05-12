@@ -4,6 +4,8 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../controller';
 
 //tudo umas cor generica jeni procura uma paleta de cor e uma logo pra colocar
+
+//DECIDI FONTE , PALETA DE COR E LOGO
 export default function Login({ navigation }) {
 
     const [email, setEmail] = useState("");
@@ -62,7 +64,7 @@ export default function Login({ navigation }) {
                 <br></br>
                 <View style={styles.cadastro}>
                     <Text style={{ fontSize: 24 }}>Não tem cadastro? </Text>
-                    <Text style={{ color: 'red', textDecorationLine: 'underline', fontSize: 22 }}
+                    <Text style={{ color: 'red', fontSize: 22 }}
 
                         onPress={() => navigation.navigate('Cadastro')}
                     >
