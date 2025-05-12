@@ -11,7 +11,7 @@ export default function Cadastro ({navigation}){
     const VerificarUser = () => {
         createUserWithEmailAndPassword(auth, email, senha).then((userCredential) => {
             console.log('cadastrado!', userCredential.user.email);
-            navigation.navigate('Home');
+            navigation.navigate('BottomTabs');
           })
           .catch((error) => {
             console.log('erro', error.message);
@@ -52,7 +52,7 @@ export default function Cadastro ({navigation}){
             <Button 
             title="Login"
             color="#532d0b"
-            onPress={() => navigation.navigate('login')}
+            onPress={() => navigation.navigate('Login')}
             />
             </View>
             </View>

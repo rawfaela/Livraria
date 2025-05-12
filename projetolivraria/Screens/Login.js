@@ -3,7 +3,7 @@ import {useState} from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../controller';
 
-export default function Vetlogin ({navigation}){
+export default function Login ({navigation}){
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
@@ -11,7 +11,7 @@ export default function Vetlogin ({navigation}){
     const VerificarUser = () => {
         signInWithEmailAndPassword(auth, email, senha).then(userCredential => {
             console.log('usuario logado', userCredential.user.email);
-            navigation.navigate('Home');
+            navigation.navigate('BottomTabs');
         })
         .catch((error) => {
             console.log('erro ao logar', error.message);
@@ -50,7 +50,7 @@ export default function Vetlogin ({navigation}){
             <Button 
             title="Cadastre-se"
             color="#532d0b"
-            onPress={() => navigation.navigate('cadastro')}
+            onPress={() => navigation.navigate('Cadastro')}
             />
             </View>
             </View>
