@@ -3,9 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import Cadastro from './Screens/Cadastro';
-import Home
- from './Screens/Home';
-
+import Home from './Screens/Home';
+import ShowInfo from './Components/ShowInfo';
 
 // ! TODOS OS DESIGNS E CONFIGURAÇÕES SAO DO OUTRO -- MUDAR!!!
 function BottomTabs(){
@@ -39,11 +38,15 @@ export default function App() {
         <Stack.Screen name='BottomTabs' component={BottomTabs} options={{headerShown: false}} />
 
         <Stack.Screen name='Cadastro' component={Cadastro} options={{}} />
+        
+        <Stack.Screen name="ShowInfo" component={ShowInfo} options={{ title:'Detalhes do Livro', headerBackTitle: 'Voltar' }}/>
+
 {/*         <Stack.Screen name='Login' component={Login} options={{}} />
 
         <Stack.Screen name='ADMProdutos' component={ADMProdutos} options={{}} />
 
  */}
+ 
       </Stack.Navigator>
     </NavigationContainer>
   )
