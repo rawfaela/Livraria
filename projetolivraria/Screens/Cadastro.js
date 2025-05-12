@@ -1,85 +1,107 @@
+import { Text, View, StyleSheet, TextInput, Button } from 'react-native';
 import { useState } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, TextInput} from 'react-native'
-/* import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../controller'; */
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { auth } from '../controller';
 
-export default function Cadastro({navigation}){ 
+export default function Cadastro({ navigation }) {
+
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-/*     const cadastroUser = () => {
-        createUserWithEmailAndPassword(auth, email, senha)
-        .then((userCredential) => {
-            console.log('cadastrado', userCredential.user.email);
-            navigation.navigate('Login');
+    const VerificarUser = () => {
+        createUserWithEmailAndPassword(auth, email, senha).then((userCredential) => {
+            console.log('cadastrado!', userCredential.user.email);
         })
-        .catch((error) => {
-            console.log('erro ao cadastrar', error.message)
-        });
-    }; */
+            .catch((error) => {
+                console.log('erro', error.message);
+            });
+    }
 
-    return(
+    return (
         <View style={styles.container}>
-            <View style={{flex:1}}><Text style={styles.titulo}> Perfumes by Rafa </Text></View>
+            <View style={styles.tudo}>
+                <Text style={styles.text1}><b>Cadastro - Livraria Tal</b></Text>
+                <View style={styles.inputs}>
+                    <Text style={styles.text2}><b>Email</b></Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Email"
+                        value={email}
+                        onChangeText={setEmail}
+                    />
+                    <Text style={styles.text2}><b>Senha</b></Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Senha"
+                        value={senha}
+                        onChangeText={setSenha}
+                        secureTextEntry={true}
+                    />
+                </View>
+                <View style={styles.botoes}>
+                    <View style={styles.botao}>
+                        <Button
+                            title="Cadastrar"
+                            color="#532d0b"
+                            onPress={VerificarUser}
+                        />
+                    </View>
+                    <View style={styles.botao}>
+                        <Button
+                            title="Voltar"
+                            color="#532d0b"
+                            onPress={() => navigation.navigate('Login')}
+                        />
+                    </View>
+                </View>
 
-            <View style={{flex:1}}>
-                <TextInput style={styles.input} placeholder="Email" value={email} onChangeText={setEmail}></TextInput>
-                <TextInput style={styles.input} placeholder="Senha" value={senha} onChangeText={setSenha} secureTextEntry={true}></TextInput>
-            </View>
-
-            <View style={{flex:0.5, alignItems: 'center', justifyContent: 'space-around'}}>
-                <TouchableOpacity
-                    style={styles.botao} /* onPress={cadastroUser} */>
-                        <Text style={{ color: 'white', fontSize: 26 }}>Cadastrar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.botao2} onPress={() => navigation.navigate('Login')}>
-                        <Text style={{ color: 'rgb(138, 83, 214)', fontSize: 26 }}>Login</Text>
-                </TouchableOpacity>
             </View>
         </View>
     )
-};
+}
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: 'rgb(175, 137, 228)',
+        flex: 1,
+        backgroundColor: '#F4A460',
+    },
+
+    tudo: {
+        bottom: 100
+
+    },
+
+    inputs: {
+        paddingLeft: 60
     },
     input: {
-        fontSize: 23,
         height: 50,
+        width: 280,
         margin: 12,
-        color: 'white',
-        borderColor: 'rgb(117, 64, 192)',
-        borderWidth: 4,
+        borderWidth: 1,
         padding: 10,
-        borderRadius: 7,
-        backgroundColor:' rgb(168, 128, 223)',
+        fontSize: 20
     },
-    titulo: {
-        marginTop: 150,
-        fontSize: 35,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        color: 'rgb(46, 6, 83)',
-        textShadowColor: 'rgba(136, 65, 202, 0.75)',
-        textShadowOffset: {width: 2, height: 3},
+    text1: {
+        paddingTop: 250,
+        fontSize: 23,
+        paddingBottom: 40,
+        alignSelf: 'center',
+    },
+    text2: {
+        paddingLeft: 15,
+        fontSize: 20
     },
     botao: {
-        width: 200, 
-        height: 60, 
-        backgroundColor: 'rgb(138, 83, 214)', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        borderRadius: 10
+        paddingTop: 20,
+        height: 40,
+        width: 120,
     },
-    botao2: {
-        width: 200, 
-        height: 60, 
-        backgroundColor: 'rgb(255, 255, 255)', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        borderRadius: 10
+    botoes: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: '70%',
+        alignSelf: 'center'
     }
-  });
+})
+
