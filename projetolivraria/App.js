@@ -10,6 +10,7 @@ import Livros from './Screens/Livros';
 import HQs from './Screens/HQs';
 import Carrinho from './Screens/Carrinho';
 
+
 // ! TODOS OS DESIGNS E CONFIGURAÇÕES SAO DO OUTRO -- MUDAR!!!
 function BottomTabs(){
   const Bottom = createBottomTabNavigator();
