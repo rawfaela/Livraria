@@ -15,7 +15,6 @@ export default function Cadastro({ navigation }) {
             .catch((error) => {
                 console.log('erro', error.message);
             });
-
     }
 
     return (
@@ -55,6 +54,7 @@ export default function Cadastro({ navigation }) {
                         />
                     </View>
                 </View>
+
             </View>
         </View>
     )

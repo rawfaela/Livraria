@@ -28,12 +28,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShadowVisible: false, headerStyle: {margin:0}, headerTitleStyle: {fontWeight: 'bold', fontSize: 20} }}>
+
         <Stack.Screen name='Login' component={Login} options={{}} />
         
         <Stack.Screen name='BottomTabs' component={BottomTabs} options={{headerShown: false}} />
 
         <Stack.Screen name='Cadastro' component={Cadastro} options={{}} />
-
  
       </Stack.Navigator>
     </NavigationContainer>
