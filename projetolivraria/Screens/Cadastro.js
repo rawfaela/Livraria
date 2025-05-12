@@ -19,44 +19,41 @@ export default function Cadastro({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <View style={styles.tudo}>
-                <Text style={styles.title}>Livraria Tal</Text>
-                <Text style={styles.text1}>Cadastro</Text>
+            <Text style={styles.title}>Livraria Tal</Text>
+            <Text style={styles.text1}>Cadastro</Text>
 
-                <View style={styles.inputs}>
-                    <Text style={styles.text2}><b>Email</b></Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Email"
-                        value={email}
-                        onChangeText={setEmail}
-                    />
-                    <Text style={styles.text2}><b>Senha</b></Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Senha"
-                        value={senha}
-                        onChangeText={setSenha}
-                        secureTextEntry={true}
+            <View style={styles.inputs}>
+                <Text style={styles.text2}><b>Email</b></Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Email"
+                    value={email}
+                    onChangeText={setEmail}
+                />
+                <Text style={styles.text2}><b>Senha</b></Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Senha"
+                    value={senha}
+                    onChangeText={setSenha}
+                    secureTextEntry={true}
+                />
+            </View>
+            <View style={styles.botoes}>
+                <View style={styles.botao}>
+                    <Button
+                        title="Cadastrar"
+                        color="#532d0b"
+                        onPress={VerificarUser}
                     />
                 </View>
-                <View style={styles.botoes}>
-                    <View style={styles.botao}>
-                        <Button
-                            title="Cadastrar"
-                            color="#532d0b"
-                            onPress={VerificarUser}
-                        />
-                    </View>
-                    <View style={styles.botao}>
-                        <Button
-                            title="Voltar"
-                            color="#532d0b"
-                            onPress={() => navigation.navigate('Login')}
-                        />
-                    </View>
+                <View style={styles.botao}>
+                    <Button
+                        title="Voltar"
+                        color="#532d0b"
+                        onPress={() => navigation.navigate('Login')}
+                    />
                 </View>
-
             </View>
         </View>
     )
@@ -67,14 +64,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F4A460',
     },
-
-    tudo: {
-        bottom: 100
-
-    },
-
     inputs: {
-        paddingLeft: 60
+        alignSelf: 'center',
     },
     input: {
         height: 50,
@@ -86,7 +77,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: 'bold',
-        paddingTop: 250,
+        paddingTop: 150,
         fontSize: 30,
         paddingBottom: 10,
         alignSelf: 'center',
