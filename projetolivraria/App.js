@@ -5,7 +5,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import Login from './Screens/Login';
 import Cadastro from './Screens/Cadastro';
 import Home from './Screens/Home';
-import Login from './Screens/Login';
 import ShowInfo from './Components/ShowInfo'
 
 // ! TODOS OS DESIGNS E CONFIGURAÇÕES SAO DO OUTRO -- MUDAR!!!
