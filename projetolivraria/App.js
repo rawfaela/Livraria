@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Cadastro from './Screens/Cadastro';
 import Home from './Screens/Home';
 import Login from './Screens/Login';
-
+import ShowInfo from './Components/ShowInfo'
 // ! TODOS OS DESIGNS E CONFIGURAÇÕES SAO DO OUTRO -- MUDAR!!!
 function BottomTabs(){
   const Bottom = createBottomTabNavigator();
@@ -34,19 +34,17 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShadowVisible: false, headerStyle: {margin:0}, headerTitleStyle: {fontWeight: 'bold', fontSize: 20} }}>
 
-        <Stack.Screen name='Login' component={Login} options={{}} />
+        <Stack.Screen name='Login' component={Login} options={{headerShown: false}} />
         
+        <Stack.Screen name='Cadastro' component={Cadastro} options={{headerShown: false}} />
+
         <Stack.Screen name='BottomTabs' component={BottomTabs} options={{headerShown: false}} />
 
-        <Stack.Screen name='Cadastro' component={Cadastro} options={{}} />
-        
-        <Stack.Screen name="ShowInfo" component={ShowInfo} options={{ title:'Detalhes do Livro', headerBackTitle: 'Voltar' }}/>
+        <Stack.Screen name="ShowInfo" component={ShowInfo} options={{ title:'Detalhes do Livro', hezaderBackTitle: 'Voltar' }}/>
 
-{/*         <Stack.Screen name='Login' component={Login} options={{}} />
+        {/* <Stack.Screen name='ADMProdutos' component={ADMProdutos} options={{}} /> */}
 
-        <Stack.Screen name='ADMProdutos' component={ADMProdutos} options={{}} />
 
- */}
       </Stack.Navigator>
     </NavigationContainer>
   )
