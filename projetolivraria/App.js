@@ -5,7 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import Login from './Screens/Login';
 import Cadastro from './Screens/Cadastro';
 import Home from './Screens/Home';
-import ShowInfo from './Components/ShowInfo';
+import Login from './Screens/Login';
+import ShowInfo from './Components/ShowInfo'
 
 // ! TODOS OS DESIGNS E CONFIGURAÇÕES SAO DO OUTRO -- MUDAR!!!
 function BottomTabs(){
@@ -18,13 +19,12 @@ function BottomTabs(){
       tabBarActiveTintColor: '#fff', animation: 'fade' }}> 
 
       <Bottom.Screen name='Home' component={Home} options={{}}/>
-
+      
 {/*       <Bottom.Screen name='Livros' component={Livros} options={{}}/>
 
       <Bottom.Screen name='Quadrinhos' component={Quadrinhos} options={{}}/>
 
       <Bottom.Screen name='Carrinho' component={Carrinho} options={{}}/> */}
-
     </Bottom.Navigator>
   )
 }
@@ -38,16 +38,15 @@ export default function App() {
 
         <Stack.Screen name='Login' component={Login} options={{headerShown: false}} />
 
+
         <Stack.Screen name='Cadastro' component={Cadastro} options={{headerShown: false}} />
         
         <Stack.Screen name='BottomTabs' component={BottomTabs} options={{headerShown: false}} />
 
         <Stack.Screen name="ShowInfo" component={ShowInfo} options={{ title:'Detalhes do Livro', headerBackTitle: 'Voltar' }}/>
 
+
         {/* <Stack.Screen name='ADMProdutos' component={ADMProdutos} options={{}} /> */}
-
-
- 
       </Stack.Navigator>
     </NavigationContainer>
   )
