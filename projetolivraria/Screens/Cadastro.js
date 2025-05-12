@@ -20,7 +20,8 @@ export default function Cadastro({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.tudo}>
-                <Text style={styles.text1}><b>Cadastro - Livraria Tal</b></Text>
+                <Text style={styles.title}>Livraria Tal</Text>
+                <Text style={styles.text1}>Cadastro</Text>
                 <View style={styles.inputs}>
                     <Text style={styles.text2}><b>Email</b></Text>
                     <TextInput
@@ -82,8 +83,15 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 20
     },
-    text1: {
+    title: {
+        fontWeight: 'bold',
         paddingTop: 250,
+        fontSize: 30,
+        paddingBottom: 10,
+        alignSelf: 'center',
+    },
+    text1: {
+        fontWeight: 'bold',
         fontSize: 23,
         paddingBottom: 40,
         alignSelf: 'center',
