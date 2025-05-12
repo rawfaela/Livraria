@@ -8,6 +8,7 @@ import { auth } from '../controller';
 //DECIDI FONTE , PALETA DE COR E LOGO
 export default function Login({ navigation }) {
 
+
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
@@ -15,6 +16,7 @@ export default function Login({ navigation }) {
         signInWithEmailAndPassword(auth, email, senha).then(userCredential => {
             console.log('usuario logado', userCredential.user.email);
             navigation.navigate('BottomTabs', { screen: 'Home' });
+
         })
             .catch((error) => {
                 console.log('erro ao logar', error.message);
