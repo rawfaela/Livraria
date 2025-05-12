@@ -20,11 +20,11 @@
     "expo-status-bar": "~2.2.3",
     "firebase": "^11.6.1",
     "react": "19.0.0",
+    "react-dom": "19.0.0",
     "react-native": "0.79.2",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-pager-view": "6.5.1",
     "react-native-reanimated": "~3.16.1",
-    "react-dom": "19.0.0",
     "react-native-web": "^0.20.0"
   },
   "devDependencies": {
