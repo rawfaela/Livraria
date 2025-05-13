@@ -65,8 +65,8 @@ export default function Login({ navigation }) {
                 </View>
                 <br></br>
                 <View style={styles.cadastro}>
-                    <Text style={{ fontSize: 24 }}>Não tem cadastro? </Text>
-                    <Text style={{ color: 'red', fontSize: 22 }}
+                    <Text style={{ fontSize: 24, fontFamily: 'Bookman Old Style' }}>Não tem cadastro? </Text>
+                    <Text style={{ color: 'red', fontSize: 22, fontFamily: 'Bookman Old Style' }}
 
                         onPress={() => navigation.navigate('Cadastro')}
                     >
@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#F4A460',
+        
     },
 
     tudo: {
@@ -104,10 +105,12 @@ const styles = StyleSheet.create({
         fontSize: 23,
         paddingBottom: 40,
         alignSelf: 'center',
+        //colocar a fonte satisfy aqui
     },
     text2: {
         paddingLeft: 15,
-        fontSize: 20
+        fontSize: 20,
+        fontFamily: 'Bookman Old Style'
     },
 
     botoes: {
