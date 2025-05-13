@@ -7,7 +7,7 @@ export default function Carrinho(){
 
     return(
         <View style={styles.container}>
-            <Text style={styles.titulo}> Livraria Nome </Text>
+            <Text style={styles.titulo}>Livraria Nome </Text>
             <Text style={styles.subtitle}>Carrinho</Text>
         </View>
     )
@@ -29,6 +29,6 @@ const styles = StyleSheet.create({
         fontSize: 30,
         textAlign: 'center',
         fontWeight: 'bold',
-        color: 'rgb(46, 6, 83)',
+        color: 'rgb(136, 65, 202)',
     }
 });

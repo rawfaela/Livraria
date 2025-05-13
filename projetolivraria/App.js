@@ -20,8 +20,7 @@ function BottomTabs(){
   return(
     <Bottom.Navigator
     screenOptions={{ headerShadowVisible: false, 
-      headerTitleStyle: {fontWeight: 'bold', fontSize: 20}, 
-      tabBarActiveTintColor: '#fff', animation: 'fade' }}> 
+      tabBarActiveTintColor: '#fff', animation: 'fade', tabBarInactiveTintColor: '#000', }}> 
 
       <Bottom.Screen name='Home' component={Home}   options={{headerShown: false, 
       tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="bookshelf" size={30} color={focused ? "white" : "black"} />),
@@ -36,7 +35,7 @@ function BottomTabs(){
       tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)'}}}/>
 
       <Bottom.Screen name='Carrinho' component={Carrinho} options={{headerShown: false, 
-      tabBarIcon: ({ focused }) => (<FontAwesome6 name="book" size={30} color={focused ? "white" : "black"} />), 
+      tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="cart" size={30} color={focused ? "white" : "black"} />), 
       tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)'}}}/>
     </Bottom.Navigator>
   )
