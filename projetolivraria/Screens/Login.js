@@ -7,7 +7,7 @@ import { useFonts } from 'expo-font';
 
 //tudo umas cor generica jeni procura uma paleta de cor e uma logo pra colocar
 
-//DECIDI FONTE , PALETA DE COR E LOGO
+//DECIDI  PALETA DE COR E LOGO
 export default function Login({ navigation }) {
 
     const [fontsLoaded] = useFonts({
@@ -18,7 +18,7 @@ export default function Login({ navigation }) {
     const [senha, setSenha] = useState("");
 
     if (!fontsLoaded) {
-        return null; // ou um loading spinner
+        return null; 
     }
 
     const VerificarUser = () => {
