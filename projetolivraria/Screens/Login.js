@@ -54,7 +54,6 @@ export default function Login({ navigation }) {
             <View>
                 <View style={styles.botoes}>
                     <View style={styles.botao}>
-
                         <Button
                             title="Entrar"
                             color="#532d0b"
@@ -67,10 +66,8 @@ export default function Login({ navigation }) {
             <br></br>
             <View style={styles.cadastro}>
                 <Text style={{ fontSize: 24 }}>Não tem cadastro? </Text>
-                <Text style={{ color: 'red', fontSize: 22 }}
-
-                    onPress={() => navigation.navigate('Cadastro')}
-                >
+                <Text style={{ color: 'white', backgroundColor: '#532d0b', fontSize: 22, padding:3 }}
+                    onPress={() => navigation.navigate('Cadastro')}>
                     Cadastre-se agora!
                 </Text>
             </View>

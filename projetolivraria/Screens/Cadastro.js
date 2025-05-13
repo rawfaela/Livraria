@@ -11,6 +11,7 @@ export default function Cadastro({ navigation }) {
     const VerificarUser = () => {
         createUserWithEmailAndPassword(auth, email, senha).then((userCredential) => {
             console.log('cadastrado!', userCredential.user.email);
+            navigation.navigate('BottomTabs', { screen: 'Home' });
         })
             .catch((error) => {
                 console.log('erro', error.message);

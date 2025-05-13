@@ -12,11 +12,13 @@ export default function HQs(){
 
     return(
         <View style={styles.container}>
-            <Text style={styles.titulo}> Livraria Nome </Text>
-            <Text style={styles.subtitle}>Histórias em Quadrinhos</Text>
             <FlatList data={produtos} renderItem={({item}) => (    
                 <Cards titulo={item.titulo} autor={item.autor} preco={item.preco} img={item.img} sinopse={item.sinopse}/> 
-            )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={2} columnWrapperStyle={{ justifyContent: 'space-around' }}/>
+            )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={2} columnWrapperStyle={{ justifyContent: 'space-around' }} ListHeaderComponent={() => (
+            <View>
+                <Text style={styles.titulo}> Livraria Nome </Text>
+                <Text style={styles.subtitle}>Histórias em Quadrinhos</Text>
+            </View>)}/>
         </View>
     )
 }
@@ -37,6 +39,6 @@ const styles = StyleSheet.create({
         fontSize: 30,
         textAlign: 'center',
         fontWeight: 'bold',
-        color: 'rgb(46, 6, 83)',
+        color: 'rgb(136, 65, 202)',
     }
 });
