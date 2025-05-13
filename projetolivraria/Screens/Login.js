@@ -2,15 +2,24 @@ import { Text, View, StyleSheet, TextInput, Button, Image } from 'react-native';
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../controller';
+import { useFonts } from 'expo-font';
+
 
 //tudo umas cor generica jeni procura uma paleta de cor e uma logo pra colocar
 
 //DECIDI FONTE , PALETA DE COR E LOGO
 export default function Login({ navigation }) {
 
+    const [fontsLoaded] = useFonts({
+        'Satisfy': require('../assets/Satisfy-Regular.ttf'),
+    });
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+
+    if (!fontsLoaded) {
+        return null; // ou um loading spinner
+    }
 
     const VerificarUser = () => {
         signInWithEmailAndPassword(auth, email, senha).then(userCredential => {
@@ -82,7 +91,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#F4A460',
-        
+
     },
 
     tudo: {
@@ -105,7 +114,7 @@ const styles = StyleSheet.create({
         fontSize: 23,
         paddingBottom: 40,
         alignSelf: 'center',
-        //colocar a fonte satisfy aqui
+        fontFamily: 'Satisfy'
     },
     text2: {
         paddingLeft: 15,
