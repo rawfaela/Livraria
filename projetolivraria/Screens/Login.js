@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TextInput, Button, Image } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Button } from 'react-native';
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../controller';
@@ -51,25 +51,15 @@ export default function Login({ navigation }) {
                     secureTextEntry={true}
                 />
             </View>
-            <View>
-                <View style={styles.botoes}>
-                    <View style={styles.botao}>
-                        <Button
-                            title="Entrar"
-                            color="#532d0b"
-                            onPress={VerificarUser}
-                        />
-                    </View>
-                </View>
-
-            </View>
+                <TouchableOpacity style={styles.botao} onPress={VerificarUser}>
+                    <Text style={{fontSize: 23,color: 'white'}}>ENTRAR</Text>
+                </TouchableOpacity>
             <br></br>
             <View style={styles.cadastro}>
                 <Text style={{ fontSize: 24 }}>Não tem cadastro? </Text>
-                <Text style={{ color: 'white', backgroundColor: '#532d0b', fontSize: 22, padding:3 }}
-                    onPress={() => navigation.navigate('Cadastro')}>
-                    Cadastre-se agora!
-                </Text>
+                <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Cadastro')}>
+                    <Text style={{fontSize: 23,color: 'white'}}>CADASTRE-SE AGORA!</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -118,11 +108,19 @@ const styles = StyleSheet.create({
     },
 
     botao: {
-        paddingTop: 20,
-        height: 50,
-        width: 120,
+        justifyContent: 'space-around',
+        backgroundColor: "#532d0b",
+        height: 'auto',
+        width: 'auto',
+        alignSelf: 'center',
+        alignItems: 'center',
+        padding: 5,
     },
-
+    botao2: {
+        marginTop: 10,
+        height: 50,
+        width: 180,
+    },
     cadastro: {
         alignItems: 'center',
         marginTop: 20,
