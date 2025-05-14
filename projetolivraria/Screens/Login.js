@@ -52,13 +52,13 @@ export default function Login({ navigation }) {
                 />
             </View>
                 <TouchableOpacity style={styles.botao} onPress={VerificarUser}>
-                    <Text style={{fontSize: 23,color: 'white'}}>ENTRAR</Text>
+                    <Text style={styles.textbotao}>ENTRAR</Text>
                 </TouchableOpacity>
             <br></br>
             <View style={styles.cadastro}>
                 <Text style={{ fontSize: 24 }}>Não tem cadastro? </Text>
                 <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Cadastro')}>
-                    <Text style={{fontSize: 23,color: 'white'}}>CADASTRE-SE AGORA!</Text>
+                    <Text style={styles.textbotao}>CADASTRE-SE AGORA!</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -100,13 +100,6 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
 
-    botoes: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        width: '70%',
-        alignSelf: 'center',
-    },
-
     botao: {
         justifyContent: 'space-around',
         backgroundColor: "#532d0b",
@@ -116,10 +109,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 5,
     },
-    botao2: {
-        marginTop: 10,
-        height: 50,
-        width: 180,
+    textbotao: {
+        fontSize: 20,
+        color: 'white',
     },
     cadastro: {
         alignItems: 'center',

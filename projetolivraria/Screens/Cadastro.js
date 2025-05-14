@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TextInput, Button } from 'react-native';
+import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { auth } from '../controller';
@@ -40,21 +40,13 @@ export default function Cadastro({ navigation }) {
                     secureTextEntry={true}
                 />
             </View>
-            <View style={styles.botoes}>
-                <View style={styles.botao}>
-                    <Button
-                        title="Cadastrar"
-                        color="#532d0b"
-                        onPress={VerificarUser}
-                    />
-                </View>
-                <View style={styles.botao}>
-                    <Button
-                        title="Voltar"
-                        color="#532d0b"
-                        onPress={() => navigation.navigate('Login')}
-                    />
-                </View>
+            <View style={{flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-around', width: '80%'}}>
+                <TouchableOpacity style={styles.botao} onPress={VerificarUser}>
+                    <Text style={styles.textbotao}>CADASTRAR</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Login')}>
+                    <Text style={styles.textbotao}>VOLTAR</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -95,15 +87,18 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     botao: {
-        paddingTop: 20,
-        height: 40,
-        width: 120,
+        backgroundColor: "#532d0b",
+        height: 'auto',
+        width: 130,
+        alignSelf: 'center',
+        alignItems: 'center',
+        padding: 5,
+        rowGap: 20,
     },
-    botoes: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        width: '70%',
-        alignSelf: 'center'
-    }
+    textbotao: {
+        fontSize: 20,
+        color: 'white',
+    },
+
 })
 

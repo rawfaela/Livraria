@@ -48,10 +48,10 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShadowVisible: false, headerStyle: {margin:0}, headerTitleStyle: {fontWeight: 'bold', fontSize: 20} }}>
 
-        <Stack.Screen name='Login' component={Login} options={{headerShown: false}} />
-
         <Stack.Screen name='Cadastro' component={Cadastro} options={{headerShown: false}} />
         
+        <Stack.Screen name='Login' component={Login} options={{headerShown: false}} />
+
         <Stack.Screen name='BottomTabs' component={BottomTabs} options={{headerShown: false}} />
 
         <Stack.Screen name="ShowInfo" component={ShowInfo} options={{ title:'Detalhes do Livro', headerBackTitle: 'Voltar' }}/>
