@@ -48,6 +48,9 @@ export default function Cadastro({ navigation }) {
                     <Text style={styles.textbotao}>VOLTAR</Text>
                 </TouchableOpacity>
             </View>
+            <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('AddProdutos')}>
+                <Text style={styles.textbotao}>ADICIONAR PRODUTOS</Text>
+            </TouchableOpacity>
         </View>
     )
 }
