@@ -16,14 +16,13 @@ export default function AddProdutos(){
     const addProduct = async () => {
         try {
             await addDoc(collection(db, "produtos"), {
-                titulo: titulo,
-                autor: autor,
-                sinopse: sinopse,
-                editora: editora,
-                categoria: categoria,
-                preco: preco,
-                imagem: imagem,
-                criadoEm: new Date()
+                titulo,
+                autor,
+                sinopse,
+                editora,
+                categoria,
+                preco: parseFloat(preco),
+                imagem,
             });
             alert("Produto adicionado com sucesso!");
             setTitulo("");
