@@ -4,12 +4,12 @@ import { Picker } from '@react-native-picker/picker';
 import { db } from "../controller";
 import { collection, addDoc } from 'firebase/firestore';
 
-export default function AddProducts(){
+export default function AddProdutos(){
     const [titulo, setTitulo] = useState("");
     const [autor, setAutor] = useState("");
     const [sinopse, setSinopse] = useState("");
     const [editora, setEditora] = useState("");
-    const [categoria, setCategoria] = useState("");
+    const [categoria, setCategoria] = useState("Categoria");
     const [preco, setPreco] = useState("");
     const [imagem, setImagem] = useState("");
 
@@ -30,7 +30,7 @@ export default function AddProducts(){
             setAutor("");
             setSinopse("");
             setEditora("");
-            //categoria
+            setCategoria("Categoria");
             setPreco("");
             setImagem("");
         } catch (error) {
@@ -47,7 +47,8 @@ export default function AddProducts(){
                 <TextInput style={styles.input} placeholder="Autor" value={autor} onChangeText={setAutor}></TextInput>
                 <TextInput style={styles.input} placeholder="Sinopse" value={sinopse} onChangeText={setSinopse}></TextInput>
                 <TextInput style={styles.input} placeholder="Editora" value={editora} onChangeText={setEditora}></TextInput>
-                <Picker selectedValue={selectedValue} style={{ height: 50, width: 200 }} onValueChange={(itemValue) => setSelectedValue(itemValue)}>
+
+                <Picker selectedValue={categoria} style={styles.select} onValueChange={(itemValue) => setCategoria(itemValue)}>
                     <Picker.Item label="Livro" value="livro"/>
                     <Picker.Item label="HQ" value="hq"/>
                 </Picker>
@@ -69,6 +70,19 @@ const styles = StyleSheet.create({
     input: {
         fontSize: 23,
         height: 50,
+        width: '90%',
+        margin: 12,
+        color: 'white',
+        borderColor: 'rgb(117, 64, 192)',
+        borderWidth: 4,
+        padding: 10,
+        borderRadius: 7,
+        backgroundColor:' rgb(168, 128, 223)',
+    },
+    select: {
+        fontSize: 23,
+        height: 50,
+        width: '90%',
         margin: 12,
         color: 'white',
         borderColor: 'rgb(117, 64, 192)',

@@ -1,5 +1,5 @@
 import {Text, View, StyleSheet, FlatList} from 'react-native'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Cards from '../Components/Card';
 import { db } from "../controller";
 import { collection, getDocs } from "firebase/firestore";

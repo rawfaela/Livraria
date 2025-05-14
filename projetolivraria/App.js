@@ -9,6 +9,7 @@ import ShowInfo from './Components/ShowInfo';
 import Livros from './Screens/Livros';
 import HQs from './Screens/HQs';
 import Carrinho from './Screens/Carrinho';
+import AddProdutos from './Screens/AddProdutos';
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
@@ -52,12 +53,11 @@ export default function App() {
         
         <Stack.Screen name='Login' component={Login} options={{headerShown: false}} />
 
+        <Stack.Screen name='AddProdutos' component={AddProdutos}  />
+
         <Stack.Screen name='BottomTabs' component={BottomTabs} options={{headerShown: false}} />
 
         <Stack.Screen name="ShowInfo" component={ShowInfo} options={{ title:'Detalhes do Livro', headerBackTitle: 'Voltar' }}/>
-
-
-        {/* <Stack.Screen name='ADMProdutos' component={ADMProdutos} options={{}} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   )
