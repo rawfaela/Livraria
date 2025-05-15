@@ -9,7 +9,8 @@ export default function AddProdutos(){
     const [autor, setAutor] = useState("");
     const [sinopse, setSinopse] = useState("");
     const [editora, setEditora] = useState("");
-    const [categoria, setCategoria] = useState("Categoria");
+    const [genero, setGenero] = useState("");
+    const [categoria, setCategoria] = useState("");
     const [preco, setPreco] = useState("");
     const [imagem, setImagem] = useState("");
 
@@ -20,6 +21,7 @@ export default function AddProdutos(){
                 autor,
                 sinopse,
                 editora,
+                genero,
                 categoria,
                 preco: parseFloat(preco),
                 imagem,
@@ -29,7 +31,8 @@ export default function AddProdutos(){
             setAutor("");
             setSinopse("");
             setEditora("");
-            setCategoria("Categoria");
+            setGenero("");
+            setCategoria("");
             setPreco("");
             setImagem("");
         } catch (error) {
@@ -45,11 +48,12 @@ export default function AddProdutos(){
                 <TextInput style={styles.input} placeholder="Título" value={titulo} onChangeText={setTitulo}></TextInput>
                 <TextInput style={styles.input} placeholder="Autor" value={autor} onChangeText={setAutor}></TextInput>
                 <TextInput style={styles.input} placeholder="Sinopse" value={sinopse} onChangeText={setSinopse}></TextInput>
+                <TextInput style={styles.input} placeholder="Gênero" value={genero} onChangeText={setGenero}></TextInput>
                 <TextInput style={styles.input} placeholder="Editora" value={editora} onChangeText={setEditora}></TextInput>
 
                 <Picker selectedValue={categoria} style={styles.select} onValueChange={(itemValue) => setCategoria(itemValue)}>
-                    <Picker.Item label="Livro" value="livro"/>
-                    <Picker.Item label="HQ" value="hq"/>
+                    <Picker.Item label="Livro" value="Livro"/>
+                    <Picker.Item label="HQ" value="HQ"/>
                 </Picker>
                 <TextInput style={styles.input} placeholder="Preço" value={preco} onChangeText={setPreco}></TextInput>
                 <TextInput style={styles.input} placeholder="Imagem" value={imagem} onChangeText={setImagem}></TextInput>
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
         fontSize: 23,
         height: 50,
         width: '90%',
-        margin: 12,
+        margin: 10,
         color: 'white',
         borderColor: 'rgb(117, 64, 192)',
         borderWidth: 4,

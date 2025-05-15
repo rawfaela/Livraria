@@ -2,12 +2,12 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from "react-na
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Cards({titulo, autor, preco, img, sinopse}){
+export default function Cards({titulo, autor, preco, img, sinopse, editora}){
     const navigation = useNavigation();
 
     return(
         <View style={styles.background}>
-            <TouchableOpacity onPress={()=>navigation.navigate('ShowInfo',{titulo, autor, preco, img, sinopse})} style={styles.touchContainer}>  
+            <TouchableOpacity onPress={()=>navigation.navigate('ShowInfo',{titulo, autor, preco, img, sinopse, editora})} style={styles.touchContainer}>  
                 <Image source={{uri: img}}style={styles.img}/>
                 <View style={{flex: 1, marginLeft:5 }}>
                     <Text style={styles.txt}>{titulo} </Text>
@@ -44,13 +44,13 @@ const styles = StyleSheet.create({
     },
     img: {
         width: 150,
-        height: 150,
+        height: 230,
         borderRadius: 20,
         borderWidth: 3,
         borderColor: 'rgb(46, 6, 83)',
     },
     add: {
-        marginTop: 10,
+        marginTop: 20,
         backgroundColor: 'rgb(194, 100, 238)',
         padding: 2,
         borderRadius: 5,
