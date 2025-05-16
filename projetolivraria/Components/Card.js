@@ -9,10 +9,10 @@ export default function Cards({titulo, autor, preco, img, sinopse, editora}){
         <View style={styles.background}>
             <TouchableOpacity onPress={()=>navigation.navigate('ShowInfo',{titulo, autor, preco, img, sinopse, editora})} style={styles.touchContainer}>  
                 <Image source={{uri: img}}style={styles.img}/>
-                <View style={{flex: 1, marginLeft:5 }}>
-                    <Text style={styles.txt}>{titulo} </Text>
-                    <Text style={styles.txt}>{autor} </Text>
-                    <Text style={styles.txt}>R${preco}</Text>
+                <View style={{flex: 1, marginLeft:5}}>
+                    <Text style={styles.titulo}>{titulo} </Text>
+                    <Text style={styles.autor}>{autor} </Text>
+                    <Text style={styles.txt}>R${parseFloat(preco).toFixed(2)}</Text>
                 </View>
             </TouchableOpacity> 
             <TouchableOpacity style={styles.add} /* onPress={} */><Text style={{textAlign: 'center', fontSize: 20}}>Adicionar ao carrinho</Text></TouchableOpacity>
@@ -33,9 +33,19 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
 
     },
-        touchContainer: {
+    touchContainer: {
         flex: 1,
         alignItems: 'center',
+    },
+    titulo: {
+        textAlign: 'center',
+        fontSize: 26,
+        fontWeight: 'bold',
+    },
+    autor: {
+        textAlign: 'center',
+        fontSize: 25,
+        fontStyle: 'italic'
     },
     txt:{
         textAlign: 'center',
