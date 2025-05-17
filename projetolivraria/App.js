@@ -48,6 +48,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShadowVisible: false, headerStyle: {margin:0}, headerTitleStyle: {fontWeight: 'bold', fontSize: 20} }}>
+
         
         <Stack.Screen name='Login' component={Login} options={{headerShown: false}} />
 
