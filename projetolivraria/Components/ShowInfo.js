@@ -1,6 +1,6 @@
 import { View, ScrollView, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-//! SCROLL NAO FUNCIONA
+//! SCROLL NAO FUNCIONA (no celular pega ?)
 export default function ShowInfo({route}){
     const { titulo, autor, preco, img, sinopse, editora } = route.params;
 
@@ -10,8 +10,8 @@ export default function ShowInfo({route}){
                 <Image source={{uri: img}} style={styles.img}/>
                 <View style={styles.info}>
                     <Text style={styles.titulo}>{titulo} </Text>
-                    <Text style={styles.txt}>{autor} </Text>
-                    <Text style={styles.txt}>Preço: R${preco}</Text>          
+                    <Text style={styles.autor}>{autor} </Text>
+                    <Text style={styles.txt}>Preço: R${parseFloat(preco).toFixed(2)}</Text>          
                     <Text style={styles.txt}>Editora: {editora}</Text> 
                     <TouchableOpacity style={styles.add} /* onPress={} */><Text style={{textAlign: 'center', fontSize: 22}}>Adicionar ao carrinho</Text></TouchableOpacity>
                 </View>
@@ -38,6 +38,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 27,
         fontWeight: 'bold',
+    },
+    autor: {
+        textAlign: 'center',
+        fontSize: 25,
+        fontStyle: 'italic'
     },
     txt:{
         textAlign: 'center',

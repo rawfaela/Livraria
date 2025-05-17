@@ -52,6 +52,7 @@ export default function AddProdutos(){
                 <TextInput style={styles.input} placeholder="Editora" value={editora} onChangeText={setEditora}></TextInput>
 
                 <Picker selectedValue={categoria} style={styles.select} onValueChange={(itemValue) => setCategoria(itemValue)}>
+                    <Picker.Item label="Selecione uma categoria" value="" enabled={false} />
                     <Picker.Item label="Livro" value="Livro"/>
                     <Picker.Item label="HQ" value="HQ"/>
                 </Picker>
