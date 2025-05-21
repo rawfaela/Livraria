@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Cadastro from './Screens/Cadastro';
 import Home from './Screens/Home';
 import Login from './Screens/Login';
+import AddProdutos from './Screens/AddProdutos';
 
 // ! TODOS OS DESIGNS E CONFIGURAÇÕES SAO DO OUTRO -- MUDAR!!!
 function BottomTabs(){
@@ -34,6 +35,9 @@ export default function App() {
         <Stack.Screen name='BottomTabs' component={BottomTabs} options={{headerShown: false}} />
 
         <Stack.Screen name='Cadastro' component={Cadastro} options={{headerShown: false}} />
+
+        <Stack.Screen name='AddProdutos' component={AddProdutos} options={{headerShown: false}} />
+
  
       </Stack.Navigator>
     </NavigationContainer>

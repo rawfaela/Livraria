@@ -53,6 +53,14 @@ export default function Cadastro({ navigation }) {
                             onPress={() => navigation.navigate('Login')}
                         />
                     </View>
+
+                    <View style={styles.botao}>
+                        <Button
+                            title="teste"
+                            color="#532d0b"
+                            onPress={() => navigation.navigate('AddProdutos')}
+                        />
+                    </View>
                 </View>
 
             </View>

@@ -18,7 +18,7 @@ export default function Login({ navigation }) {
     const [senha, setSenha] = useState("");
 
     if (!fontsLoaded) {
-        return null; 
+        return null;
     }
 
     const VerificarUser = () => {
