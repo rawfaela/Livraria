@@ -47,7 +47,7 @@ export default function AddProdutos(){
             <View style={{flex:1, alignItems: 'center'}}>
                 <TextInput style={styles.input} placeholder="Título" value={titulo} onChangeText={setTitulo}></TextInput>
                 <TextInput style={styles.input} placeholder="Autor" value={autor} onChangeText={setAutor}></TextInput>
-                <TextInput style={styles.input} placeholder="Sinopse" value={sinopse} onChangeText={setSinopse}></TextInput>
+                <TextInput style={styles.input} placeholder="Sinopse" value={sinopse} onChangeText={setSinopse} multiline={true}></TextInput>
                 <TextInput style={styles.input} placeholder="Gênero" value={genero} onChangeText={setGenero}></TextInput>
                 <TextInput style={styles.input} placeholder="Editora" value={editora} onChangeText={setEditora}></TextInput>
 
