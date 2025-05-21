@@ -15,3 +15,4 @@ Adicionar ao carrinho;
 Remover do carrinho (na tela do carrinho);
 
 Telas no figma: https://www.figma.com/design/yRFGKe5dQz2q0WXn0JLmUJ/LIVRARIA-ISABELI-JENIFER-E-RAFA?node-id=0-1&t=fozBKM0SfEObwOqO-1
+Color pallete: https://colorhunt.co/palette/ffcdb2ffb4a2e5989bb5828c
