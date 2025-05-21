@@ -68,7 +68,7 @@ export default function Login({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F4A460',
+        backgroundColor: 'rgb(181, 194, 223)',
     },
 
     inputs: {
@@ -80,14 +80,18 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        fontSize: 20
+        fontSize: 20,
+        backgroundColor: 'rgb(167, 191, 226)',
     },
     title: {
+        color: 'rgb(208, 232, 197)',
         fontWeight: 'bold',
         paddingTop: 150,
         fontSize: 30,
         paddingBottom: 10,
         alignSelf: 'center',
+        textShadowColor: 'rgba(108, 129, 98, 0.75)',
+        textShadowOffset: {width: 2, height: 3},
     },
     text1: {
         fontWeight: 'bold',
@@ -102,7 +106,7 @@ const styles = StyleSheet.create({
 
     botao: {
         justifyContent: 'space-around',
-        backgroundColor: "#532d0b",
+        backgroundColor: "rgb(144, 168, 133)",
         height: 'auto',
         width: 'auto',
         alignSelf: 'center',
@@ -118,3 +122,14 @@ const styles = StyleSheet.create({
         marginTop: 20,
     }
 });
+
+
+/* 
+rgb(141, 123, 104)
+rgb(164, 144, 124)
+rgb(200, 182, 166)
+rgb(241, 222, 201)
+rgb(166, 174, 191)
+rgb(197, 211, 232)
+rgb(208, 232, 197)
+rgb(255, 248, 222) */
