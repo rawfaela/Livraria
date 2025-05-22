@@ -41,19 +41,21 @@ export default function Livros(){
 const styles = StyleSheet.create({
     container: {
       flex: 1,
+      backgroundColor: 'rgb(181, 194, 223)',
+
     },
     titulo: {
         fontSize: 35,
         textAlign: 'center',
         fontWeight: 'bold',
-        color: 'rgb(46, 6, 83)',
-        textShadowColor: 'rgba(136, 65, 202, 0.49)',
-        textShadowOffset: {width: 2, height: 2},
+        color: 'rgb(223, 243, 214)',
+        textShadowColor: 'rgba(80, 102, 69, 0.75)',
+        textShadowOffset: {width: 3, height: 3},
     },
     subtitle: {
         fontSize: 30,
         textAlign: 'center',
         fontWeight: 'bold',
-        color: 'rgb(136, 65, 202)',
+        color: 'rgb(80, 102, 69)',
     }
 });

@@ -69,7 +69,7 @@ export default function AddProdutos(){
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'rgb(214, 173, 233)',       
+      backgroundColor: 'rgb(181, 194, 223)',       
     },
     input: {
         fontSize: 23,
@@ -77,11 +77,11 @@ const styles = StyleSheet.create({
         width: '90%',
         margin: 10,
         color: 'white',
-        borderColor: 'rgb(117, 64, 192)',
-        borderWidth: 4,
+        borderWidth: 3, /* ver tamanho pra ficar o mais parecido possivel com a categoria */
         padding: 10,
         borderRadius: 7,
-        backgroundColor:' rgb(168, 128, 223)',
+        backgroundColor:' rgb(167, 191, 226)',
+        borderColor: 'rgb(137, 163, 218)'
     },
     select: {
         fontSize: 23,
@@ -89,26 +89,26 @@ const styles = StyleSheet.create({
         width: '90%',
         margin: 12,
         color: 'white',
-        borderColor: 'rgb(117, 64, 192)',
         borderWidth: 4,
         padding: 10,
         borderRadius: 7,
-        backgroundColor:' rgb(168, 128, 223)',
+        backgroundColor:'  rgb(167, 191, 226)',
+        borderColor: 'rgb(137, 163, 218)'
     },
     titulo: {
+        color: 'rgb(223, 243, 214)',
         marginTop: 30,
         marginBottom: 20,
         fontSize: 35,
         textAlign: 'center',
         fontWeight: 'bold',
-        color: 'rgb(46, 6, 83)',
-        textShadowColor: 'rgba(136, 65, 202, 0.49)',
-        textShadowOffset: {width: 2, height: 2},
+        textShadowColor: 'rgba(80, 102, 69, 0.75)',
+        textShadowOffset: {width: 2, height: 3},
     },
     botao: {
         width: 200, 
         height: 60, 
-        backgroundColor: 'rgb(138, 83, 214)', 
+        backgroundColor: 'rgb(144, 168, 133)', 
         justifyContent: 'center', 
         alignItems: 'center', 
         borderRadius: 10

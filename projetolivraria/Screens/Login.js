@@ -75,33 +75,37 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     input: {
+        color: 'white',
         height: 50,
         width: 280,
         margin: 12,
-        borderWidth: 1,
+        borderWidth: 2,
         padding: 10,
         fontSize: 20,
         backgroundColor: 'rgb(167, 191, 226)',
+        borderRadius: 10,
+        borderColor: 'rgb(137, 163, 218)'
     },
     title: {
-        color: 'rgb(208, 232, 197)',
+        color: 'rgb(223, 243, 214)',
         fontWeight: 'bold',
         paddingTop: 150,
-        fontSize: 30,
+        fontSize: 40,
         paddingBottom: 10,
-        alignSelf: 'center',
-        textShadowColor: 'rgba(108, 129, 98, 0.75)',
+        alignSelf: 'center', 
+        textShadowColor: 'rgba(80, 102, 69, 0.75)',
         textShadowOffset: {width: 2, height: 3},
     },
     text1: {
         fontWeight: 'bold',
-        fontSize: 23,
+        fontSize: 30,
         paddingBottom: 40,
         alignSelf: 'center',
+        color: 'rgb(80, 102, 69)',
     },
     text2: {
         paddingLeft: 15,
-        fontSize: 20
+        fontSize: 20,
     },
 
     botao: {
@@ -112,6 +116,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignItems: 'center',
         padding: 5,
+        borderRadius: 10,
     },
     textbotao: {
         fontSize: 20,
