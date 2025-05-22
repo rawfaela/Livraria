@@ -68,46 +68,55 @@ export default function Login({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F4A460',
+        backgroundColor: 'rgb(181, 194, 223)',
     },
 
     inputs: {
         alignSelf: 'center',
     },
     input: {
+        color: 'white',
         height: 50,
         width: 280,
         margin: 12,
-        borderWidth: 1,
+        borderWidth: 2,
         padding: 10,
-        fontSize: 20
+        fontSize: 20,
+        backgroundColor: 'rgb(167, 191, 226)',
+        borderRadius: 10,
+        borderColor: 'rgb(137, 163, 218)'
     },
     title: {
+        color: 'rgb(223, 243, 214)',
         fontWeight: 'bold',
         paddingTop: 150,
-        fontSize: 30,
+        fontSize: 40,
         paddingBottom: 10,
-        alignSelf: 'center',
+        alignSelf: 'center', 
+        textShadowColor: 'rgba(80, 102, 69, 0.75)',
+        textShadowOffset: {width: 2, height: 3},
     },
     text1: {
         fontWeight: 'bold',
-        fontSize: 23,
+        fontSize: 30,
         paddingBottom: 40,
         alignSelf: 'center',
+        color: 'rgb(80, 102, 69)',
     },
     text2: {
         paddingLeft: 15,
-        fontSize: 20
+        fontSize: 20,
     },
 
     botao: {
         justifyContent: 'space-around',
-        backgroundColor: "#532d0b",
+        backgroundColor: "rgb(144, 168, 133)",
         height: 'auto',
         width: 'auto',
         alignSelf: 'center',
         alignItems: 'center',
         padding: 5,
+        borderRadius: 10,
     },
     textbotao: {
         fontSize: 20,
@@ -118,3 +127,14 @@ const styles = StyleSheet.create({
         marginTop: 20,
     }
 });
+
+
+/* 
+rgb(141, 123, 104)
+rgb(164, 144, 124)
+rgb(200, 182, 166)
+rgb(241, 222, 201)
+rgb(166, 174, 191)
+rgb(197, 211, 232)
+rgb(208, 232, 197)
+rgb(255, 248, 222) */

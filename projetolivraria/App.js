@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { CartProvider } from './Components/CartProvider';
 
 import Login from './Screens/Login';
 import Cadastro from './Screens/Cadastro';
@@ -15,6 +16,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 // ! TODOS OS DESIGNS E CONFIGURAÇÕES SAO DO OUTRO -- MUDAR!!!
+// ! adicionar aviso de erro de login/cadastro na tela
 function BottomTabs(){
   const Bottom = createBottomTabNavigator();
 
@@ -25,19 +27,19 @@ function BottomTabs(){
 
       <Bottom.Screen name='Home' component={Home}   options={{headerShown: false, 
       tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="bookshelf" size={30} color={focused ? "white" : "black"} />),
-        tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)'}}} />
+        tabBarStyle: { backgroundColor: 'rgb(147, 168, 199)'}}} />
       
       <Bottom.Screen name='Livros' component={Livros} options={{headerShown: false, 
         tabBarIcon: ({ focused }) => (<FontAwesome6 name="book" size={30} color={focused ? "white" : "black"} />),
-        tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)'}}}/>
+        tabBarStyle: { backgroundColor: 'rgb(147, 168, 199)'}}}/>
 
       <Bottom.Screen name='HQs' component={HQs} options={{headerShown: false, 
       tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="book-open-variant" size={30} color={focused ? "white" : "black"} />), 
-      tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)'}}}/>
+      tabBarStyle: { backgroundColor: 'rgb(147, 168, 199)'}}}/>
 
       <Bottom.Screen name='Carrinho' component={Carrinho} options={{headerShown: false, 
       tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="cart" size={30} color={focused ? "white" : "black"} />), 
-      tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)'}}}/>
+      tabBarStyle: { backgroundColor: 'rgb(147, 168, 199))'}}}/>
     </Bottom.Navigator>
   )
 }
@@ -46,20 +48,23 @@ export default function App() {
   const Stack = createStackNavigator();
   
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShadowVisible: false, headerStyle: {margin:0}, headerTitleStyle: {fontWeight: 'bold', fontSize: 20} }}>
+    <CartProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShadowVisible: false, headerStyle: {margin:0}, headerTitleStyle: {fontWeight: 'bold', fontSize: 20} }}>
 
-        
-        <Stack.Screen name='Login' component={Login} options={{headerShown: false}} />
+          
+          <Stack.Screen name='Login' component={Login} options={{headerShown: false}} /> 
 
-        <Stack.Screen name='Cadastro' component={Cadastro} options={{headerShown: false}} />
+          <Stack.Screen name='Cadastro' component={Cadastro} options={{headerShown: false}} />
 
-        <Stack.Screen name='AddProdutos' component={AddProdutos}  />
+          <Stack.Screen name='AddProdutos' component={AddProdutos} options={{title: 'Voltar',  headerStyle:{backgroundColor: 'rgb(147, 168, 199)', color: '#fff'}}} />
+          {/* a cor da letra nao pega */}
+          
+          <Stack.Screen name='BottomTabs' component={BottomTabs} options={{headerShown: false}} />
 
-        <Stack.Screen name='BottomTabs' component={BottomTabs} options={{headerShown: false}} />
-
-        <Stack.Screen name="ShowInfo" component={ShowInfo} options={{ title:'Detalhes do Livro', headerBackTitle: 'Voltar' }}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen name="ShowInfo" component={ShowInfo} options={{ title:'Detalhes do Livro', headerBackTitle: 'Voltar' }}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </CartProvider>
   )
 }
