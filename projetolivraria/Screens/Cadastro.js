@@ -1,12 +1,13 @@
 import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../controller';
+import { errorFirebase } from '../Utils/AuthError';
 
 export default function Cadastro({ navigation }) {
-
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [erro, setErro] = useState('');
 
     const VerificarUser = () => {
         createUserWithEmailAndPassword(auth, email, senha).then((userCredential) => {
@@ -15,6 +16,8 @@ export default function Cadastro({ navigation }) {
         })
             .catch((error) => {
                 console.log('erro', error.message);
+                const msg = errorFirebase(error.code);
+                setErro(msg);
             });
     }
 
@@ -23,20 +26,20 @@ export default function Cadastro({ navigation }) {
             <Text style={styles.title}>Livraria Tal</Text>
             <Text style={styles.text1}>Cadastro</Text>
 
-            <View style={styles.inputs}>
+            <View>
                 <Text style={styles.text2}><b>Email</b></Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Email"
                     value={email}
-                    onChangeText={setEmail}
+                    onChangeText={(text) => {setEmail(text); setErro('');}}
                 />
                 <Text style={styles.text2}><b>Senha</b></Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Senha"
                     value={senha}
-                    onChangeText={setSenha}
+                    onChangeText={(text) => {setSenha(text); setErro('');}}
                     secureTextEntry={true}
                 />
             </View>
@@ -48,11 +51,7 @@ export default function Cadastro({ navigation }) {
                     <Text style={styles.textbotao}>VOLTAR</Text>
                 </TouchableOpacity>
             </View>
-
-            {/* nao é pra ter botao, agr é so pra testar */}
-            <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('AddProdutos')}>
-                <Text style={styles.textbotao}>ADICIONAR PRODUTOS</Text>
-            </TouchableOpacity>
+            <Text style={styles.erro}>{erro}</Text>
         </View>
     )
 }
@@ -61,10 +60,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'rgb(181, 194, 223)',
-    },
-
-    inputs: {
-        alignSelf: 'center',
+        alignItems:'center'
     },
     input: {
         color: 'white',
@@ -84,7 +80,6 @@ const styles = StyleSheet.create({
         paddingTop: 150,
         fontSize: 40,
         paddingBottom: 10,
-        alignSelf: 'center', 
         textShadowColor: 'rgba(80, 102, 69, 0.75)',
         textShadowOffset: {width: 2, height: 3},
     },
@@ -92,7 +87,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 30,
         paddingBottom: 40,
-        alignSelf: 'center',
         color: 'rgb(80, 102, 69)',
     },
     text2: {
@@ -105,7 +99,6 @@ const styles = StyleSheet.create({
         backgroundColor: "rgb(144, 168, 133)",
         height: 'auto',
         width: 130,
-        alignSelf: 'center',
         alignItems: 'center',
         padding: 5,
         borderRadius: 10,
@@ -115,6 +108,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'white',
     },
-
+    erro: {
+        fontSize: 20,
+        paddingTop: 7,
+        color: 'rgb(193, 53, 10)'
+    }
 })
 
