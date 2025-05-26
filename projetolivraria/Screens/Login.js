@@ -2,24 +2,32 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity, Button } from 'rea
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../controller';
+import { errorFirebase } from '../Utils/AuthError';
 
 //tudo umas cor generica jeni procura uma paleta de cor e uma logo pra colocar
 
 //DECIDI FONTE , PALETA DE COR E LOGO
 export default function Login({ navigation }) {
-
-
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [erro, setErro] = useState('');
 
     const VerificarUser = () => {
         signInWithEmailAndPassword(auth, email, senha).then(userCredential => {
-            console.log('usuario logado', userCredential.user.email);
-            navigation.navigate('BottomTabs', { screen: 'Home' });
+            if (email === 'adm@gmail.com'){
+                console.log('adm logado', userCredential.user.email);
+                navigation.navigate('AddProdutos', { screen: 'AddProdutos' });
+            }
+            else{
+                console.log('usuario logado', userCredential.user.email);
+                navigation.navigate('BottomTabs', { screen: 'Home' });
+            }
 
         })
             .catch((error) => {
                 console.log('erro ao logar', error.message);
+                const msg = errorFirebase(error.code);
+                setErro(msg);
             });
     }
 
@@ -34,20 +42,20 @@ export default function Login({ navigation }) {
             <Text style={styles.title}>Livraria Tal</Text>
             <Text style={styles.text1}>Login</Text>
 
-            <View style={styles.inputs}>
+            <View>
                 <Text style={styles.text2}><b>Email</b></Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Email"
                     value={email}
-                    onChangeText={setEmail}
+                    onChangeText={(text) => {setEmail(text); setErro('');}}
                 />
                 <Text style={styles.text2}><b>Senha</b></Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Senha"
                     value={senha}
-                    onChangeText={setSenha}
+                    onChangeText={(text) => {setSenha(text); setErro('');}}
                     secureTextEntry={true}
                 />
             </View>
@@ -60,6 +68,7 @@ export default function Login({ navigation }) {
                 <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Cadastro')}>
                     <Text style={styles.textbotao}>CADASTRE-SE AGORA!</Text>
                 </TouchableOpacity>
+                <Text style={styles.erro}>{erro}</Text>
             </View>
         </View>
     )
@@ -69,10 +78,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'rgb(181, 194, 223)',
-    },
-
-    inputs: {
-        alignSelf: 'center',
+        alignItems:'center'
     },
     input: {
         color: 'white',
@@ -92,7 +98,6 @@ const styles = StyleSheet.create({
         paddingTop: 150,
         fontSize: 40,
         paddingBottom: 10,
-        alignSelf: 'center', 
         textShadowColor: 'rgba(80, 102, 69, 0.75)',
         textShadowOffset: {width: 2, height: 3},
     },
@@ -100,20 +105,17 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 30,
         paddingBottom: 40,
-        alignSelf: 'center',
         color: 'rgb(80, 102, 69)',
     },
     text2: {
         paddingLeft: 15,
         fontSize: 20,
     },
-
     botao: {
         justifyContent: 'space-around',
         backgroundColor: "rgb(144, 168, 133)",
         height: 'auto',
         width: 'auto',
-        alignSelf: 'center',
         alignItems: 'center',
         padding: 5,
         borderRadius: 10,
@@ -123,8 +125,12 @@ const styles = StyleSheet.create({
         color: 'white',
     },
     cadastro: {
-        alignItems: 'center',
         marginTop: 20,
+    },
+    erro: {
+        fontSize: 20,
+        paddingTop: 7,
+        color: 'rgb(193, 53, 10)'
     }
 });
 
