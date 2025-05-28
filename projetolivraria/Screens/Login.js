@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     botao: {
         justifyContent: 'space-around',
         backgroundColor: "rgb(144, 168, 133)",
+        // backgroundColor: "rgb(139, 124, 182)",
         height: 'auto',
         width: 'auto',
         alignItems: 'center',
