@@ -5,7 +5,6 @@ export default function ShowInfo({route}){
     const { titulo, autor, preco, img, sinopse, editora } = route.params;
 
     return(
-        
         <ScrollView style={styles.container}  contentContainerStyle={{alignItems: 'center', flexGrow: 1}}>
             <View style={styles.cabecalho}>
                 <Image source={{uri: img}} style={styles.img}/>
