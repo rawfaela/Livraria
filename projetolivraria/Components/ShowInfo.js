@@ -7,14 +7,14 @@ export default function ShowInfo({route}){
     const { addToFav } = useFav();
 
     return(
-        <ScrollView style={styles.container}  contentContainerStyle={{alignItems: 'center', flexGrow: 1}}>
+        <ScrollView style={styles.container} nestedScrollEnabled={true} contentContainerStyle={{alignItems: 'center', flexGrow: 1}}>
             <View style={styles.cabecalho}>
                 <Image source={{uri: imagem}} style={styles.img}/>
                 <View style={styles.info}>
                     <Text style={styles.titulo}>{titulo} </Text>
                     <Text style={styles.autor}>{autor} </Text>
                     <Text style={styles.txt}>Editora: {editora}</Text> 
-                    <TouchableOpacity style={styles.add} onPress={() => addToFav({ titulo, autor, imagem, sinopse, editora })}><Text style={{textAlign: 'center', fontSize: 22}}>Favoritar</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.add} onPress={() => addToFav({ titulo, autor, imagem, sinopse, editora })}><Text style={{textAlign: 'center', fontSize: 22}}>Favoritar {'<3'}</Text></TouchableOpacity>
                 </View>
             </View>
                 <Text style={styles.sinopse}>Sinopse: {sinopse}</Text>

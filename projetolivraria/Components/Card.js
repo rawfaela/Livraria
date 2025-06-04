@@ -14,7 +14,7 @@ export default function Cards({titulo, autor, imagem, sinopse, editora, favorita
                     <Text style={styles.autor}>{autor} </Text>
                 </View>
             </TouchableOpacity> 
-            <TouchableOpacity style={styles.fav} onPress={favoritar}><Text style={{textAlign: 'center', fontSize: 20}}>Favoritar</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.fav} onPress={favoritar}><Text style={{textAlign: 'center', fontSize: 20}}>Favoritar {'<3'}</Text></TouchableOpacity>
         </View>
     )
 }
