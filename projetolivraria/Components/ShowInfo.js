@@ -1,18 +1,20 @@
 import { View, ScrollView, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { useFav } from '../Components/FavsProvider';
 
 //! SCROLL NAO FUNCIONA (no celular pega ?)
 export default function ShowInfo({route}){
-    const { titulo, autor, img, sinopse, editora } = route.params;
+    const { titulo, autor, imagem, sinopse, editora } = route.params;
+    const { addToFav } = useFav();
 
     return(
         <ScrollView style={styles.container}  contentContainerStyle={{alignItems: 'center', flexGrow: 1}}>
             <View style={styles.cabecalho}>
-                <Image source={{uri: img}} style={styles.img}/>
+                <Image source={{uri: imagem}} style={styles.img}/>
                 <View style={styles.info}>
                     <Text style={styles.titulo}>{titulo} </Text>
                     <Text style={styles.autor}>{autor} </Text>
                     <Text style={styles.txt}>Editora: {editora}</Text> 
-                    <TouchableOpacity style={styles.add} /* onPress={} */><Text style={{textAlign: 'center', fontSize: 22}}>Adicionar ao carrinho</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.add} onPress={() => addToFav({ titulo, autor, imagem, sinopse, editora })}><Text style={{textAlign: 'center', fontSize: 22}}>Favoritar</Text></TouchableOpacity>
                 </View>
             </View>
                 <Text style={styles.sinopse}>Sinopse: {sinopse}</Text>
