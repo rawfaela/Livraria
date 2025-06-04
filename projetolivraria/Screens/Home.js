@@ -37,14 +37,14 @@ export default function Home(){
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'rgb(181, 194, 223)',  
+      backgroundColor: 'rgb(208, 222, 252)',  
     },
     titulo: {
         fontSize: 35,
         textAlign: 'center',
         fontWeight: 'bold',
-        color: 'rgb(223, 243, 214)',
-        textShadowColor: 'rgba(80, 102, 69, 0.75)',
-        textShadowOffset: {width: 3, height: 3},
+        color: 'rgb(193, 175, 243)',
+        textShadowColor: 'rgb(139, 124, 182)',
+        textShadowOffset: { width: 3, height: 3 },
     },
 });

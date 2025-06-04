@@ -1,4 +1,3 @@
-
 import {Text, View, StyleSheet, TouchableOpacity, TextInput} from 'react-native'
 import { useState } from 'react';
 import { Picker } from '@react-native-picker/picker';
@@ -12,7 +11,6 @@ export default function AddProdutos(){
     const [editora, setEditora] = useState("");
     const [genero, setGenero] = useState("");
     const [categoria, setCategoria] = useState("");
-
     const [imagem, setImagem] = useState("");
 
     const addProduct = async () => {
@@ -33,7 +31,6 @@ export default function AddProdutos(){
             setEditora("");
             setGenero("");
             setCategoria("");
-
             setImagem("");
         } catch (error) {
             console.error("Erro ao adicionar produto: ", error);
@@ -69,7 +66,6 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: 'rgb(181, 194, 223)',       
-
     },
     input: {
         fontSize: 23,
@@ -77,13 +73,6 @@ const styles = StyleSheet.create({
         width: '90%',
         margin: 10,
         color: 'white',
-        borderColor: 'rgb(117, 64, 192)',
-        borderWidth: 4,
-        padding: 10,
-        borderRadius: 7,
-        backgroundColor: 'rgb(168, 128, 223)',
-    },
-    titulo: {
         borderWidth: 3, /* ver tamanho pra ficar o mais parecido possivel com a categoria */
         padding: 10,
         borderRadius: 7,
@@ -109,18 +98,8 @@ const styles = StyleSheet.create({
         fontSize: 35,
         textAlign: 'center',
         fontWeight: 'bold',
-        color: 'rgb(46, 6, 83)',
-        textShadowColor: 'rgba(136, 65, 202, 0.49)',
-        textShadowOffset: { width: 2, height: 2 },
-    },
-    botao: {
-        width: 200,
-        height: 60,
-        backgroundColor: 'rgb(138, 83, 214)',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 10,
-        marginTop: 20,
+        textShadowColor: 'rgba(80, 102, 69, 0.75)',
+        textShadowOffset: {width: 2, height: 3},
     },
     botao: {
         width: 200, 
