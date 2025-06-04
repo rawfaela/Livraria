@@ -3,11 +3,10 @@ import { useState, useEffect } from 'react';
 import Cards from '../Components/Card';
 import { db } from "../controller";
 import { collection, getDocs } from "firebase/firestore";
-import { useFav } from '../Components/FavsProvider';
 
-export default function Home(){ 
+//! falta filtrar livros
+export default function Livros(){ 
     const [produtos, setProdutos] = useState([])
-    const { addToFav } = useFav();
 
     useEffect(() => {
         async function carregarProdutos() {
@@ -25,11 +24,16 @@ export default function Home(){
         carregarProdutos();
     }, []);
 
+
     return(
-        <View style={styles.container}>
+        <View style={styles.container}>            
             <FlatList data={produtos} renderItem={({item}) => (    
-                <Cards titulo={item.titulo} autor={item.autor} img={item.imagem} sinopse={item.sinopse} editora={item.editora} favoritar={() => {addToFav(item)}}/> 
-            )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={2} columnWrapperStyle={{ justifyContent: 'space-around' }} ListHeaderComponent={() => (<Text style={styles.titulo}> Livraria Nome </Text>)}/>
+                <Cards titulo={item.titulo} autor={item.autor} preco={item.preco} img={item.imagem} sinopse={item.sinopse} editora={item.editora}/> 
+            )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={2} columnWrapperStyle={{ justifyContent: 'space-around' }} ListHeaderComponent={() => (
+            <View>
+                <Text style={styles.titulo}> Livraria Nome </Text>
+                <Text style={styles.subtitle}>Livros</Text>
+            </View>)}/>
         </View>
     )
 }
@@ -37,7 +41,8 @@ export default function Home(){
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'rgb(181, 194, 223)',  
+      backgroundColor: 'rgb(181, 194, 223)',
+
     },
     titulo: {
         fontSize: 35,
@@ -47,4 +52,10 @@ const styles = StyleSheet.create({
         textShadowColor: 'rgba(80, 102, 69, 0.75)',
         textShadowOffset: {width: 3, height: 3},
     },
+    subtitle: {
+        fontSize: 30,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: 'rgb(80, 102, 69)',
+    }
 });
