@@ -2,14 +2,15 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from "react-na
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Cards({ titulo, autor, img, sinopse, editora, favoritar }) {
+export default function Cards({titulo, autor, imagem, sinopse, editora, favoritar}){
     const navigation = useNavigation();
 
     return (
         <View style={styles.background}>
-            <TouchableOpacity onPress={() => navigation.navigate('ShowInfo', { titulo, autor, img, sinopse, editora })} style={styles.touchContainer}>
-                <Image source={{ uri: img }} style={styles.img} />
-                <View style={{ flex: 1, marginLeft: 5 }}>
+
+            <TouchableOpacity onPress={()=>navigation.navigate('ShowInfo',{titulo, autor, imagem, sinopse, editora})} style={styles.touchContainer}>  
+                <Image source={{uri: imagem}}style={styles.img}/>
+                <View style={{flex: 1, marginLeft:5}}>
                     <Text style={styles.titulo}>{titulo} </Text>
                     <Text style={styles.autor}>{autor} </Text>
                 </View>

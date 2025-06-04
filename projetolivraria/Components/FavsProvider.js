@@ -6,6 +6,7 @@ export function FavsProvider({children}){
     const [favorito, setFav] = useState([]);
 
     function addToFav(product){
+        console.log("Adicionando favorito:", product);
         setFav((anterior) => [...anterior, product]);
     }
 
