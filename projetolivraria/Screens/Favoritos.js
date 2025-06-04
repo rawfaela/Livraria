@@ -1,5 +1,6 @@
 import {Text, View, StyleSheet, FlatList, Image, TouchableOpacity} from 'react-native'
 import { useFav } from '../Components/FavsProvider';
+import '@fontsource/playfair-display';
 
 export default function Favoritos(){ 
     const { favorito, removeFromFav } = useFav();
@@ -45,9 +46,10 @@ const styles = StyleSheet.create({
         fontSize: 35,
         textAlign: 'center',
         fontWeight: 'bold',
+        fontFamily: 'Playfair Display',
         color: 'rgb(193, 175, 243)',
         textShadowColor: 'rgb(139, 124, 182)',
-        textShadowOffset: { width: 3, height: 3 },
+        textShadowOffset: { width: 3, height: 5 },
     },
     subtitle: {
         fontSize: 30,
@@ -56,8 +58,9 @@ const styles = StyleSheet.create({
         color: 'rgb(139, 124, 182)',
     },
     vazio: {
-        fontSize: 24,
-        fontFamily: 'Arial Narrow',
+        fontSize: 25,
+        fontWeight:"bold",
+        fontFamily: 'Nunito',
         textAlign: 'center',
         marginTop: 20,
         color: 'rgb(115, 105, 143)',
