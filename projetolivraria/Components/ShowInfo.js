@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between', 
         alignSelf: 'stretch',   
         gap: 5, 
+        
     },
     titulo: {
         textAlign: 'center',
@@ -52,7 +53,8 @@ const styles = StyleSheet.create({
     },
     info: {
         flex: 1,
-        justifyContent: 'center'    
+        justifyContent: 'center' ,
+
     },
     sinopse:{
         textAlign: 'justify',
