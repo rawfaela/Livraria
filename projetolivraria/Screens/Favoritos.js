@@ -2,7 +2,7 @@ import {Text, View, StyleSheet, FlatList} from 'react-native'
 import { useState } from 'react';
 import Cards from '../Components/Card';
 
-export default function Carrinho(){ 
+export default function Favoritos(){ 
 
 
     return(

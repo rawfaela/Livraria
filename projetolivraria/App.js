@@ -9,7 +9,7 @@ import Home from './Screens/Home';
 import ShowInfo from './Components/ShowInfo';
 import Livros from './Screens/Livros';
 import HQs from './Screens/HQs';
-import Carrinho from './Screens/Carrinho';
+import Favoritos from './Screens/Favoritos';
 import AddProdutos from './Screens/AddProdutos';
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
@@ -39,9 +39,9 @@ function BottomTabs(){
       tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="book-open-variant" size={30} color={focused ? "white" : "black"} />), 
       tabBarStyle: { backgroundColor: 'rgb(147, 168, 199)'}}}/>
 
-      <Bottom.Screen name='Carrinho' component={Carrinho} 
+      <Bottom.Screen name='Favoritos' component={Favoritos} 
       options={{headerShown: false, 
-      tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="cart" size={30} color={focused ? "white" : "black"} />), 
+      tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="heart-multiple" size={30} color={focused ? "white" : "black"} />), 
       tabBarStyle: { backgroundColor: 'rgb(147, 168, 199))'}}}/>
     </Bottom.Navigator>
   )
@@ -67,5 +67,6 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </CartProvider>
+    
   )
 }
