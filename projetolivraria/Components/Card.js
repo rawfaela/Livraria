@@ -2,20 +2,19 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from "react-na
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Cards({titulo, autor, preco, img, sinopse, editora}){
+export default function Cards({titulo, autor, img, sinopse, editora, favoritar}){
     const navigation = useNavigation();
 
     return(
         <View style={styles.background}>
-            <TouchableOpacity onPress={()=>navigation.navigate('ShowInfo',{titulo, autor, preco, img, sinopse, editora})} style={styles.touchContainer}>  
+            <TouchableOpacity onPress={()=>navigation.navigate('ShowInfo',{titulo, autor, img, sinopse, editora})} style={styles.touchContainer}>  
                 <Image source={{uri: img}}style={styles.img}/>
                 <View style={{flex: 1, marginLeft:5}}>
                     <Text style={styles.titulo}>{titulo} </Text>
                     <Text style={styles.autor}>{autor} </Text>
-                    <Text style={styles.txt}>R${parseFloat(preco).toFixed(2)}</Text>
                 </View>
             </TouchableOpacity> 
-            <TouchableOpacity style={styles.fav} /* onPress={} */><Text style={{textAlign: 'center', fontSize: 20}}>Favoritar</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.fav} onPress={favoritar}><Text style={{textAlign: 'center', fontSize: 20}}>Favoritar</Text></TouchableOpacity>
         </View>
     )
 }

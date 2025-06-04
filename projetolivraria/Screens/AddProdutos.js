@@ -11,7 +11,6 @@ export default function AddProdutos(){
     const [editora, setEditora] = useState("");
     const [genero, setGenero] = useState("");
     const [categoria, setCategoria] = useState("");
-    const [preco, setPreco] = useState("");
     const [imagem, setImagem] = useState("");
 
     const addProduct = async () => {
@@ -23,7 +22,6 @@ export default function AddProdutos(){
                 editora,
                 genero,
                 categoria,
-                preco: parseFloat(preco),
                 imagem,
             });
             alert("Produto adicionado com sucesso!");
@@ -33,7 +31,6 @@ export default function AddProdutos(){
             setEditora("");
             setGenero("");
             setCategoria("");
-            setPreco("");
             setImagem("");
         } catch (error) {
             console.error("Erro ao adicionar produto: ", error);
@@ -56,7 +53,6 @@ export default function AddProdutos(){
                     <Picker.Item label="Livro" value="Livro"/>
                     <Picker.Item label="HQ" value="HQ"/>
                 </Picker>
-                <TextInput style={styles.input} placeholder="Preço" value={preco} onChangeText={setPreco}></TextInput>
                 <TextInput style={styles.input} placeholder="Imagem" value={imagem} onChangeText={setImagem}></TextInput>
                 <TouchableOpacity style={styles.botao} onPress={addProduct}>
                     <Text style={{ color: 'white', fontSize: 26 }}>Enviar</Text>
