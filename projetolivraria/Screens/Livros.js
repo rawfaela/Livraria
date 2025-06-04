@@ -14,8 +14,12 @@ export default function Livros(){
                 const querySnapshot = await getDocs(collection(db, 'produtos'));
                 const array = [];
                 querySnapshot.forEach((doc) => {
-                    array.push({id: doc.id, ...doc.data() });
-                });
+                    const produto = { id: doc.id, ...doc.data() };
+          
+                    if (produto.categoria === 'Livro') {
+                        array.push(produto);
+                    }
+        });
                 setProdutos(array);
             } catch (error){
                 console.log("Erro ao buscar produtos: ", error)
@@ -28,7 +32,7 @@ export default function Livros(){
     return(
         <View style={styles.container}>            
             <FlatList data={produtos} renderItem={({item}) => (    
-                <Cards titulo={item.titulo} autor={item.autor} preco={item.preco} img={item.imagem} sinopse={item.sinopse} editora={item.editora}/> 
+                <Cards titulo={item.titulo} autor={item.autor} preco={item.preco} imagem={item.imagem} sinopse={item.sinopse} editora={item.editora}/> 
             )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={2} columnWrapperStyle={{ justifyContent: 'space-around' }} ListHeaderComponent={() => (
             <View>
                 <Text style={styles.titulo}> Livraria Nome </Text>

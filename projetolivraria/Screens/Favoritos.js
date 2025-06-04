@@ -1,8 +1,9 @@
-import { Text, View, StyleSheet, FlatList, Image } from 'react-native'
+import {Text, View, StyleSheet, FlatList, Image, TouchableOpacity} from 'react-native'
 import { useFav } from '../Components/FavsProvider';
 
-export default function Favoritos() {
-    const { favorito } = useFav();
+export default function Favoritos(){ 
+    const { favorito, removeFromFav } = useFav();
+
 
     return (
         <View style={styles.container}>
@@ -24,6 +25,9 @@ export default function Favoritos() {
                                 <Text style={styles.texto1}>{item.titulo}</Text>
                                 <Text style={styles.texto2}>{item.autor}</Text>
                             </View>
+                            <TouchableOpacity onPress={() => removeFromFav(item.id)}>
+                                <Image style={styles.img} source={require('../assets/removefav.png')} />
+                            </TouchableOpacity>
                         </View>
                     )}
                 />
