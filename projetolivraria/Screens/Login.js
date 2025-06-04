@@ -2,15 +2,21 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity, Button } from 'rea
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../controller';
+
 import { errorFirebase } from '../Utils/AuthError';
 
 //tudo umas cor generica jeni procura uma paleta de cor e uma logo pra colocar
 
-//DECIDI FONTE , PALETA DE COR E LOGO
+//DECIDI  PALETA DE COR E LOGO
 export default function Login({ navigation }) {
+
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [erro, setErro] = useState('');
+
+    if (!fontsLoaded) {
+        return null;
+    }
 
     const VerificarUser = () => {
         signInWithEmailAndPassword(auth, email, senha).then(userCredential => {
@@ -105,6 +111,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 30,
         paddingBottom: 40,
+
         color: 'rgb(80, 102, 69)',
     },
     text2: {

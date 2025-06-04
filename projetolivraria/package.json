@@ -26,7 +26,8 @@
     "react-native-gesture-handler": "~2.20.2",
     "react-native-pager-view": "6.5.1",
     "react-native-reanimated": "~3.16.1",
-    "react-native-web": "^0.20.0"
+    "react-native-web": "^0.20.0",
+    "expo-font": "~13.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

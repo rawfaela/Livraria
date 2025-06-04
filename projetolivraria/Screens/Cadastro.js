@@ -23,6 +23,7 @@ export default function Cadastro({ navigation }) {
 
     return (
         <View style={styles.container}>
+
             <Text style={styles.title}>Livraria Tal</Text>
             <Text style={styles.text1}>Cadastro</Text>
 

@@ -6,6 +6,7 @@ import { FavsProvider } from './Components/FavsProvider';
 import Login from './Screens/Login';
 import Cadastro from './Screens/Cadastro';
 import Home from './Screens/Home';
+
 import ShowInfo from './Components/ShowInfo';
 import Livros from './Screens/Livros';
 import HQs from './Screens/HQs';
@@ -58,6 +59,7 @@ export default function App() {
           <Stack.Screen name='Login' component={Login} options={{headerShown: false}} /> 
 
           <Stack.Screen name='Cadastro' component={Cadastro} options={{headerShown: false}} />
+
 
           <Stack.Screen name='AddProdutos' component={AddProdutos} options={{title: 'Voltar', headerTintColor: 'white',  headerStyle:{backgroundColor: 'rgb(147, 168, 199)'}}} />
           
