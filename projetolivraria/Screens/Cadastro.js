@@ -60,50 +60,48 @@ export default function Cadastro({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'rgb(181, 194, 223)',
+        backgroundColor: 'rgb(208, 222, 252)',
         alignItems:'center'
     },
     input: {
-        color: 'white',
+        color: 'black',
         height: 50,
         width: 280,
         margin: 12,
         borderWidth: 2,
         padding: 10,
         fontSize: 20,
-        backgroundColor: 'rgb(167, 191, 226)',
+        backgroundColor: 'rgb(184, 202, 230)',
         borderRadius: 10,
         borderColor: 'rgb(137, 163, 218)'
     },
     title: {
-        color: 'rgb(223, 243, 214)',
+        color: 'rgb(193, 175, 243)',
         fontWeight: 'bold',
         paddingTop: 150,
         fontSize: 40,
         paddingBottom: 10,
-        textShadowColor: 'rgba(80, 102, 69, 0.75)',
-        textShadowOffset: {width: 2, height: 3},
+        textShadowColor: 'rgb(139, 124, 182)',
+        textShadowOffset: {width: 3, height: 3},
     },
     text1: {
         fontWeight: 'bold',
         fontSize: 30,
         paddingBottom: 40,
-        color: 'rgb(80, 102, 69)',
+        color: 'rgb(139, 124, 182)',
     },
     text2: {
         paddingLeft: 15,
         fontSize: 20,
     },
-
     botao: {
         justifyContent: 'space-around',
-        backgroundColor: "rgb(144, 168, 133)",
+        backgroundColor: "rgb(139, 124, 182)",
         height: 'auto',
-        width: 130,
+        width: 'auto',
         alignItems: 'center',
         padding: 5,
         borderRadius: 10,
-        rowGap: 20,
     },
     textbotao: {
         fontSize: 20,
