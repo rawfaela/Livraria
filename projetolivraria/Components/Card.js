@@ -15,7 +15,7 @@ export default function Cards({titulo, autor, preco, img, sinopse, editora}){
                     <Text style={styles.txt}>R${parseFloat(preco).toFixed(2)}</Text>
                 </View>
             </TouchableOpacity> 
-            <TouchableOpacity style={styles.add} /* onPress={} */><Text style={{textAlign: 'center', fontSize: 20}}>Adicionar ao carrinho</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.fav} /* onPress={} */><Text style={{textAlign: 'center', fontSize: 20}}>Favoritar</Text></TouchableOpacity>
         </View>
     )
 }
@@ -59,10 +59,11 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: 'rgb(46, 6, 83)',
     },
-    add: {
+    fav: {
         marginTop: 20,
         backgroundColor: 'rgb(194, 100, 238)',
         padding: 2,
+        paddingInline: 6,
         borderRadius: 5,
     }
 
