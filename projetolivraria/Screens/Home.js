@@ -37,7 +37,8 @@ export default function Home(){
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'rgb(208, 222, 252)',  
+      backgroundColor: 'rgb(208, 222, 252)', 
+       
     },
     titulo: {
         fontSize: 35,
