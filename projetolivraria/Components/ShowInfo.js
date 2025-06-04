@@ -2,7 +2,7 @@ import { View, ScrollView, Text, StyleSheet, Image, TouchableOpacity } from "rea
 
 //! SCROLL NAO FUNCIONA (no celular pega ?)
 export default function ShowInfo({route}){
-    const { titulo, autor, preco, img, sinopse, editora } = route.params;
+    const { titulo, autor, img, sinopse, editora } = route.params;
 
     return(
         <ScrollView style={styles.container}  contentContainerStyle={{alignItems: 'center', flexGrow: 1}}>
@@ -11,7 +11,6 @@ export default function ShowInfo({route}){
                 <View style={styles.info}>
                     <Text style={styles.titulo}>{titulo} </Text>
                     <Text style={styles.autor}>{autor} </Text>
-                    <Text style={styles.txt}>Preço: R${parseFloat(preco).toFixed(2)}</Text>          
                     <Text style={styles.txt}>Editora: {editora}</Text> 
                     <TouchableOpacity style={styles.add} /* onPress={} */><Text style={{textAlign: 'center', fontSize: 22}}>Adicionar ao carrinho</Text></TouchableOpacity>
                 </View>

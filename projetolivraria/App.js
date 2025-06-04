@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { CartProvider } from './Components/CartProvider';
+import { FavsProvider } from './Components/FavsProvider';
 
 import Login from './Screens/Login';
 import Cadastro from './Screens/Cadastro';
@@ -51,7 +51,7 @@ export default function App() {
   const Stack = createStackNavigator();
   
   return (
-    <CartProvider>
+    <FavsProvider>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShadowVisible: false, headerStyle: {margin:0}, headerTitleStyle: {fontWeight: 'bold', fontSize: 20} }}>
 
@@ -66,7 +66,7 @@ export default function App() {
           <Stack.Screen name="ShowInfo" component={ShowInfo} options={{ title:'Detalhes do Livro'}}/>
         </Stack.Navigator>
       </NavigationContainer>
-    </CartProvider>
+    </FavsProvider>
     
   )
 }
