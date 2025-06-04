@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
 
     valor: {
         fontFamily: 'Arial Narrow',
-        fontSize: 30,
+        fontSize: 40,
         color: "#555",
     },
 

@@ -2,25 +2,25 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from "react-na
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Cards({titulo, autor, img, sinopse, editora, favoritar}){
+export default function Cards({ titulo, autor, img, sinopse, editora, favoritar }) {
     const navigation = useNavigation();
 
-    return(
+    return (
         <View style={styles.background}>
-            <TouchableOpacity onPress={()=>navigation.navigate('ShowInfo',{titulo, autor, img, sinopse, editora})} style={styles.touchContainer}>  
-                <Image source={{uri: img}}style={styles.img}/>
-                <View style={{flex: 1, marginLeft:5}}>
+            <TouchableOpacity onPress={() => navigation.navigate('ShowInfo', { titulo, autor, img, sinopse, editora })} style={styles.touchContainer}>
+                <Image source={{ uri: img }} style={styles.img} />
+                <View style={{ flex: 1, marginLeft: 5 }}>
                     <Text style={styles.titulo}>{titulo} </Text>
                     <Text style={styles.autor}>{autor} </Text>
                 </View>
-            </TouchableOpacity> 
-            <TouchableOpacity style={styles.fav} onPress={favoritar}><Text style={{textAlign: 'center', fontSize: 20}}>Favoritar</Text></TouchableOpacity>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.fav} onPress={favoritar}><Text style={{ textAlign: 'center', fontSize: 20 }}>Favoritar</Text></TouchableOpacity>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    background:{
+    background: {
         alignItems: 'center',
         backgroundColor: 'rgb(208, 157, 231)',
         width: '45%',
@@ -30,12 +30,18 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginBottom: 20,
         justifyContent: 'space-around',
-
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 5,
     },
+
     touchContainer: {
         flex: 1,
         alignItems: 'center',
+
     },
+
     titulo: {
         textAlign: 'center',
         fontSize: 26,
@@ -46,7 +52,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontStyle: 'italic'
     },
-    txt:{
+    txt: {
         textAlign: 'center',
         fontSize: 25,
         fontWeight: '600',
