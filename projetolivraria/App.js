@@ -31,22 +31,22 @@ function BottomTabs(){
       <Bottom.Screen name='Home' component={Home}   
       options={{headerShown: false, 
       tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="bookshelf" size={30} color={focused ? "white" : "black"} />),
-        tabBarStyle: { backgroundColor: 'rgb(193, 175, 243)'}}} />
+        tabBarStyle: { backgroundColor: 'rgb(208, 222, 252)'}}} />
       
       <Bottom.Screen name='Livros' component={Livros} 
       options={{headerShown: false, 
         tabBarIcon: ({ focused }) => (<FontAwesome6 name="book" size={30} color={focused ? "white" : "black"} />),
-        tabBarStyle: { backgroundColor: 'rgb(193, 175, 243)'}}}/>
+        tabBarStyle: { backgroundColor: 'rgb(208, 222, 252)'}}}/>
 
       <Bottom.Screen name='HQs' component={HQs} 
       options={{headerShown: false, 
       tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="book-open-variant" size={30} color={focused ? "white" : "black"} />), 
-      tabBarStyle: { backgroundColor: 'rgb(193, 175, 243)'}}}/>
+      tabBarStyle: { backgroundColor: 'rgb(208, 222, 252)'}}}/>
 
       <Bottom.Screen name='Favoritos' component={Favoritos} 
       options={{headerShown: false, 
       tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="heart-multiple" size={30} color={focused ? "white" : "black"} />), 
-      tabBarStyle: { backgroundColor: 'rgb(193, 175, 243))'}}}/>
+      tabBarStyle: { backgroundColor: 'rgb(208, 222, 252)'}}}/>
 
 
       <Bottom.Screen name="ShowInfo" component={ShowInfo} options= {({ navigation }) => ({ title: 'Detalhes do Livro', tabBarStyle: { display: 'none' }, tabBarButton: () => null, tabBarItemStyle: {position: 'absolute', left: -1000, width: 0, height: 0, }, headerLeft: () => (
