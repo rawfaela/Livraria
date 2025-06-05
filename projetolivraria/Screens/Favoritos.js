@@ -86,9 +86,7 @@ export default function Favoritos(){
                                 <View style={styles.textos}>
                                     <Text style={styles.texto1}>{item.titulo}</Text>
                                     <Text style={styles.texto2}>{item.autor}</Text>
-                                </View>
 
-                                <View style={styles.botoes}>
                                     <TouchableOpacity 
                                         style={styles.botaoResenha}
                                         onPress={() => handleBotaoClick(item)}
@@ -97,11 +95,15 @@ export default function Favoritos(){
                                             {mostrarResenha[item.id] ? 'Salvar resenha' : 'Adicionar resenha'}
                                         </Text>
                                     </TouchableOpacity>
+                                </View>
+
+                                <View style={styles.botoes}>
 
                                     <TouchableOpacity onPress={() => removeFromFav(item.id)}>
                                         <Image style={styles.img} source={require('../assets/removefav.png')} />
                                     </TouchableOpacity>
                                 </View>
+                                
                             </View>
 
                             {mostrarResenha[item.id] && (
@@ -166,8 +168,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     imagem: {
-        height: 200,
-        width: 200,
+        height: 150,
+        width: 150,
         right: 30,
     },
     texto1: {
@@ -198,14 +200,17 @@ const styles = StyleSheet.create({
     },
     botaoResenha: {
         backgroundColor: 'rgb(193, 175, 243)',
-        paddingHorizontal: 15,
-        paddingVertical: 8,
+        padding: 3,
         borderRadius: 5,
+        alignContent: 'center',
+        right: 30,
+        top: 10,
     },
     textoBotao: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 14,
+        fontSize: 15,
+        textAlign: 'center',
     },
     resenhaContainer: {
         marginTop: 15,
