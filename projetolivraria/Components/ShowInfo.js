@@ -7,7 +7,7 @@ export default function ShowInfo({route}){
     const { addToFav } = useFav();
 
     return(
-        <ScrollView style={styles.container} nestedScrollEnabled={true} contentContainerStyle={{alignItems: 'center', flexGrow: 1}}>
+        <ScrollView style={styles.container} nestedScrollEnabled={true} contentContainerStyle={{alignItems: 'center', flexGrow: 1}} showsVerticalScrollIndicator={false}>
             <View style={styles.cabecalho}>
                 <Image source={{uri: imagem}} style={styles.img}/>
                 <View style={styles.info}>
