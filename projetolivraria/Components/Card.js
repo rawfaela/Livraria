@@ -24,7 +24,7 @@ export default function Cards({titulo, autor, imagem, sinopse, editora, favorita
 const styles = StyleSheet.create({
     background: {
         alignItems: 'center',
-        backgroundColor: 'rgb(208, 157, 231)',
+        backgroundColor: 'rgb(193, 175, 243)',
         width: '45%',
         height: '93%',
         padding: 20,
