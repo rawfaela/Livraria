@@ -25,7 +25,7 @@ export default function ShowInfo({route}){
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "rgb(208, 157, 231)",
+        backgroundColor: 'rgb(193, 175, 243)',
         padding: 15,
         
     },
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         height: 230,
         borderRadius: 20,
         borderWidth: 3,
-        borderColor: 'rgb(46, 6, 83)',
+        borderColor: 'black',
     },    
     add: {
         backgroundColor: 'rgb(194, 100, 238)',
