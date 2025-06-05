@@ -3,10 +3,12 @@ import { useState, useEffect } from 'react';
 import Cards from '../Components/Card';
 import { db } from "../controller";
 import { collection, getDocs } from "firebase/firestore";
+import { useFav } from '../Components/FavsProvider';
 
 //! falta filtrar hqs
 export default function HQs(){ 
     const [produtos, setProdutos] = useState([])
+    const { addToFav } = useFav();
 
     useEffect(() => {
         async function carregarProdutos() {
@@ -14,7 +16,11 @@ export default function HQs(){
                 const querySnapshot = await getDocs(collection(db, 'produtos'));
                 const array = [];
                 querySnapshot.forEach((doc) => {
-                    array.push({id: doc.id, ...doc.data() });
+                    const produto = { id: doc.id, ...doc.data() };
+          
+                    if (produto.categoria === 'HQ') {
+                        array.push(produto);
+                    }
                 });
                 setProdutos(array);
             } catch (error){
@@ -27,7 +33,7 @@ export default function HQs(){
     return(
         <View style={styles.container}>
             <FlatList data={produtos} renderItem={({item}) => (    
-                <Cards titulo={item.titulo} autor={item.autor} preco={item.preco} img={item.imagem} sinopse={item.sinopse} editora={item.editora}/> 
+                <Cards titulo={item.titulo} autor={item.autor} preco={item.preco} imagem={item.imagem} sinopse={item.sinopse} editora={item.editora} favoritar={() => {addToFav(item)}}/> 
             )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={2} columnWrapperStyle={{ justifyContent: 'space-around' }} ListHeaderComponent={() => (
             <View>
                 <Text style={styles.titulo}> Livraria Nome </Text>

@@ -1,7 +1,10 @@
+import 'react-native-gesture-handler';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { FavsProvider } from './Components/FavsProvider';
+import { TouchableOpacity, Text } from 'react-native';
 
 import Login from './Screens/Login';
 import Cadastro from './Screens/Cadastro';
@@ -45,6 +48,7 @@ function BottomTabs(){
       tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="heart-multiple" size={30} color={focused ? "white" : "black"} />), 
       tabBarStyle: { backgroundColor: 'rgb(193, 175, 243))'}}}/>
 
+
       <Bottom.Screen name="ShowInfo" component={ShowInfo} options= {({ navigation }) => ({ title: 'Detalhes do Livro', tabBarStyle: { display: 'none' }, tabBarButton: () => null, tabBarItemStyle: {position: 'absolute', left: -1000, width: 0, height: 0, }, headerLeft: () => (
       <TouchableOpacity 
         onPress={() => navigation.goBack()}
@@ -74,7 +78,7 @@ export default function App() {
           
           <Stack.Screen name='BottomTabs' component={BottomTabs} options={{headerShown: false}} />
 
-          <Stack.Screen name="ShowInfo" component={ShowInfo} options={{ title:'Detalhes do Livro'}}/>
+          
         </Stack.Navigator>
       </NavigationContainer>
     </FavsProvider>
