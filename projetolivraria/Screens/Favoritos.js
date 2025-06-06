@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { db } from "../controller";
 import { collection, addDoc } from 'firebase/firestore';
 
-import '@fontsource/playfair-display';
 
 export default function Favoritos(){ 
     const { favorito, removeFromFav } = useFav();
@@ -135,16 +134,15 @@ const styles = StyleSheet.create({
         fontSize: 35,
         textAlign: 'center',
         fontWeight: 'bold',
-        fontFamily: 'Playfair Display',
-        color: 'rgb(193, 175, 243)',
-        textShadowColor: 'rgb(139, 124, 182)',
-        textShadowOffset: { width: 3, height: 5 },
-    },
+        color: 'rgb(173, 148, 238)',
+        textShadowColor: 'rgb(97, 87, 128)',
+        textShadowOffset: {width: 3, height: 3},
+        },
     subtitle: {
         fontSize: 30,
         textAlign: 'center',
         fontWeight: 'bold',
-        color: 'rgb(139, 124, 182)',
+        color: 'rgb(97, 87, 128)',
     },
     vazio: {
         fontSize: 25,
