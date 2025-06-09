@@ -24,7 +24,7 @@ export default function Cards({titulo, autor, imagem, sinopse, editora, favorita
 const styles = StyleSheet.create({
     background: {
         alignItems: 'center',
-        backgroundColor: 'rgb(208, 157, 231)',
+        backgroundColor: 'rgb(193, 175, 243)',
         width: '45%',
         height: '93%',
         padding: 20,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginBottom: 20,
         justifyContent: 'space-around',
-        shadowColor: '#000',
+        shadowColor: 'black',
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.3,
         shadowRadius: 5,
@@ -64,11 +64,11 @@ const styles = StyleSheet.create({
         height: 210,
         borderRadius: 20,
         borderWidth: 3,
-        borderColor: 'rgb(46, 6, 83)',
+        borderColor: 'black',
     },
     fav: {
         marginTop: 20,
-        backgroundColor: 'rgb(194, 100, 238)',
+        backgroundColor: 'rgb(208, 222, 252)',
         padding: 2,
         paddingInline: 6,
         borderRadius: 5,

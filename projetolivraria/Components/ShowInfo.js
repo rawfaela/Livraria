@@ -2,14 +2,15 @@ import { View, ScrollView, Text, StyleSheet, Image, TouchableOpacity } from "rea
 import { useFav } from '../Components/FavsProvider';
 
 //! SCROLL NAO FUNCIONA (no celular pega ?)
-export default function ShowInfo({route}){
+export default function ShowInfo({ route }) {
     const { titulo, autor, imagem, sinopse, editora } = route.params;
     const { addToFav } = useFav();
 
     return(
         <ScrollView style={styles.container} nestedScrollEnabled={true} contentContainerStyle={{alignItems: 'center', flexGrow: 1}} showsVerticalScrollIndicator={false}>
+
             <View style={styles.cabecalho}>
-                <Image source={{uri: imagem}} style={styles.img}/>
+                <Image source={{ uri: imagem }} style={styles.img} />
                 <View style={styles.info}>
                     <Text style={styles.titulo}>{titulo} </Text>
                     <Text style={styles.autor}>{autor} </Text>
@@ -19,22 +20,23 @@ export default function ShowInfo({route}){
             </View>
                 <Text style={styles.sinopse}><b>Sinopse:</b> {sinopse}</Text>
                 
+
         </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "rgb(208, 157, 231)",
+        backgroundColor: 'rgb(193, 175, 243)',
         padding: 15,
-        
+
     },
     cabecalho: {
-        flexDirection: 'row', 
-        justifyContent: 'space-between', 
-        alignSelf: 'stretch',   
-        gap: 5, 
-        
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignSelf: 'stretch',
+        gap: 5,
+
     },
     titulo: {
         textAlign: 'center',
@@ -53,23 +55,40 @@ const styles = StyleSheet.create({
     },
     info: {
         flex: 1,
-        justifyContent: 'center' ,
+        justifyContent: 'center',
 
     },
-    sinopse:{
+    sinopse: {
         textAlign: 'justify',
-        fontSize: 23,
-        fontWeight: '600',
+        fontSize: 19,
+        fontWeight: '600', //gordura do texto
+        lineHeight: 24, //tamanho das linhas: vertical
+        letterSpacing: 0.3, //espaço entre as letras
+        marginTop: 20, // espaço pra cima e baixo
+        marginBottom: 10,
+        paddingHorizontal: 16, //para o fundo, os tamanhos horizontais e verticais
+        paddingVertical: 14,
+        backgroundColor: 'rgba(255, 255, 255, 0.85)',
+        borderRadius: 12, 
+        borderWidth: 1,
+        borderColor: 'rgba(0, 0, 0, 0.09)',
+        shadowColor: 'black',
+        shadowOffset: {
+            width: 0, //posições da sombra, tamanho e largura
+            height: 3
+        },
+        shadowOpacity: 0.20, //opacidade da sombra e difusão
+        shadowRadius: 6,
     },
     img: {
         width: 150,
         height: 230,
         borderRadius: 20,
         borderWidth: 3,
-        borderColor: 'rgb(46, 6, 83)',
-    },    
+        borderColor: 'black',
+    },
     add: {
-        backgroundColor: 'rgb(194, 100, 238)',
+        backgroundColor: 'rgb(208, 222, 252)',
         padding: 2,
         borderRadius: 5,
     }
