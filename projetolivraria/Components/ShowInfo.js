@@ -1,7 +1,6 @@
 import { View, ScrollView, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useFav } from '../Components/FavsProvider';
 
-//! SCROLL NAO FUNCIONA (no celular pega ?)
 export default function ShowInfo({ route }) {
     const { titulo, autor, imagem, sinopse, editora } = route.params;
     const { addToFav } = useFav();
