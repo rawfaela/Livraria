@@ -5,9 +5,9 @@ import { useFav } from '../Components/FavsProvider';
 export default function ShowInfo({ route }) {
     const { titulo, autor, imagem, sinopse, editora } = route.params;
     const { addToFav } = useFav();
-
+    //nestedScrollEnabled={true}
     return (
-        <ScrollView style={styles.container} nestedScrollEnabled={true} contentContainerStyle={{ alignItems: 'center', flexGrow: 1, }}>
+        <ScrollView style={styles.container} showsVerticalScrollIndicator={false}  contentContainerStyle={{ alignItems: 'center', flexGrow: 1, }}>
             <View style={styles.cabecalho}>
                 <Image source={{ uri: imagem }} style={styles.img} />
                 <View style={styles.info}>
@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
     },
     sinopse: {
         textAlign: 'justify',
-        fontSize: 18,
-        fontWeight: '400', //gordura do texto
+        fontSize: 19,
+        fontWeight: '600', //gordura do texto
         lineHeight: 24, //tamanho das linhas: vertical
         letterSpacing: 0.3, //espaço entre as letras
         marginTop: 20, // espaço pra cima e baixo
