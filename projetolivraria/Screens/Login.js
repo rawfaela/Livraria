@@ -41,7 +41,7 @@ export default function Login({ navigation }) {
             
             logo generica dps muda pra a q fizer
         /> */}
-            <Text style={styles.title}>Livraria Tal</Text>
+            <Text style={styles.title}>Livraria JRI</Text>
             <Text style={styles.text1}>Login</Text>
 
             <View>

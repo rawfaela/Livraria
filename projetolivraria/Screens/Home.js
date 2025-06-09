@@ -29,7 +29,7 @@ export default function Home(){
         <View style={styles.container}>
             <FlatList data={produtos} renderItem={({item}) => (    
                 <Cards titulo={item.titulo} autor={item.autor} imagem={item.imagem} sinopse={item.sinopse} editora={item.editora} favoritar={() => {addToFav(item)}}/> 
-            )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={2} columnWrapperStyle={{ justifyContent: 'space-around' }} ListHeaderComponent={() => (<Text style={styles.titulo}> Livraria Nome </Text>)}/>
+            )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={2} columnWrapperStyle={{ justifyContent: 'space-around' }} ListHeaderComponent={() => (<Text style={styles.titulo}> Livraria JRI </Text>)}/>
         </View>
     )
 }

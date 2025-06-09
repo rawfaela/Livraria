@@ -88,7 +88,7 @@ export default function App() {
           <Stack.Screen name='Cadastro' component={Cadastro} options={{ headerShown: false }} />
 
 
-          <Stack.Screen name='AddProdutos' component={AddProdutos} options={{ title: 'Voltar', headerTintColor: 'white', headerStyle: { backgroundColor: 'rgb(193, 175, 243)' } }} />
+          <Stack.Screen name='AddProdutos' component={AddProdutos} options={{ title: 'Voltar', headerTintColor: 'white', headerStyle: { backgroundColor: 'rgb(139, 124, 182)' } }} />
 
           <Stack.Screen name='BottomTabs' component={BottomTabs} options={{ headerShown: false }} />
 

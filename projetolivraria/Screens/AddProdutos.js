@@ -65,7 +65,7 @@ export default function AddProdutos(){
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'rgb(181, 194, 223)',       
+      backgroundColor: 'rgb(208, 222, 252)',       
     },
     input: {
         fontSize: 23,
@@ -92,19 +92,19 @@ const styles = StyleSheet.create({
         borderColor: 'rgb(137, 163, 218)'
     },
     titulo: {
-        color: 'rgb(223, 243, 214)',
+        color: 'rgb(173, 148, 238)',
         marginTop: 30,
         marginBottom: 20,
         fontSize: 35,
         textAlign: 'center',
         fontWeight: 'bold',
-        textShadowColor: 'rgba(80, 102, 69, 0.75)',
+        textShadowColor: 'rgb(97, 87, 128)',
         textShadowOffset: {width: 2, height: 3},
     },
     botao: {
         width: 200, 
         height: 60, 
-        backgroundColor: 'rgb(144, 168, 133)', 
+        backgroundColor: 'rgb(139, 124, 182)', 
         justifyContent: 'center', 
         alignItems: 'center', 
         borderRadius: 10

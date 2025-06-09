@@ -36,7 +36,7 @@ export default function HQs(){
                 <Cards titulo={item.titulo} autor={item.autor} preco={item.preco} imagem={item.imagem} sinopse={item.sinopse} editora={item.editora} favoritar={() => {addToFav(item)}}/> 
             )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={2} columnWrapperStyle={{ justifyContent: 'space-around' }} ListHeaderComponent={() => (
             <View>
-                <Text style={styles.titulo}> Livraria Nome </Text>
+                <Text style={styles.titulo}> Livraria JRI </Text>
                 <Text style={styles.subtitle}>Histórias em Quadrinhos</Text>
             </View>
             )}/>
