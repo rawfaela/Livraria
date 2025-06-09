@@ -13,11 +13,11 @@ export default function ShowInfo({route}){
                 <View style={styles.info}>
                     <Text style={styles.titulo}>{titulo} </Text>
                     <Text style={styles.autor}>{autor} </Text>
-                    <Text style={styles.txt}>Editora: {editora}</Text> 
+                    <Text style={styles.editora}>Editora: <Text style={{fontStyle: 'italic' }}>{editora}</Text></Text> 
                     <TouchableOpacity style={styles.add} onPress={() => addToFav({ titulo, autor, imagem, sinopse, editora })}><Text style={{textAlign: 'center', fontSize: 22}}>Favoritar {'<3'}</Text></TouchableOpacity>
                 </View>
             </View>
-                <Text style={styles.sinopse}>Sinopse: {sinopse}</Text>
+                <Text style={styles.sinopse}><b>Sinopse:</b> {sinopse}</Text>
                 
         </ScrollView>
     )
@@ -46,10 +46,10 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontStyle: 'italic'
     },
-    txt:{
+    editora:{
         textAlign: 'center',
         fontSize: 25,
-        fontWeight: '600',
+        fontWeight: '400',
     },
     info: {
         flex: 1,
