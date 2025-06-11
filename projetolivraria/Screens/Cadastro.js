@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity, Image } from 'react-native';
 import { useState } from 'react';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../controller';
@@ -23,6 +23,10 @@ export default function Cadastro({ navigation }) {
 
     return (
         <View style={styles.container}>
+            <Image
+            source={require('../assets/JRI.png')}
+            style={{ width: 120, height: 120,top:100}}
+            />
 
             <Text style={styles.title}>Livraria JRI</Text>
             <Text style={styles.text1}>Cadastro</Text>
