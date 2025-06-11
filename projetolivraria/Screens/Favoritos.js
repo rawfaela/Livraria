@@ -113,7 +113,7 @@ export default function Favoritos(){
 
     return (
         <View style={styles.container}>
-            <Text style={styles.titulo}>Livraria JRI </Text>
+            <Text style={styles.titulo}>Livraria JRI</Text>
             <Text style={styles.subtitle}>Favoritos</Text>
 
             {favorito.length === 0 ? (
