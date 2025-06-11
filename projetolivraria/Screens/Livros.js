@@ -5,7 +5,7 @@ import { db } from "../controller";
 import { collection, getDocs } from "firebase/firestore";
 import { useFav } from '../Components/FavsProvider';
 
-export default function Home(){ 
+export default function Livros(){ 
     const [produtos, setProdutos] = useState([])
     const { addToFav } = useFav();
 
@@ -15,8 +15,12 @@ export default function Home(){
                 const querySnapshot = await getDocs(collection(db, 'produtos'));
                 const array = [];
                 querySnapshot.forEach((doc) => {
-                    array.push({id: doc.id, ...doc.data() });
-                });
+                    const produto = { id: doc.id, ...doc.data() };
+          
+                    if (produto.categoria === 'Livro') {
+                        array.push(produto);
+                    }
+        });
                 setProdutos(array);
             } catch (error){
                 console.log("Erro ao buscar produtos: ", error)
@@ -25,11 +29,16 @@ export default function Home(){
         carregarProdutos();
     }, []);
 
+
     return(
-        <View style={styles.container}>
+        <View style={styles.container}>            
             <FlatList data={produtos} renderItem={({item}) => (    
-                <Cards titulo={item.titulo} autor={item.autor} imagem={item.imagem} sinopse={item.sinopse} editora={item.editora} favoritar={() => {addToFav(item)}}/> 
-            )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={2} columnWrapperStyle={{ justifyContent: 'space-around' }} ListHeaderComponent={() => (<Text style={styles.titulo}> Livraria JRI </Text>)}/>
+                <Cards titulo={item.titulo} autor={item.autor} preco={item.preco} imagem={item.imagem} sinopse={item.sinopse} editora={item.editora} favoritar={() => {addToFav(item)}}/> 
+            )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={2} columnWrapperStyle={{ justifyContent: 'space-around' }} ListHeaderComponent={() => (
+            <View>
+                <Text style={styles.titulo}> Livraria JRI </Text>
+                <Text style={styles.subtitle}>Livros</Text>
+            </View>)}/>
         </View>
     )
 }
@@ -37,8 +46,8 @@ export default function Home(){
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'rgb(208, 222, 252)', 
-       
+      backgroundColor: 'rgb(208, 222, 252)',
+
     },
     titulo: {
         fontSize: 35,
@@ -46,6 +55,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'rgb(173, 148, 238)',
         textShadowColor: 'rgb(97, 87, 128)',
-        textShadowOffset: { width: 3, height: 3 },
+        textShadowOffset: {width: 3, height: 3},
     },
+    subtitle: {
+        fontSize: 30,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: 'rgb(97, 87, 128)',
+    }
 });

@@ -1,100 +1,116 @@
-import {Text, View, StyleSheet, TextInput, Button} from 'react-native';
-import {useState} from 'react';
-import { createUserWithEmailAndPassword, getAuth} from "firebase/auth";
+import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../controller';
+import { errorFirebase } from '../Utils/AuthError';
 
-export default function Cadastro ({navigation}){
-
+export default function Cadastro({ navigation }) {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [erro, setErro] = useState('');
 
     const VerificarUser = () => {
         createUserWithEmailAndPassword(auth, email, senha).then((userCredential) => {
             console.log('cadastrado!', userCredential.user.email);
-            navigation.navigate('login');
-          })
-          .catch((error) => {
-            console.log('erro', error.message);
-            
-          });
-
+            navigation.navigate('BottomTabs');
+        })
+            .catch((error) => {
+                console.log('erro', error.message);
+                const msg = errorFirebase(error.code);
+                setErro(msg);
+            });
     }
 
-    return(
+    return (
         <View style={styles.container}>
-          <Text style={styles.text1}><b>Cadastro - Livraria Tal</b></Text>
-            <View style={styles.inputs}>
+
+            <Text style={styles.title}>Livraria JRI</Text>
+            <Text style={styles.text1}>Cadastro</Text>
+
+            <View>
                 <Text style={styles.text2}><b>Email</b></Text>
                 <TextInput
-                style={styles.input}
-                placeholder="Email"
-                value={email}
-                onChangeText={setEmail}
+                    style={styles.input}
+                    placeholder="Email"
+                    value={email}
+                    onChangeText={(text) => {setEmail(text); setErro('');}}
                 />
                 <Text style={styles.text2}><b>Senha</b></Text>
                 <TextInput
-                style={styles.input}
-                placeholder="Senha"
-                value={senha}
-                onChangeText={setSenha}
-                secureTextEntry={true}
+                    style={styles.input}
+                    placeholder="Senha"
+                    value={senha}
+                    onChangeText={(text) => {setSenha(text); setErro('');}}
+                    secureTextEntry={true}
                 />
             </View>
-            <View style={styles.botoes}>
-            <View style={styles.botao}>
-            <Button 
-            title="Cadastrar"
-            color="#532d0b"
-            onPress={VerificarUser}
-            />
+            <View style={{flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-around', width: '80%'}}>
+                <TouchableOpacity style={styles.botao} onPress={VerificarUser}>
+                    <Text style={styles.textbotao}>CADASTRAR</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Login')}>
+                    <Text style={styles.textbotao}>VOLTAR</Text>
+                </TouchableOpacity>
             </View>
-            <View style={styles.botao}>
-            <Button 
-            title="Login"
-            color="#532d0b"
-            onPress={() => navigation.navigate('login')}
-            />
-            </View>
-            </View>
+            <Text style={styles.erro}>{erro}</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
-        backgroundColor: '#F4A460',
+        backgroundColor: 'rgb(208, 222, 252)',
+        alignItems:'center'
     },
-    inputs:{
-        paddingLeft:43
-    },
-    input:{
-        height: 40,
-        width:280,
+    input: {
+        color: 'black',
+        height: 50,
+        width: 280,
         margin: 12,
-        borderWidth: 1,
+        borderWidth: 2,
         padding: 10,
+        fontSize: 20,
+        backgroundColor: 'rgb(184, 202, 230)',
+        borderRadius: 10,
+        borderColor: 'rgb(137, 163, 218)'
     },
-    text1:{
-        paddingTop:250,
-        fontSize:23,
-        paddingBottom:40,
-        alignSelf:'center',
+    title: {
+        color: 'rgb(173, 148, 238)',
+        fontWeight: 'bold',
+        paddingTop: 150,
+        fontSize: 40,
+        paddingBottom: 10,
+        textShadowColor: 'rgb(97, 87, 128)',
+        textShadowOffset: {width: 3, height: 3},
     },
-    text2:{
-      paddingLeft:15,
-      fontSize:20
+    text1: {
+        fontWeight: 'bold',
+        fontSize: 30,
+        paddingBottom: 40,
+        color: 'rgb(139, 124, 182)',
     },
-    botao:{
-        paddingTop: 20,
-        height: 40,
-        width:120,
+    text2: {
+        paddingLeft: 15,
+        fontSize: 20,
     },
-    botoes:{
-        flexDirection:'row',
-        justifyContent:'space-around',
-        width:'70%',
-        alignSelf:'center'
+    botao: {
+        justifyContent: 'space-around',
+        backgroundColor: "rgb(139, 124, 182)",
+        height: 'auto',
+        width: 'auto',
+        alignItems: 'center',
+        padding: 5,
+        borderRadius: 10,
+    },
+    textbotao: {
+        fontSize: 20,
+        color: 'white',
+    },
+    erro: {
+        fontSize: 20,
+        paddingTop: 7,
+        color: 'rgb(193, 53, 10)'
     }
 })
 
