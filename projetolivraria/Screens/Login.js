@@ -70,8 +70,8 @@ export default function Login({ navigation }) {
                 <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Cadastro')}>
                     <Text style={styles.textbotao}>CADASTRE-SE AGORA!</Text>
                 </TouchableOpacity>
-                <Text style={styles.erro}>{erro}</Text>
             </View>
+            <Text style={styles.erro}>{erro}</Text>
         </View>
     )
 }
