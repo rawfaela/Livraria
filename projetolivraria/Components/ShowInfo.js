@@ -17,7 +17,7 @@ export default function ShowInfo({ route }) {
                     <TouchableOpacity style={styles.add} onPress={() => addToFav({ titulo, autor, imagem, sinopse, editora })}><Text style={{textAlign: 'center', fontSize: 22}}>Favoritar {'<3'}</Text></TouchableOpacity>
                 </View>
             </View>
-                <Text style={styles.sinopse}><b>Sinopse:</b> {sinopse}</Text>
+                <Text style={styles.sinopse}><Text style={{fontWeight: 'bold'}}>Sinopse:</Text> {sinopse}</Text>
                 
 
         </ScrollView>
@@ -61,23 +61,11 @@ const styles = StyleSheet.create({
         textAlign: 'justify',
         fontSize: 19,
         fontWeight: '600', //gordura do texto
-        lineHeight: 24, //tamanho das linhas: vertical
-        letterSpacing: 0.3, //espaço entre as letras
         marginTop: 20, // espaço pra cima e baixo
         marginBottom: 10,
-        paddingHorizontal: 16, //para o fundo, os tamanhos horizontais e verticais
-        paddingVertical: 14,
+        padding: 14,
         backgroundColor: 'rgba(255, 255, 255, 0.85)',
         borderRadius: 12, 
-        borderWidth: 1,
-        borderColor: 'rgba(0, 0, 0, 0.09)',
-        shadowColor: 'black',
-        shadowOffset: {
-            width: 0, //posições da sombra, tamanho e largura
-            height: 3
-        },
-        shadowOpacity: 0.20, //opacidade da sombra e difusão
-        shadowRadius: 6,
     },
     img: {
         width: 150,
