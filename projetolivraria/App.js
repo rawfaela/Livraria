@@ -92,7 +92,6 @@ export default function App() {
 
           <Stack.Screen name='BottomTabs' component={BottomTabs} options={{ headerShown: false }} />
 
-
         </Stack.Navigator>
       </NavigationContainer>
     </FavsProvider>

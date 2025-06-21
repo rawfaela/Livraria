@@ -33,7 +33,7 @@ export default function Livros(){
     return(
         <View style={styles.container}>            
             <FlatList data={produtos} renderItem={({item}) => (    
-                <Cards titulo={item.titulo} autor={item.autor} preco={item.preco} imagem={item.imagem} sinopse={item.sinopse} editora={item.editora} favoritar={() => {addToFav(item)}}/> 
+                <Cards id={item.id} titulo={item.titulo} autor={item.autor} preco={item.preco} imagem={item.imagem} sinopse={item.sinopse} editora={item.editora} favoritar={() => {addToFav(item)}}/> 
             )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={2} columnWrapperStyle={{ justifyContent: 'space-around' }} ListHeaderComponent={() => (
             <View>
                 <Text style={styles.titulo}> Livraria JRI </Text>

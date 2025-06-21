@@ -12,17 +12,31 @@ export default function AddProdutos(){
     const [genero, setGenero] = useState("");
     const [categoria, setCategoria] = useState("");
     const [imagem, setImagem] = useState("");
+    const [erro, setErro] = useState('');
+
+    const validarCampos = () => {
+        if (!titulo.trim() || !autor.trim() || !sinopse.trim() || !editora.trim() || !genero.trim() || !categoria || !imagem.trim()) {
+            setErro("Por favor, preencha todos os campos.");
+            return false;
+        }
+        setErro('');
+        return true;
+    };
 
     const addProduct = async () => {
+        if (!validarCampos()) {
+            return;
+        }
+
         try {
             await addDoc(collection(db, "produtos"), {
-                titulo,
-                autor,
-                sinopse,
-                editora,
-                genero,
+                titulo: titulo.trim(),
+                autor: autor.trim(),
+                sinopse: sinopse.trim(),
+                editora: editora.trim(),
+                genero: genero.trim(),
                 categoria,
-                imagem,
+                imagem: imagem.trim(),
             });
             alert("Produto adicionado com sucesso!");
             setTitulo("");
@@ -57,6 +71,7 @@ export default function AddProdutos(){
                 <TouchableOpacity style={styles.botao} onPress={addProduct}>
                     <Text style={{ color: 'white', fontSize: 26 }}>Enviar</Text>
                 </TouchableOpacity>
+                <Text style={styles.erro}>{erro}</Text>
             </View>
         </View>
     ) 
@@ -73,7 +88,7 @@ const styles = StyleSheet.create({
         width: '90%',
         margin: 10,
         color: 'white',
-        borderWidth: 3, /* ver tamanho pra ficar o mais parecido possivel com a categoria */
+        borderWidth: 3, 
         padding: 10,
         borderRadius: 7,
         backgroundColor:' rgb(167, 191, 226)',
@@ -109,4 +124,9 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         borderRadius: 10
     },
-  });
+    erro: {
+        fontSize: 20,
+        paddingTop: 7,
+        color: 'rgb(193, 53, 10)'
+    }
+});
