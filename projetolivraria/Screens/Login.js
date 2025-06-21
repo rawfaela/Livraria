@@ -70,8 +70,8 @@ export default function Login({ navigation }) {
                 <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Cadastro')}>
                     <Text style={styles.textbotao}>CADASTRE-SE AGORA!</Text>
                 </TouchableOpacity>
-                <Text style={styles.erro}>{erro}</Text>
             </View>
+            <Text style={styles.erro}>{erro}</Text>
         </View>
     )
 }
@@ -95,12 +95,12 @@ const styles = StyleSheet.create({
         borderColor: 'rgb(137, 163, 218)'
     },
     title: {
-        color: 'rgb(193, 175, 243)',
+        color: 'rgb(173, 148, 238)',
         fontWeight: 'bold',
         paddingTop: 150,
         fontSize: 40,
         paddingBottom: 10,
-        textShadowColor: 'rgb(139, 124, 182)',
+        textShadowColor: 'rgb(97, 87, 128)',
         textShadowOffset: {width: 3, height: 3},
     },
     text1: {

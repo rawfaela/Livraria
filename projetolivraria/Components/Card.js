@@ -1,21 +1,54 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from "react-native";
-import React from "react";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { useFav } from "../Components/FavsProvider"; 
 
-export default function Cards({titulo, autor, imagem, sinopse, editora, favoritar}){
+export default function Cards({id, titulo, autor, imagem, sinopse, editora}){
     const navigation = useNavigation();
+    const { favorito, addToFav, removeFromFav } = useFav();
+    const [isFavorited, setIsFavorited] = useState(false);
+
+    useEffect(() => {
+        const isInFavorites = favorito.some(item => item.id === id);
+        setIsFavorited(isInFavorites);
+    }, [favorito, id]);
+
+    const handleFavoritar = () => {
+        const bookData = {
+            id,
+            titulo,
+            autor,
+            imagem,
+            sinopse,
+            editora
+        };
+
+        if (isFavorited) {
+            removeFromFav(id);
+        } else {
+            addToFav(bookData);
+        }
+    };
 
     return (
         <View style={styles.background}>
 
-            <TouchableOpacity onPress={()=>navigation.navigate('ShowInfo',{titulo, autor, imagem, sinopse, editora})} style={styles.touchContainer}>  
+            <TouchableOpacity onPress={()=>navigation.navigate('ShowInfo',{id, titulo, autor, imagem, sinopse, editora})} style={styles.touchContainer}>  
                 <Image source={{uri: imagem}}style={styles.img}/>
                 <View style={{flex: 1, marginLeft:5}}>
                     <Text style={styles.titulo}>{titulo} </Text>
                     <Text style={styles.autor}>{autor} </Text>
                 </View>
             </TouchableOpacity> 
-            <TouchableOpacity style={styles.fav} onPress={favoritar}><Text style={{textAlign: 'center', fontSize: 20}}>Favoritar {'<3'}</Text></TouchableOpacity>
+            
+            <TouchableOpacity 
+                style={[styles.fav, isFavorited && styles.favoritado]} 
+                onPress={handleFavoritar}
+            >
+                <Text style={{textAlign: 'center', fontSize: 20, color: isFavorited ? '#fff' : '#000'}}>
+                    {isFavorited ? 'Favoritado ❤️' : 'Favoritar 🤍'}
+                </Text>
+            </TouchableOpacity>
 
         </View>
     )
@@ -72,6 +105,8 @@ const styles = StyleSheet.create({
         padding: 2,
         paddingInline: 6,
         borderRadius: 5,
+    },
+    favoritado: {
+        backgroundColor: 'rgb(255, 107, 107)',
     }
-
 })

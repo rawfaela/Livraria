@@ -1,14 +1,39 @@
 import {Text, View, StyleSheet, FlatList, Image, TouchableOpacity, TextInput, Alert} from 'react-native'
 import { useFav } from '../Components/FavsProvider';
-import { useState } from 'react';
-import { db } from "../controller";
-import { collection, addDoc } from 'firebase/firestore';
-
+import { useState, useEffect } from 'react';
+import { db, auth } from "../controller";
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 export default function Favoritos(){ 
     const { favorito, removeFromFav } = useFav();
     const [resenhas, setResenhas] = useState({});
     const [mostrarResenha, setMostrarResenha] = useState({});
+    const [modoEdicao, setModoEdicao] = useState({});
+
+    useEffect(() => {
+        const carregarResenhasSalvas = async () => {
+          const user = auth.currentUser;
+          if (!user) return;
+      
+          try {
+            const docRef = doc(db, "resenhas", user.uid);
+            const docSnap = await getDoc(docRef);
+      
+            if (docSnap.exists()) {
+              const data = docSnap.data();
+              const resenhasPorId = {};
+              (data.livros || []).forEach(item => {
+                resenhasPorId[item.livroId] = item.resenha;
+              });
+              setResenhas(resenhasPorId);
+            }
+          } catch (error) {
+            console.log("Erro ao carregar resenhas:", error);
+          }
+        };
+      
+        carregarResenhasSalvas();
+    }, []);
 
     const toggleResenha = (itemId) => {
         setMostrarResenha(prev => ({
@@ -25,50 +50,70 @@ export default function Favoritos(){
     };
 
     const salvarResenha = async (item) => {
-        const resenhaTexto = resenhas[item.id];
+        const resenhaTexto = resenhas[item.id]?.replace(/^\[EDITANDO\]/, "");
         
         if (!resenhaTexto || resenhaTexto.trim() === '') {
             Alert.alert('Erro', 'Por favor, escreva uma resenha antes de salvar.');
             return;
         }
 
+        const user = auth.currentUser;
+        if (!user) {
+            Alert.alert("Erro", "Você precisa estar logado para salvar uma resenha.");
+            return;
+        }
+
         try {
-            await addDoc(collection(db, "resenhas"), {
+            const docRef = doc(db, "resenhas", user.uid);
+            const docSnap = await getDoc(docRef);
+
+            let resenhasDoUsuario = [];
+
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                resenhasDoUsuario = Array.isArray(data.livros) ? data.livros : [];
+            }
+
+            const novaResenha = {
                 livroId: item.id,
                 titulo: item.titulo,
                 autor: item.autor,
                 imagem: item.imagem,
                 resenha: resenhaTexto,
-                dataResenha: new Date(),
-            }); 
-            
+                dataResenha: new Date()
+            };
+
+            const index = resenhasDoUsuario.findIndex(r => r.livroId === item.id);
+            if (index !== -1) {
+                resenhasDoUsuario[index] = novaResenha;
+            } else {
+                resenhasDoUsuario.push(novaResenha);
+            }
+
+            await setDoc(docRef, { livros: resenhasDoUsuario });
+
             Alert.alert('Sucesso', 'Resenha salva com sucesso!');
-            
-            // Ocultar o campo de resenha após salvar
             setMostrarResenha(prev => ({
                 ...prev,
                 [item.id]: false
             }));
-            
+            setModoEdicao(prev => ({
+                ...prev,
+                [item.id]: false
+            }));
+            setResenhas(prev => ({
+                ...prev,
+                [item.id]: resenhaTexto
+            }));
         } catch (error) {
-            console.error("Erro ao adicionar resenha: ", error);
-            Alert.alert("Erro", "Erro ao adicionar resenha.");
-        } 
-    };
-
-    const handleBotaoClick = (item) => {
-        if (mostrarResenha[item.id]) {
-            // Se está mostrando, é para salvar
-            salvarResenha(item);
-        } else {
-            // Se não está mostrando, é para mostrar
-            toggleResenha(item.id);
+            console.error("Erro ao salvar resenha:", error);
+            Alert.alert("Erro", "Erro ao salvar resenha.");
         }
     };
 
     return (
         <View style={styles.container}>
-            <Text style={styles.titulo}>Livraria JRI </Text>
+            <Text style={styles.titulo}>Livraria JRI</Text>
             <Text style={styles.subtitle}>Favoritos</Text>
 
             {favorito.length === 0 ? (
@@ -86,35 +131,72 @@ export default function Favoritos(){
                                     <Text style={styles.texto1}>{item.titulo}</Text>
                                     <Text style={styles.texto2}>{item.autor}</Text>
 
-                                    <TouchableOpacity 
-                                        style={styles.botaoResenha}
-                                        onPress={() => handleBotaoClick(item)}
-                                    >
-                                        <Text style={styles.textoBotao}>
-                                            {mostrarResenha[item.id] ? 'Salvar resenha' : 'Adicionar resenha'}
-                                        </Text>
-                                    </TouchableOpacity>
+                                    {resenhas[item.id] ? (
+                                        <>
+                                            <TouchableOpacity 
+                                                style={styles.botaoResenha}
+                                                onPress={() => {
+                                                    toggleResenha(item.id);
+                                                    setModoEdicao(prev => ({...prev, [item.id]: false}));
+                                                }}
+                                            >
+                                                <Text style={styles.textoBotao}>Mostrar resenha</Text>
+                                            </TouchableOpacity>
+                                            <TouchableOpacity 
+                                                style={styles.botaoResenha}
+                                                onPress={() => {
+                                                    toggleResenha(item.id);
+                                                    setModoEdicao(prev => ({...prev, [item.id]: true}));
+                                                    const resenhaAtual = resenhas[item.id] || '';
+                                                    const semTagEditando = resenhaAtual.replace(/^\[EDITANDO\]/, '');
+                                                    updateResenha(item.id, "[EDITANDO]" + semTagEditando);
+                                                }}
+                                            >
+                                                <Text style={styles.textoBotao}>Editar resenha</Text>
+                                            </TouchableOpacity>
+                                        </>
+                                    ) : (
+                                        <TouchableOpacity 
+                                            style={styles.botaoResenha}
+                                            onPress={() => {
+                                                toggleResenha(item.id);
+                                                setModoEdicao(prev => ({...prev, [item.id]: true}));
+                                            }}
+                                        >
+                                            <Text style={styles.textoBotao}>Adicionar resenha</Text>
+                                        </TouchableOpacity>
+                                    )}
                                 </View>
 
                                 <View style={styles.botoes}>
-
                                     <TouchableOpacity onPress={() => removeFromFav(item.id)}>
                                         <Image style={styles.img} source={require('../assets/removefav.png')} />
                                     </TouchableOpacity>
                                 </View>
-                                
                             </View>
 
                             {mostrarResenha[item.id] && (
                                 <View style={styles.resenhaContainer}>
-                                    <TextInput 
-                                        style={styles.input} 
-                                        placeholder="Escreva sua resenha aqui..." 
-                                        value={resenhas[item.id] || ''}
-                                        onChangeText={(texto) => updateResenha(item.id, texto)}
-                                        multiline={true}
-                                        numberOfLines={4}
-                                    />
+                                    {modoEdicao[item.id] ? (
+                                        <>
+                                            <TextInput 
+                                                style={styles.input} 
+                                                placeholder="Escreva sua resenha aqui..." 
+                                                value={resenhas[item.id]?.replace("[EDITANDO]", "") || ''}
+                                                onChangeText={(texto) => updateResenha(item.id, "[EDITANDO]" + texto)}
+                                                multiline={true}
+                                                numberOfLines={4}
+                                            />
+                                            <TouchableOpacity
+                                                style={[styles.botaoSalvar, { marginTop: 10 }]}
+                                                onPress={() => salvarResenha(item)}
+                                            >
+                                                <Text style={styles.textoBotao}>Salvar</Text>
+                                            </TouchableOpacity>
+                                        </>
+                                    ) : (
+                                        <Text style={{ fontSize: 16 }}>{resenhas[item.id]}</Text>
+                                    )}
                                 </View>
                             )}
                         </View>
@@ -137,7 +219,7 @@ const styles = StyleSheet.create({
         color: 'rgb(173, 148, 238)',
         textShadowColor: 'rgb(97, 87, 128)',
         textShadowOffset: {width: 3, height: 3},
-        },
+    },
     subtitle: {
         fontSize: 30,
         textAlign: 'center',
@@ -203,6 +285,15 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         right: 30,
         top: 10,
+        marginBottom: 5
+    },
+    botaoSalvar: {
+        backgroundColor: 'rgb(193, 175, 243)',
+        padding: 3,
+        borderRadius: 5,
+        alignContent: 'center',
+        top: 10,
+        marginBottom: 5
     },
     textoBotao: {
         color: 'white',
