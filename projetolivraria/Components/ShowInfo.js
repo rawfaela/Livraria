@@ -91,24 +91,12 @@ const styles = StyleSheet.create({
     sinopse: {
         textAlign: 'justify',
         fontSize: 19,
-        fontWeight: '600', 
-        lineHeight: 24, 
-        letterSpacing: 0.3, 
-        marginTop: 20, 
+        fontWeight: '600',
+        marginTop: 20,
         marginBottom: 10,
-        paddingHorizontal: 16,
-        paddingVertical: 14,
+        padding: 14,
         backgroundColor: 'rgba(255, 255, 255, 0.85)',
         borderRadius: 12, 
-        borderWidth: 1,
-        borderColor: 'rgba(0, 0, 0, 0.09)',
-        shadowColor: 'black',
-        shadowOffset: {
-            width: 0, 
-            height: 3
-        },
-        shadowOpacity: 0.20,
-        shadowRadius: 6,
     },
     img: {
         width: 150,

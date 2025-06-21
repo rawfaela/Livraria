@@ -45,14 +45,14 @@ export default function Login({ navigation }) {
             <Text style={styles.text1}>Login</Text>
 
             <View>
-                <Text style={styles.text2}><b>Email</b></Text>
+                <Text style={styles.text2}>Email</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Email"
                     value={email}
                     onChangeText={(text) => {setEmail(text); setErro('');}}
                 />
-                <Text style={styles.text2}><b>Senha</b></Text>
+                <Text style={styles.text2}>Senha</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Senha"
@@ -64,7 +64,7 @@ export default function Login({ navigation }) {
                 <TouchableOpacity style={styles.botao} onPress={VerificarUser}>
                     <Text style={styles.textbotao}>ENTRAR</Text>
                 </TouchableOpacity>
-            <br></br>
+            <Text>{'\n'}</Text>
             <View style={styles.cadastro}>
                 <Text style={{ fontSize: 24 }}>Não tem cadastro? </Text>
                 <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Cadastro')}>
@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
     text2: {
         paddingLeft: 15,
         fontSize: 20,
+        fontWeight: 'bold',
     },
     botao: {
         justifyContent: 'space-around',

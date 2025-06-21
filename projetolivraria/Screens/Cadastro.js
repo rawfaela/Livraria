@@ -28,14 +28,14 @@ export default function Cadastro({ navigation }) {
             <Text style={styles.text1}>Cadastro</Text>
 
             <View>
-                <Text style={styles.text2}><b>Email</b></Text>
+                <Text style={styles.text2}>Email</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Email"
                     value={email}
                     onChangeText={(text) => {setEmail(text); setErro('');}}
                 />
-                <Text style={styles.text2}><b>Senha</b></Text>
+                <Text style={styles.text2}>Senha</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Senha"
@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
     text2: {
         paddingLeft: 15,
         fontSize: 20,
+        fontWeight: 'bold',
     },
     botao: {
         justifyContent: 'space-around',
