@@ -4,7 +4,7 @@ import { Picker } from '@react-native-picker/picker';
 import { db } from "../controller";
 import { collection, addDoc } from 'firebase/firestore';
 
-export default function AddProdutos(){
+export default function AddLivros(){
     const [titulo, setTitulo] = useState("");
     const [autor, setAutor] = useState("");
     const [sinopse, setSinopse] = useState("");
@@ -54,7 +54,7 @@ export default function AddProdutos(){
 
     return(
         <View style={styles.container}>
-            <Text style={styles.titulo}>Adicionar Produtos</Text>
+            <Text style={styles.titulo}>Adicionar Livros</Text>
             <View style={{flex:1, alignItems: 'center'}}>
                 <TextInput style={styles.input} placeholder="Título" value={titulo} onChangeText={setTitulo}></TextInput>
                 <TextInput style={styles.input} placeholder="Autor" value={autor} onChangeText={setAutor}></TextInput>

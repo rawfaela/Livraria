@@ -2,12 +2,8 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity, Button, Image} fro
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../controller';
-
 import { errorFirebase } from '../Utils/AuthError';
 
-//tudo umas cor generica jeni procura uma paleta de cor e uma logo pra colocar
-
-//DECIDI  PALETA DE COR E LOGO
 export default function Login({ navigation }) {
 
     const [email, setEmail] = useState("");
@@ -18,7 +14,7 @@ export default function Login({ navigation }) {
         signInWithEmailAndPassword(auth, email, senha).then(userCredential => {
             if (email === 'adm@gmail.com'){
                 console.log('adm logado', userCredential.user.email);
-                navigation.navigate('AddProdutos', { screen: 'AddProdutos' });
+                navigation.navigate('AddLivros', { screen: 'AddLivros' });
             }
             else{
                 console.log('usuario logado', userCredential.user.email);

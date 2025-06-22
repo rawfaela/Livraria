@@ -14,7 +14,7 @@ import ShowInfo from './Components/ShowInfo';
 import Livros from './Screens/Livros';
 import HQs from './Screens/HQs';
 import Favoritos from './Screens/Favoritos';
-import AddProdutos from './Screens/AddProdutos';
+import AddLivros from './Screens/AddLivros';
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
@@ -83,7 +83,7 @@ export default function App() {
           <Stack.Screen name='Cadastro' component={Cadastro} options={{ headerShown: false }} />
 
 
-          <Stack.Screen name='AddProdutos' component={AddProdutos} options={{ title: 'Voltar', headerTintColor: 'white', headerStyle: { backgroundColor: 'rgb(139, 124, 182)' } }} />
+          <Stack.Screen name='AddLivros' component={AddLivros} options={{ title: 'Voltar', headerTintColor: 'white', headerStyle: { backgroundColor: 'rgb(139, 124, 182)' } }} />
 
           <Stack.Screen name='BottomTabs' component={BottomTabs} options={{ headerShown: false }} />
 
