@@ -37,7 +37,7 @@ export default function Login({ navigation }) {
         <View style={styles.container}>
             <Image
             source={require('../assets/logoApp.png')}
-            style={{ width: 100, height: 100,top:128}}
+            style={{ width: 100, height: 100,top:70}}
             />
             <Text style={styles.title}>Livraria JRI</Text>
             <Text style={styles.text1}>Login</Text>
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     title: {
         color: 'rgb(173, 148, 238)',
         fontWeight: 'bold',
-        paddingTop: 150,
+        paddingTop: 100,
         fontSize: 40,
         paddingBottom: 10,
         textShadowColor: 'rgb(97, 87, 128)',

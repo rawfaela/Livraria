@@ -25,7 +25,7 @@ export default function Cadastro({ navigation }) {
         <View style={styles.container}>
             <Image
             source={require('../assets/logoApp.png')}
-            style={{ width: 100, height: 100,top:128}}
+            style={{ width: 100, height: 100,top:70}}
             />
             <Text style={styles.title}>Livraria JRI</Text>
             <Text style={styles.text1}>Cadastro</Text>
@@ -47,7 +47,7 @@ export default function Cadastro({ navigation }) {
                     secureTextEntry={true}
                 />
             </View>
-            <View style={{flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-around', width: '80%'}}>
+            <View style={{flexDirection: 'column', alignSelf: 'center'}}>
                 <TouchableOpacity style={styles.botao} onPress={VerificarUser}>
                     <Text style={styles.textbotao}>CADASTRAR</Text>
                 </TouchableOpacity>
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     title: {
         color: 'rgb(173, 148, 238)',
         fontWeight: 'bold',
-        paddingTop: 150,
+        paddingTop: 100,
         fontSize: 40,
         paddingBottom: 10,
         textShadowColor: 'rgb(97, 87, 128)',
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 5,
         borderRadius: 10,
+        marginBottom: 15,
     },
     textbotao: {
         fontSize: 20,
