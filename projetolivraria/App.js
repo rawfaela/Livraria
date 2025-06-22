@@ -78,12 +78,12 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShadowVisible: false, headerStyle: { margin: 0 }, headerTitleStyle: { fontWeight: 'bold', fontSize: 20 } }}>
 
-{/*           <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
+          <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
 
           <Stack.Screen name='Cadastro' component={Cadastro} options={{ headerShown: false }} />
 
 
-          <Stack.Screen name='AddProdutos' component={AddProdutos} options={{ title: 'Voltar', headerTintColor: 'white', headerStyle: { backgroundColor: 'rgb(139, 124, 182)' } }} /> */}
+          <Stack.Screen name='AddProdutos' component={AddProdutos} options={{ title: 'Voltar', headerTintColor: 'white', headerStyle: { backgroundColor: 'rgb(139, 124, 182)' } }} />
 
           <Stack.Screen name='BottomTabs' component={BottomTabs} options={{ headerShown: false }} />
 
