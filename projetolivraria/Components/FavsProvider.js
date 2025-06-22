@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { TouchableOpacity, Text } from "react-native";
 import { db, auth } from '../controller';
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
@@ -73,8 +74,12 @@ export function FavsProvider({children}){
         setFav((prevFavoritos) => prevFavoritos.filter((item) => item.id !== id));
     }
 
+    function isFavorited(id){
+        return favorito.some(item => item.id === id);
+    }
+
     return(
-        <FavContext.Provider value={{favorito, addToFav, removeFromFav}}>
+        <FavContext.Provider value={{favorito, addToFav, removeFromFav, isFavorited}}>
             {children}
         </FavContext.Provider>
     )
@@ -82,4 +87,36 @@ export function FavsProvider({children}){
 
 export function useFav(){
     return useContext(FavContext);
+}
+
+export function FavoriteButton({ bookData, style, fontSize = 20 }) {
+    const { isFavorited, addToFav, removeFromFav } = useFav();
+    const isBookFavorited = isFavorited(bookData.id);
+
+    const handleFavoritar = () => {
+        if (isBookFavorited) {
+            removeFromFav(bookData.id);
+        } else {
+            addToFav(bookData);
+        }
+    };
+
+    return (
+        <TouchableOpacity 
+            style={[
+                {
+                    backgroundColor: 'rgb(208, 222, 252)',
+                    padding: 2,
+                    borderRadius: 5,
+                }, 
+                isBookFavorited && { backgroundColor: 'rgb(255, 107, 107)' },
+                style
+            ]} 
+            onPress={handleFavoritar}
+        >
+            <Text style={{textAlign: 'center', fontSize: fontSize, color: isBookFavorited ? '#fff' : '#000'}}>
+                {isBookFavorited ? 'Favoritado ❤️' : 'Favoritar 🤍'}
+            </Text>
+        </TouchableOpacity>
+    );
 }
