@@ -38,7 +38,7 @@ export default function AddLivros(){
                 categoria,
                 imagem: imagem.trim(),
             });
-            alert("Produto adicionado com sucesso!");
+            console.log("Produto adicionado com sucesso!");
             setTitulo("");
             setAutor("");
             setSinopse("");
@@ -48,7 +48,6 @@ export default function AddLivros(){
             setImagem("");
         } catch (error) {
             console.error("Erro ao adicionar produto: ", error);
-            alert("Erro ao adicionar produto.");
         }
     };
 

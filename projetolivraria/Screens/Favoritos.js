@@ -1,4 +1,4 @@
-import {Text, View, StyleSheet, FlatList, Image, TouchableOpacity, TextInput, Alert} from 'react-native'
+import {Text, View, StyleSheet, FlatList, Image, TouchableOpacity, TextInput} from 'react-native'
 import { useFav } from '../Components/FavsProvider';
 import { useState, useEffect } from 'react';
 import { db, auth } from "../controller";
@@ -12,24 +12,24 @@ export default function Favoritos(){
 
     useEffect(() => {
         const carregarResenhasSalvas = async () => {
-          const user = auth.currentUser;
-          if (!user) return;
-      
-          try {
-            const docRef = doc(db, "resenhas", user.uid);
-            const docSnap = await getDoc(docRef);
-      
-            if (docSnap.exists()) {
-              const data = docSnap.data();
-              const resenhasPorId = {};
-              (data.livros || []).forEach(item => {
-                resenhasPorId[item.livroId] = item.resenha;
-              });
-              setResenhas(resenhasPorId);
+            const user = auth.currentUser;
+            if (!user) return;
+        
+            try {
+                const docRef = doc(db, "resenhas", user.uid);
+                const docSnap = await getDoc(docRef);
+        
+                if (docSnap.exists()) {
+                const data = docSnap.data();
+                const resenhasPorId = {};
+                (data.livros || []).forEach(item => {
+                    resenhasPorId[item.livroId] = item.resenha;
+                });
+                setResenhas(resenhasPorId);
+                }
+            } catch (error) {
+                console.log("Erro ao carregar resenhas:", error);
             }
-          } catch (error) {
-            console.log("Erro ao carregar resenhas:", error);
-          }
         };
       
         carregarResenhasSalvas();
@@ -53,13 +53,13 @@ export default function Favoritos(){
         const resenhaTexto = resenhas[item.id];
         
         if (!resenhaTexto || resenhaTexto.trim() === '') {
-            Alert.alert('Erro', 'Por favor, escreva uma resenha antes de salvar.');
+            console.log('Resenha vazia.');
             return;
         }
 
         const user = auth.currentUser;
         if (!user) {
-            Alert.alert("Erro", "Você precisa estar logado para salvar uma resenha.");
+            console.log("User nao logado.");
             return;
         }
 
@@ -92,7 +92,7 @@ export default function Favoritos(){
 
             await setDoc(docRef, { livros: resenhasDoUsuario });
 
-            Alert.alert('Sucesso', 'Resenha salva com sucesso!');
+            console.log('Resenha salva com sucesso!');
             setMostrarResenha(prev => ({
                 ...prev,
                 [item.id]: false
@@ -106,8 +106,7 @@ export default function Favoritos(){
                 [item.id]: resenhaTexto
             }));
         } catch (error) {
-            console.error("Erro ao salvar resenha:", error);
-            Alert.alert("Erro", "Erro ao salvar resenha.");
+            console.log("Erro ao salvar resenha:", error);
         }
     };
 

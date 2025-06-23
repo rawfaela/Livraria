@@ -19,7 +19,6 @@ export default function Login({ navigation }) {
                 console.log('usuario logado', userCredential.user.email);
                 navigation.navigate('BottomTabs', { screen: 'Home' });
             }
-
         })
             .catch((error) => {
                 console.log('erro ao logar', error.message);
