@@ -5,14 +5,7 @@ import { FavoriteButton } from "../Components/FavsProvider";
 export default function Cards({id, titulo, autor, imagem, sinopse, editora}){
     const navigation = useNavigation();
     
-    const bookData = {
-        id,
-        titulo,
-        autor,
-        imagem,
-        sinopse,
-        editora
-    };
+    const bookData = {id, titulo, autor, imagem, sinopse, editora};
 
     return (
         <View style={styles.background}>
@@ -50,13 +43,11 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 5,
     },
-
     touchContainer: {
         flex: 1,
         alignItems: 'center',
 
     },
-
     titulo: {
         textAlign: 'center',
         fontSize: 26,

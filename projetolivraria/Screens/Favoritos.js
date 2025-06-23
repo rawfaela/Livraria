@@ -5,7 +5,7 @@ import { db, auth } from "../controller";
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 export default function Favoritos(){ 
-    const { favorito, removeFromFav } = useFav();
+    const {favorito, removeFromFav} = useFav();
     const [resenhas, setResenhas] = useState({});
     const [mostrarResenha, setMostrarResenha] = useState({});
     const [modoEdicao, setModoEdicao] = useState({});

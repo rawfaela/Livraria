@@ -23,10 +23,7 @@ export default function Cadastro({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <Image
-            source={require('../assets/logoApp.png')}
-            style={{ width: 100, height: 100,top:70}}
-            />
+            <Image source={require('../assets/logoApp.png')} style={{ width: 100, height: 100,top:70}}/>
             <Text style={styles.title}>Livraria JRI</Text>
             <Text style={styles.text1}>Cadastro</Text>
 

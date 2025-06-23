@@ -2,20 +2,12 @@ import { View, ScrollView, Text, StyleSheet, Image } from "react-native";
 import { FavoriteButton } from '../Components/FavsProvider';
 
 export default function ShowInfo({ route }) {
-    const { id, titulo, autor, imagem, sinopse, editora } = route.params;
+    const {id, titulo, autor, imagem, sinopse, editora} = route.params;
     
-    const bookData = {
-        id,
-        titulo,
-        autor,
-        imagem,
-        sinopse,
-        editora
-    };
+    const bookData = {id, titulo, autor, imagem, sinopse, editora};
 
     return(
         <ScrollView style={styles.container} nestedScrollEnabled={true} contentContainerStyle={{alignItems: 'center', flexGrow: 1}} showsVerticalScrollIndicator={false}>
-
             <View style={styles.cabecalho}>
                 <Image source={{ uri: imagem }} style={styles.img} />
                 <View style={styles.info}>
@@ -28,9 +20,7 @@ export default function ShowInfo({ route }) {
                     />
                 </View>
             </View>
-                <Text style={styles.sinopse}><Text style={{fontWeight: 'bold'}}>Sinopse:</Text> {sinopse}</Text>
-                
-
+            <Text style={styles.sinopse}><Text style={{fontWeight: 'bold'}}>Sinopse:</Text> {sinopse}</Text>
         </ScrollView>
     )
 }
