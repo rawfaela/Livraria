@@ -10,11 +10,11 @@ export default function Cadastro({ navigation }) {
     const [erro, setErro] = useState('');
 
     const VerificarUser = () => {
-        createUserWithEmailAndPassword(auth, email, senha).then((userCredential) => {
-            console.log('cadastrado!', userCredential.user.email);
-            navigation.navigate('BottomTabs');
+        createUserWithEmailAndPassword(auth, email, senha).then((userCredential) => {//then-> if tudo certinho
+            console.log('cadastrado!', userCredential.user.email); //usando a função do firebase para criar cadastro, usando os parametros auth(que vai servir para colocar cadastro no banco), campos senha e email
+            navigation.navigate('BottomTabs'); //se cadastrar td certinho
         })
-            .catch((error) => {
+            .catch((error) => { //meio q um else pegando o erro de parametro e mostrando a msg de erro do firebase caso esteja algo errado
                 console.log('erro', error.message);
                 const msg = errorFirebase(error.code);
                 setErro(msg);
