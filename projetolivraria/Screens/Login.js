@@ -1,15 +1,10 @@
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Button } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Button, Image} from 'react-native';
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../controller';
-
 import { errorFirebase } from '../Utils/AuthError';
 
-//tudo umas cor generica jeni procura uma paleta de cor e uma logo pra colocar
-
-//DECIDI  PALETA DE COR E LOGO
 export default function Login({ navigation }) {
-
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [erro, setErro] = useState('');
@@ -18,13 +13,12 @@ export default function Login({ navigation }) {
         signInWithEmailAndPassword(auth, email, senha).then(userCredential => {
             if (email === 'adm@gmail.com'){
                 console.log('adm logado', userCredential.user.email);
-                navigation.navigate('AddProdutos', { screen: 'AddProdutos' });
+                navigation.navigate('AddLivros', { screen: 'AddLivros' });
             }
             else{
                 console.log('usuario logado', userCredential.user.email);
                 navigation.navigate('BottomTabs', { screen: 'Home' });
             }
-
         })
             .catch((error) => {
                 console.log('erro ao logar', error.message);
@@ -35,24 +29,19 @@ export default function Login({ navigation }) {
 
     return (
         <View style={styles.container}>
-            {/* <Image
-            source={require('../assets/logogenerica.png')}
-            style={{ width: 100, height: 100,top:150,left:150}}
-            
-            logo generica dps muda pra a q fizer
-        /> */}
+            <Image source={require('../assets/logoApp.png')} style={{ width: 100, height: 100,top:70}}/>
             <Text style={styles.title}>Livraria JRI</Text>
             <Text style={styles.text1}>Login</Text>
 
             <View>
-                <Text style={styles.text2}><b>Email</b></Text>
+                <Text style={styles.text2}>Email</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Email"
                     value={email}
                     onChangeText={(text) => {setEmail(text); setErro('');}}
                 />
-                <Text style={styles.text2}><b>Senha</b></Text>
+                <Text style={styles.text2}>Senha</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Senha"
@@ -64,7 +53,7 @@ export default function Login({ navigation }) {
                 <TouchableOpacity style={styles.botao} onPress={VerificarUser}>
                     <Text style={styles.textbotao}>ENTRAR</Text>
                 </TouchableOpacity>
-            <br></br>
+            <Text>{'\n'}</Text>
             <View style={styles.cadastro}>
                 <Text style={{ fontSize: 24 }}>Não tem cadastro? </Text>
                 <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Cadastro')}>
@@ -97,7 +86,7 @@ const styles = StyleSheet.create({
     title: {
         color: 'rgb(173, 148, 238)',
         fontWeight: 'bold',
-        paddingTop: 150,
+        paddingTop: 100,
         fontSize: 40,
         paddingBottom: 10,
         textShadowColor: 'rgb(97, 87, 128)',
@@ -112,6 +101,7 @@ const styles = StyleSheet.create({
     text2: {
         paddingLeft: 15,
         fontSize: 20,
+        fontWeight: 'bold',
     },
     botao: {
         justifyContent: 'space-around',

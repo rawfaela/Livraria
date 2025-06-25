@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity, Image} from 'react-native';
 import { useState } from 'react';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../controller';
@@ -23,19 +23,19 @@ export default function Cadastro({ navigation }) {
 
     return (
         <View style={styles.container}>
-
+            <Image source={require('../assets/logoApp.png')} style={{ width: 100, height: 100,top:70}}/>
             <Text style={styles.title}>Livraria JRI</Text>
             <Text style={styles.text1}>Cadastro</Text>
 
             <View>
-                <Text style={styles.text2}><b>Email</b></Text>
+                <Text style={styles.text2}>Email</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Email"
                     value={email}
                     onChangeText={(text) => {setEmail(text); setErro('');}}
                 />
-                <Text style={styles.text2}><b>Senha</b></Text>
+                <Text style={styles.text2}>Senha</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Senha"
@@ -44,7 +44,7 @@ export default function Cadastro({ navigation }) {
                     secureTextEntry={true}
                 />
             </View>
-            <View style={{flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-around', width: '80%'}}>
+            <View style={{flexDirection: 'column', alignSelf: 'center'}}>
                 <TouchableOpacity style={styles.botao} onPress={VerificarUser}>
                     <Text style={styles.textbotao}>CADASTRAR</Text>
                 </TouchableOpacity>
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     title: {
         color: 'rgb(173, 148, 238)',
         fontWeight: 'bold',
-        paddingTop: 150,
+        paddingTop: 100,
         fontSize: 40,
         paddingBottom: 10,
         textShadowColor: 'rgb(97, 87, 128)',
@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
     text2: {
         paddingLeft: 15,
         fontSize: 20,
+        fontWeight: 'bold',
     },
     botao: {
         justifyContent: 'space-around',
@@ -102,6 +103,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 5,
         borderRadius: 10,
+        marginBottom: 15,
     },
     textbotao: {
         fontSize: 20,
