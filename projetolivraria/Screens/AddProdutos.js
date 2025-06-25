@@ -6,7 +6,7 @@ import { collection, addDoc } from 'firebase/firestore';
 
 export default function AddProdutos(){
     const [titulo, setTitulo] = useState("");
-    const [autor, setAutor] = useState("");
+    const [autor, setAutor] = useState("");//estados para mudar as variaveis conforme os campos forem preenchidos
     const [sinopse, setSinopse] = useState("");
     const [editora, setEditora] = useState("");
     const [genero, setGenero] = useState("");
@@ -14,27 +14,28 @@ export default function AddProdutos(){
     const [imagem, setImagem] = useState("");
     const [erro, setErro] = useState('');
 
-    const validarCampos = () => {
-        if (!titulo.trim() || !autor.trim() || !sinopse.trim() || !editora.trim() || !genero.trim() || !categoria || !imagem.trim()) {
-            setErro("Por favor, preencha todos os campos.");
-            return false;
+    const validarCampos = () => { //funcao para validar os campos
+        if (!titulo.trim() || !autor.trim() || !sinopse.trim() || !editora.trim() || !genero.trim() || !categoria || !imagem.trim()) { //trim eh tipo pra remover espacoes em brancos q nem o .strip do py  horror 1 fase, ent se nao
+            setErro("Por favor, preencha todos os campos."); //vai definr na variavel erro essa msg 
+            return false; //se tiver campo em branco e td mais, vai envia retornr como falso a validação
         }
-        setErro('');
+        setErro(''); //caso nao, retorna verdadeiro e sem mensagem de erro
         return true;
     };
 
-    const addProduct = async () => {
+    const addProduct = async () => { //funcao assíncrona q ela serve pra qnd tem algo q leva um tempo para ser executado (levar dados para o banco ex) sem q foda o resto do codigo inteiro, ent se isso aq nao acontecer, nao vai buga o app todo
         if (!validarCampos()) {
-            return;
+            return; //se o campo tiver validado, nao vai retornar nada
         }
 
         try {
-            await addDoc(collection(db, "produtos"), {
-                titulo: titulo.trim(),
+            await addDoc(collection(db, "produtos"), { //o try eh para executar algo q pode dar erro, se ocorrer esse erro vai ir por catch q eh 'pego' o erro, por exemplo a internet cai, da erro mas o app ainda funciona sem problema
+                //ent resumindo, se tudo estiver certo, ele executa isso
+                titulo: titulo.trim(), //esse await ele espera o banco confirmar q salvou os produtos dentro da coleçao antes de seguir para as demais coisas, ent sem ele, ja ia direto pro alert, msm q nao seja salvo, pq demora ne, internet lixo da satc
                 autor: autor.trim(),
                 sinopse: sinopse.trim(),
                 editora: editora.trim(),
-                genero: genero.trim(),
+                genero: genero.trim(), //nome do campo mas o resultado do campo espaço
                 categoria,
                 imagem: imagem.trim(),
             });
@@ -42,7 +43,7 @@ export default function AddProdutos(){
             setTitulo("");
             setAutor("");
             setSinopse("");
-            setEditora("");
+            setEditora(""); //apos adicionar, volta a limpa os campos caso o usuario queria inserir um novo produto
             setGenero("");
             setCategoria("");
             setImagem("");
