@@ -38,7 +38,7 @@ export default function AddProdutos(){
                 categoria,
                 imagem: imagem.trim(),
             });
-            alert("Produto adicionado com sucesso!");
+            console.log("Livro adicionado com sucesso!");
             setTitulo("");
             setAutor("");
             setSinopse("");
@@ -47,14 +47,13 @@ export default function AddProdutos(){
             setCategoria("");
             setImagem("");
         } catch (error) {
-            console.error("Erro ao adicionar produto: ", error);
-            alert("Erro ao adicionar produto.");
+            console.error("Erro ao adicionar livro: ", error);
         }
     };
 
     return(
         <View style={styles.container}>
-            <Text style={styles.titulo}>Adicionar Produtos</Text>
+            <Text style={styles.titulo}>Adicionar Livros</Text>
             <View style={{flex:1, alignItems: 'center'}}>
                 <TextInput style={styles.input} placeholder="Título" value={titulo} onChangeText={setTitulo}></TextInput>
                 <TextInput style={styles.input} placeholder="Autor" value={autor} onChangeText={setAutor}></TextInput>

@@ -14,7 +14,7 @@ import ShowInfo from './Components/ShowInfo';
 import Livros from './Screens/Livros';
 import HQs from './Screens/HQs';
 import Favoritos from './Screens/Favoritos';
-import AddProdutos from './Screens/AddProdutos';
+import AddProdutos from './Screens/AddLivros';
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';

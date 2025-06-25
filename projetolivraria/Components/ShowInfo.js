@@ -1,32 +1,16 @@
-import { View, ScrollView, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import { useFav } from '../Components/FavsProvider';
-import { useState, useEffect } from "react";
+import { View, ScrollView, Text, StyleSheet, Image } from "react-native";
+import { FavoriteButton } from '../Components/FavsProvider';
 
 export default function ShowInfo({ route }) {
     const { id, titulo, autor, imagem, sinopse, editora } = route.params;
-    const { favorito, addToFav, removeFromFav } = useFav();
-    const [isFavorited, setIsFavorited] = useState(false);
 
-    useEffect(() => {
-        const isInFavorites = favorito.some(item => item.id === id);
-        setIsFavorited(isInFavorites);
-    }, [favorito, id]);
-
-    const handleFavoritar = () => {
-        const bookData = {
-            id,
-            titulo,
-            autor,
-            imagem,
-            sinopse,
-            editora
-        };
-
-        if (isFavorited) {
-            removeFromFav(id);
-        } else {
-            addToFav(bookData);
-        }
+    const bookData = {
+        id,
+        titulo,
+        autor,
+        imagem,
+        sinopse,
+        editora
     };
 
     return(
@@ -38,14 +22,7 @@ export default function ShowInfo({ route }) {
                     <Text style={styles.titulo}>{titulo} </Text>
                     <Text style={styles.autor}>{autor} </Text>
                     <Text style={styles.editora}>Editora: <Text style={{fontStyle: 'italic' }}>{editora}</Text></Text> 
-                    <TouchableOpacity 
-                        style={[styles.add, isFavorited && styles.favoritado]} 
-                        onPress={handleFavoritar}
-                    >
-                        <Text style={{textAlign: 'center', fontSize: 22, color: isFavorited ? '#fff' : '#000'}}>
-                            {isFavorited ? 'Favoritado ❤️' : 'Favoritar 🤍'}
-                        </Text>
-                    </TouchableOpacity>
+                    <FavoriteButton bookData={bookData} fontSize={22}/>
                 </View>
             </View>
                 <Text style={styles.sinopse}><Text style={{fontWeight: 'bold'}}>Sinopse:</Text> {sinopse}</Text>
@@ -117,12 +94,4 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: 'black',
     },
-    add: {
-        backgroundColor: 'rgb(208, 222, 252)',
-        padding: 2,
-        borderRadius: 5,
-    },
-    favoritado: {
-        backgroundColor: 'rgb(255, 107, 107)', 
-    }
 })
