@@ -1,76 +1,77 @@
-import { Text, View, StyleSheet, FlatList, Image, TouchableOpacity, TextInput, Alert } from 'react-native'
+import {Text, View, StyleSheet, FlatList, Image, TouchableOpacity, TextInput, Alert} from 'react-native'
 import { useFav } from '../Components/FavsProvider';
 import { useState, useEffect } from 'react';
 import { db, auth } from "../controller";
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
-export default function Favoritos() {
-    const { favorito, removeFromFav } = useFav(); //livros adicionados e remover dos fav
-    const [resenhas, setResenhas] = useState({}); //resenha
-    const [mostrarResenha, setMostrarResenha] = useState({}); //controle de mostra a resenha
-    const [modoEdicao, setModoEdicao] = useState({}); //controle de modo ou visualização ou edião da resenha
+export default function Favoritos(){ 
+    const { favorito, removeFromFav } = useFav();
+    const [resenhas, setResenhas] = useState({});
+    const [mostrarResenha, setMostrarResenha] = useState({});
+    const [modoEdicao, setModoEdicao] = useState({});
 
-    useEffect(() => { //useffect q roda uma vez
-        const carregarResenhasSalvas = async () => { //funcao pra carrega as resenhas salvas, assincrona pra nao estraga o app inteiro
-            const user = auth.currentUser; //pega o usuario logado
-            if (!user) return;//se nao tive usuario nao retorna nada e continua o resto sem executa
-            try { //cria uma referencia de busca nos documentos q seria no banco tal na colecao tal vai pega do id do user tal
-                const docRef = doc(db, "resenhas", user.uid);
-                const docSnap = await getDoc(docRef); //ai aq vai usar como 'parametro'
-
-                if (docSnap.exists()) { //se exister o documento, no caso a resenha vai....
-                    const data = docSnap.data(); //pega os dados q vai ser um array com livro e resenha
-                    const resenhasPorId = {}; // um objeto q pega a resenha pelo id do livro
-                    (data.livros || []).forEach(item => { //(data.livros || []) -> se os dados do livro q eh o array existir vai percorrer cada item do livros, pegando a resenha pelo id do livro, caso nao tenha, vai devolver um array vazio para nn ocorrer nenhum problema
-                        resenhasPorId[item.livroId] = item.resenha;
-                    });
-                    setResenhas(resenhasPorId); //por ultimo vai atualizar nas resenhas, essa msm resenha q foi percorrida antes
-                }
-            } catch (error) { //caso de erro, vai aparece no console
-                console.log("Erro ao carregar resenhas:", error);
+    useEffect(() => {
+        const carregarResenhasSalvas = async () => {
+          const user = auth.currentUser;
+          if (!user) return;
+      
+          try {
+            const docRef = doc(db, "resenhas", user.uid);
+            const docSnap = await getDoc(docRef);
+      
+            if (docSnap.exists()) {
+              const data = docSnap.data();
+              const resenhasPorId = {};
+              (data.livros || []).forEach(item => {
+                resenhasPorId[item.livroId] = item.resenha;
+              });
+              setResenhas(resenhasPorId);
             }
+          } catch (error) {
+            console.log("Erro ao carregar resenhas:", error);
+          }
         };
-
-        carregarResenhasSalvas(); //roda essa funcao uma vez ja q eh useffect
+      
+        carregarResenhasSalvas();
     }, []);
 
-    const toggleResenha = (itemId) => { //prev eh o valor atual do mostrar resenha, ele vai modifcar o valor do mostrar resenha, com base no id do livro
-        setMostrarResenha(prev => ({ 
-            ...prev, //mantem as resenhas dos outros livros msm q mudado
-            [itemId]: !prev[itemId] //resumo, muda o estado, ai aparece a resenha
-        })); //entendi mais ou menos
+    const toggleResenha = (itemId) => {
+        setMostrarResenha(prev => ({
+            ...prev,
+            [itemId]: !prev[itemId]
+        }));
     };
 
     const updateResenha = (itemId, texto) => {
         setResenhas(prev => ({
             ...prev,
-            [itemId]: texto //isso aq atualiza o estado da resenha pelo texto q vai ser inserido
+            [itemId]: texto
         }));
     };
 
-    const salvarResenha = async (item) => {//funcao de salvar resenha q recebe como parametro o livro
-        const resenhaTexto = resenhas[item.id]?.replace(/^\[EDITANDO\]/, ""); //cria objeto resenha, peha a resenha pelo id do livro, e tira o editando caso exista ne
-
+    const salvarResenha = async (item) => {
+        const resenhaTexto = resenhas[item.id]?.replace(/^\[EDITANDO\]/, "");
+        
         if (!resenhaTexto || resenhaTexto.trim() === '') {
             Alert.alert('Erro', 'Por favor, escreva uma resenha antes de salvar.');
-            return; //se nao tive resenha ou tiver vazia, vai mostra a msg
+            return;
         }
 
         const user = auth.currentUser;
         if (!user) {
             Alert.alert("Erro", "Você precisa estar logado para salvar uma resenha.");
-            return; //se nao tiver usuario aparece mensagem de erro,meio desnecessario mas nhe
+            return;
         }
 
         try {
-            const docRef = doc(db, "resenhas", user.uid); //aqui pega a referencia da resenha pelo id do funcionario 
-            const docSnap = await getDoc(docRef); //executa aq em cima ea referencia
+            const docRef = doc(db, "resenhas", user.uid);
+            const docSnap = await getDoc(docRef);
 
-            let resenhasDoUsuario = []; //array para guardar todas as resenhas salvas do usuario
+            let resenhasDoUsuario = [];
 
-            if (docSnap.exists()) { //se ja existe o documento para salvar a resenha
-                const data = docSnap.data(); //pega os dados do livro, alem da resenha
-                resenhasDoUsuario = Array.isArray(data.livros) ? data.livros : [];//se data.livros for um array, vai ser guardado em resenhadousuario,  senao, vai fica vazio ainda
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                resenhasDoUsuario = Array.isArray(data.livros) ? data.livros : [];
             }
 
             const novaResenha = {
@@ -79,17 +80,17 @@ export default function Favoritos() {
                 autor: item.autor,
                 imagem: item.imagem,
                 resenha: resenhaTexto,
-                dataResenha: new Date() //cria a nova resenha com a data da resenha nova da resenha
+                dataResenha: new Date()
             };
 
-            const index = resenhasDoUsuario.findIndex(r => r.livroId === item.id); //cria um index q vai ser achado dentro do array resenha do usuario, se ja existe uma resenha com o id do item atual
-            if (index !== -1) {//se nao encontrar o index, sera -1
-                resenhasDoUsuario[index] = novaResenha;//atualiza a resenha existente 
+            const index = resenhasDoUsuario.findIndex(r => r.livroId === item.id);
+            if (index !== -1) {
+                resenhasDoUsuario[index] = novaResenha;
             } else {
-                resenhasDoUsuario.push(novaResenha);//adicionar resenha nova
+                resenhasDoUsuario.push(novaResenha);
             }
 
-            await setDoc(docRef, { livros: resenhasDoUsuario });//salva td certinho no documento do banco
+            await setDoc(docRef, { livros: resenhasDoUsuario });
 
             Alert.alert('Sucesso', 'Resenha salva com sucesso!');
             setMostrarResenha(prev => ({
@@ -100,9 +101,9 @@ export default function Favoritos() {
                 ...prev,
                 [item.id]: false
             }));
-            setResenhas(prev => ({ //atualizar o estado da resenha
+            setResenhas(prev => ({
                 ...prev,
-                [item.id]: resenhaTexto //atualiza todos os estados da resenha do modo de edicao que vai ser falso e o mostrar resenha, ja q foi salvo
+                [item.id]: resenhaTexto
             }));
         } catch (error) {
             console.error("Erro ao salvar resenha:", error);
@@ -132,20 +133,20 @@ export default function Favoritos() {
 
                                     {resenhas[item.id] ? (
                                         <>
-                                            <TouchableOpacity
+                                            <TouchableOpacity 
                                                 style={styles.botaoResenha}
                                                 onPress={() => {
                                                     toggleResenha(item.id);
-                                                    setModoEdicao(prev => ({ ...prev, [item.id]: false }));
+                                                    setModoEdicao(prev => ({...prev, [item.id]: false}));
                                                 }}
                                             >
                                                 <Text style={styles.textoBotao}>Mostrar resenha</Text>
                                             </TouchableOpacity>
-                                            <TouchableOpacity
+                                            <TouchableOpacity 
                                                 style={styles.botaoResenha}
                                                 onPress={() => {
                                                     toggleResenha(item.id);
-                                                    setModoEdicao(prev => ({ ...prev, [item.id]: true }));
+                                                    setModoEdicao(prev => ({...prev, [item.id]: true}));
                                                     const resenhaAtual = resenhas[item.id] || '';
                                                     const semTagEditando = resenhaAtual.replace(/^\[EDITANDO\]/, '');
                                                     updateResenha(item.id, "[EDITANDO]" + semTagEditando);
@@ -155,11 +156,11 @@ export default function Favoritos() {
                                             </TouchableOpacity>
                                         </>
                                     ) : (
-                                        <TouchableOpacity
+                                        <TouchableOpacity 
                                             style={styles.botaoResenha}
                                             onPress={() => {
                                                 toggleResenha(item.id);
-                                                setModoEdicao(prev => ({ ...prev, [item.id]: true }));
+                                                setModoEdicao(prev => ({...prev, [item.id]: true}));
                                             }}
                                         >
                                             <Text style={styles.textoBotao}>Adicionar resenha</Text>
@@ -178,9 +179,9 @@ export default function Favoritos() {
                                 <View style={styles.resenhaContainer}>
                                     {modoEdicao[item.id] ? (
                                         <>
-                                            <TextInput
-                                                style={styles.input}
-                                                placeholder="Escreva sua resenha aqui..."
+                                            <TextInput 
+                                                style={styles.input} 
+                                                placeholder="Escreva sua resenha aqui..." 
                                                 value={resenhas[item.id]?.replace("[EDITANDO]", "") || ''}
                                                 onChangeText={(texto) => updateResenha(item.id, "[EDITANDO]" + texto)}
                                                 multiline={true}
@@ -217,7 +218,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'rgb(173, 148, 238)',
         textShadowColor: 'rgb(97, 87, 128)',
-        textShadowOffset: { width: 3, height: 3 },
+        textShadowOffset: {width: 3, height: 3},
     },
     subtitle: {
         fontSize: 30,
@@ -227,7 +228,7 @@ const styles = StyleSheet.create({
     },
     vazio: {
         fontSize: 25,
-        fontWeight: "bold",
+        fontWeight:"bold",
         fontFamily: 'Nunito',
         textAlign: 'center',
         marginTop: 20,
