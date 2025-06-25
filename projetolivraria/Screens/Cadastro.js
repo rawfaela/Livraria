@@ -48,7 +48,7 @@ export default function Cadastro({ navigation }) {
                     secureTextEntry={true}
                 />
             </View>
-            <View style={{flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-around', width: '80%'}}>
+            <View style={{flexDirection: 'column', alignSelf: 'center'}}>
                 <TouchableOpacity style={styles.botao} onPress={VerificarUser}>
                     <Text style={styles.textbotao}>CADASTRAR</Text>
                 </TouchableOpacity>
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 5,
         borderRadius: 10,
+        marginBottom: 10,
     },
     textbotao: {
         fontSize: 20,
