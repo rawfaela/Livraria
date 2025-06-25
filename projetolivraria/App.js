@@ -14,7 +14,7 @@ import ShowInfo from './Components/ShowInfo';
 import Livros from './Screens/Livros';
 import HQs from './Screens/HQs';
 import Favoritos from './Screens/Favoritos';
-import AddLivros from './Screens/AddLivros';
+import AddProdutos from './Screens/AddProdutos';
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
@@ -26,31 +26,35 @@ function BottomTabs() {
     <Bottom.Navigator
       screenOptions={{
         headerShadowVisible: false,
-        tabBarActiveTintColor: 'rgb(108, 95, 147)', animation: 'fade', tabBarInactiveTintColor: '#000', tabBarStyle: { backgroundColor: 'rgb(208, 222, 252)'}
+        tabBarActiveTintColor: '#fff', animation: 'fade', tabBarInactiveTintColor: '#000',
       }}>
 
       <Bottom.Screen name='Home' component={Home}
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="bookshelf" size={30} color={focused ? "rgb(108, 95, 147)" : "black"} />)
+          tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="bookshelf" size={30} color={focused ? "white" : "black"} />),
+          tabBarStyle: { backgroundColor: 'rgb(208, 222, 252)' }
         }} />
 
       <Bottom.Screen name='Livros' component={Livros}
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused }) => (<FontAwesome6 name="book" size={30} color={focused ? "rgb(108, 95, 147)" : "black"} />)
+          tabBarIcon: ({ focused }) => (<FontAwesome6 name="book" size={30} color={focused ? "white" : "black"} />),
+          tabBarStyle: { backgroundColor: 'rgb(208, 222, 252)' }
         }} />
 
       <Bottom.Screen name='HQs' component={HQs}
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="book-open-variant" size={30} color={focused ? "rgb(108, 95, 147)" : "black"} />)
+          tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="book-open-variant" size={30} color={focused ? "white" : "black"} />),
+          tabBarStyle: { backgroundColor: 'rgb(208, 222, 252)' }
         }} />
 
       <Bottom.Screen name='Favoritos' component={Favoritos}
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="heart-multiple" size={30} color={focused ? "rgb(108, 95, 147)" : "black"} />)
+          tabBarIcon: ({ focused }) => (<MaterialCommunityIcons name="heart-multiple" size={30} color={focused ? "white" : "black"} />),
+          tabBarStyle: { backgroundColor: 'rgb(208, 222, 252)' }
         }} />
 
 
@@ -83,7 +87,7 @@ export default function App() {
           <Stack.Screen name='Cadastro' component={Cadastro} options={{ headerShown: false }} />
 
 
-          <Stack.Screen name='AddLivros' component={AddLivros} options={{ title: 'Voltar', headerTintColor: 'white', headerStyle: { backgroundColor: 'rgb(139, 124, 182)' } }} />
+          <Stack.Screen name='AddProdutos' component={AddProdutos} options={{ title: 'Voltar', headerTintColor: 'white', headerStyle: { backgroundColor: 'rgb(139, 124, 182)' } }} />
 
           <Stack.Screen name='BottomTabs' component={BottomTabs} options={{ headerShown: false }} />
 

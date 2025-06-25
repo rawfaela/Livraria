@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity, Image} from 'react-native';
+import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../controller';
@@ -10,11 +10,11 @@ export default function Cadastro({ navigation }) {
     const [erro, setErro] = useState('');
 
     const VerificarUser = () => {
-        createUserWithEmailAndPassword(auth, email, senha).then((userCredential) => {
-            console.log('cadastrado!', userCredential.user.email);
-            navigation.navigate('BottomTabs');
+        createUserWithEmailAndPassword(auth, email, senha).then((userCredential) => {//then-> if tudo certinho
+            console.log('cadastrado!', userCredential.user.email); //usando a função do firebase para criar cadastro, usando os parametros auth(que vai servir para colocar cadastro no banco), campos senha e email
+            navigation.navigate('BottomTabs'); //se cadastrar td certinho
         })
-            .catch((error) => {
+            .catch((error) => { //meio q um else pegando o erro de parametro e mostrando a msg de erro do firebase caso esteja algo errado
                 console.log('erro', error.message);
                 const msg = errorFirebase(error.code);
                 setErro(msg);
@@ -23,19 +23,19 @@ export default function Cadastro({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <Image source={require('../assets/logoApp.png')} style={{ width: 100, height: 100,top:70}}/>
+
             <Text style={styles.title}>Livraria JRI</Text>
             <Text style={styles.text1}>Cadastro</Text>
 
             <View>
-                <Text style={styles.text2}>Email</Text>
+                <Text style={styles.text2}><b>Email</b></Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Email"
                     value={email}
                     onChangeText={(text) => {setEmail(text); setErro('');}}
                 />
-                <Text style={styles.text2}>Senha</Text>
+                <Text style={styles.text2}><b>Senha</b></Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Senha"
@@ -44,7 +44,7 @@ export default function Cadastro({ navigation }) {
                     secureTextEntry={true}
                 />
             </View>
-            <View style={{flexDirection: 'column', alignSelf: 'center'}}>
+            <View style={{flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-around', width: '80%'}}>
                 <TouchableOpacity style={styles.botao} onPress={VerificarUser}>
                     <Text style={styles.textbotao}>CADASTRAR</Text>
                 </TouchableOpacity>
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     title: {
         color: 'rgb(173, 148, 238)',
         fontWeight: 'bold',
-        paddingTop: 100,
+        paddingTop: 150,
         fontSize: 40,
         paddingBottom: 10,
         textShadowColor: 'rgb(97, 87, 128)',
@@ -93,7 +93,6 @@ const styles = StyleSheet.create({
     text2: {
         paddingLeft: 15,
         fontSize: 20,
-        fontWeight: 'bold',
     },
     botao: {
         justifyContent: 'space-around',
@@ -103,7 +102,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 5,
         borderRadius: 10,
-        marginBottom: 15,
     },
     textbotao: {
         fontSize: 20,
