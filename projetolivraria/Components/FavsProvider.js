@@ -29,7 +29,7 @@ export function FavsProvider({children}){
               }
             }
             catch (error){
-              console.log('Erro no cart', error)
+              console.log('Erro nos favoritos', error)
               setFav([]);
             }
           }
