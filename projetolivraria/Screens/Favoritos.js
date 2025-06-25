@@ -50,7 +50,7 @@ export default function Favoritos(){
     };
 
     const salvarResenha = async (item) => {
-        const resenhaTexto = resenhas[item.id]?.replace(/^\[EDITANDO\]/, "");
+        const resenhaTexto = resenhas[item.id];
         
         if (!resenhaTexto || resenhaTexto.trim() === '') {
             console.log('Resenha vazia.');
@@ -146,9 +146,6 @@ export default function Favoritos(){
                                                 onPress={() => {
                                                     toggleResenha(item.id);
                                                     setModoEdicao(prev => ({...prev, [item.id]: true}));
-                                                    const resenhaAtual = resenhas[item.id] || '';
-                                                    const semTagEditando = resenhaAtual.replace(/^\[EDITANDO\]/, '');
-                                                    updateResenha(item.id, "[EDITANDO]" + semTagEditando);
                                                 }}
                                             >
                                                 <Text style={styles.textoBotao}>Editar resenha</Text>
@@ -181,8 +178,8 @@ export default function Favoritos(){
                                             <TextInput 
                                                 style={styles.input} 
                                                 placeholder="Escreva sua resenha aqui..." 
-                                                value={resenhas[item.id]?.replace("[EDITANDO]", "") || ''}
-                                                onChangeText={(texto) => updateResenha(item.id, "[EDITANDO]" + texto)}
+                                                value={resenhas[item.id] || ''}
+                                                onChangeText={(texto) => updateResenha(item.id, texto)}
                                                 multiline={true}
                                                 numberOfLines={4}
                                             />
