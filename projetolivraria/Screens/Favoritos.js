@@ -54,6 +54,7 @@ export default function Favoritos(){
         
         if (!resenhaTexto || resenhaTexto.trim() === '') {
             console.log('Resenha vazia.');
+            return;
         }
 
         const user = auth.currentUser;
