@@ -2,7 +2,7 @@ Livraria
 Isabeli dos Santos Machado, Jenifer da Silva Vieira, Rafaela Amboni Ghellere.
 
 Objetivo:
-O aplicativo vai apresentar uma navegação fácil através de um menu inferior com acesso direto à página inicial, listagens de livros e quadrinhos e à aba de favoritos. Os usuários poderão favoritar os livros e clicá-los para ver mais informações, além de remover eles na tela 'Favoritos'. Para o administrador, ele terá um login que vai possibilitar o cadastro de novos livros no app.
+O aplicativo vai apresentar uma navegação fácil através de um menu inferior com acesso direto à página inicial, listagens de livros e quadrinhos e à aba de favoritos. Os usuários poderão favoritar os livros e clicá-los para ver mais informações, além de remover eles na tela 'Favoritos'. Para o administrador, ele terá um login que vai possibilitar o cadastro de novos produtos no app.
 
 Telas:
 Stack - Cadastrar produtos, Cadastro, Login, BottomTabs.
@@ -12,7 +12,7 @@ Opções:
 Cadastrar produtos (para admin);
 Mais informações - clicar para ver descrição do livro;
 Favoritar;
-Remover dos favoritos;
-Adicionar/editar/mostrar resenha (na tela dos favoritos);
+Remover dos favoritos (na tela dos favoritos);
+Adicionar resenha;
 
 Telas no figma: https://www.figma.com/design/yRFGKe5dQz2q0WXn0JLmUJ/LIVRARIA-ISABELI-JENIFER-E-RAFA?node-id=0-1&t=fozBKM0SfEObwOqO-1
