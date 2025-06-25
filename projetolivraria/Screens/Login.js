@@ -5,35 +5,42 @@ import { auth } from '../controller';
 
 import { errorFirebase } from '../Utils/AuthError';
 
+//tudo umas cor generica jeni procura uma paleta de cor e uma logo pra colocar
 
+//DECIDI  PALETA DE COR E LOGO
 export default function Login({ navigation }) {
 
-    const [email, setEmail] = useState(""); 
-    const [senha, setSenha] = useState(""); //-> useState para estados relativos, que no caso mudam com o tempo, email e senha campos que vai escrever e erro pra mostrar a msg de erro
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
     const [erro, setErro] = useState('');
-    //auth eh uma instancia que server para fazer login,cadastro... verificando se estão registrados no banco->firebase
-    const VerificarUser = () => { //<-função de verificar o usuario
-        signInWithEmailAndPassword(auth, email, senha).then(userCredential => { //essa função direta do firebase eh utilizada para logar contas pelo email e senha
-            if (email === 'adm@gmail.com'){ //se o email for adm@gmail -> vai navegar ate a area de adicionar produtos do administrador
-                console.log('adm logado', userCredential.user.email); //mostrar no console as credencia do msm q no caso eh o email e uma msg
+
+    const VerificarUser = () => {
+        signInWithEmailAndPassword(auth, email, senha).then(userCredential => {
+            if (email === 'adm@gmail.com'){
+                console.log('adm logado', userCredential.user.email);
                 navigation.navigate('AddProdutos', { screen: 'AddProdutos' });
             }
             else{
                 console.log('usuario logado', userCredential.user.email);
-                navigation.navigate('BottomTabs', { screen: 'Home' }); //se nao for o adm, sera um usuário, e iria para a tela de home, que tera a navegações de bottomtabs (home,livro,hq..)
+                navigation.navigate('BottomTabs', { screen: 'Home' });
             }
 
         })
-            .catch((error) => {//se der erro na senha ou email
-                console.log('erro ao logar', error.message); //o errofirebase eh importado do autherror e ele eh varios switch case de possiveis erros de entrada-> email já em uso, senha pequena
-                const msg = errorFirebase(error.code); //pega o codigo de erro de cada switch, adiciona a msg de erro e 'seta' ela dentro do estado error, q antes tava vazio
+            .catch((error) => {
+                console.log('erro ao logar', error.message);
+                const msg = errorFirebase(error.code);
                 setErro(msg);
             });
     }
 
     return (
         <View style={styles.container}>
-
+            {/* <Image
+            source={require('../assets/logogenerica.png')}
+            style={{ width: 100, height: 100,top:150,left:150}}
+            
+            logo generica dps muda pra a q fizer
+        /> */}
             <Text style={styles.title}>Livraria JRI</Text>
             <Text style={styles.text1}>Login</Text>
 

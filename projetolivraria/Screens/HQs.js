@@ -5,6 +5,7 @@ import { db } from "../controller";
 import { collection, getDocs } from "firebase/firestore";
 import { useFav } from '../Components/FavsProvider';
 
+//! falta filtrar hqs
 export default function HQs(){ 
     const [produtos, setProdutos] = useState([])
     const { addToFav } = useFav();

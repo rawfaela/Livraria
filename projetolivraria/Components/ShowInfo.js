@@ -1,12 +1,9 @@
-
-//SHOW INFO -> diferente do card pq possui mais informaçoes ai algumas coisas sao diferentes
-
 import { View, ScrollView, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useFav } from '../Components/FavsProvider';
 import { useState, useEffect } from "react";
 
 export default function ShowInfo({ route }) {
-    const { id, titulo, autor, imagem, sinopse, editora } = route.params; //com esse route.params ele recebe todos os parametros ali dentro da tela anterior q foi selecionada no card
+    const { id, titulo, autor, imagem, sinopse, editora } = route.params;
     const { favorito, addToFav, removeFromFav } = useFav();
     const [isFavorited, setIsFavorited] = useState(false);
 
@@ -32,27 +29,27 @@ export default function ShowInfo({ route }) {
         }
     };
 
-    return ( //no primeiro botao, tem um array de estilo, o primeiro eh o estilo padrao, se ja for adicionado no favoritado vai ser o estilo de favoritado
-        <ScrollView style={styles.container} nestedScrollEnabled={true} contentContainerStyle={{ alignItems: 'center', flexGrow: 1 }} showsVerticalScrollIndicator={false}>
+    return(
+        <ScrollView style={styles.container} nestedScrollEnabled={true} contentContainerStyle={{alignItems: 'center', flexGrow: 1}} showsVerticalScrollIndicator={false}>
 
             <View style={styles.cabecalho}>
                 <Image source={{ uri: imagem }} style={styles.img} />
                 <View style={styles.info}>
                     <Text style={styles.titulo}>{titulo} </Text>
                     <Text style={styles.autor}>{autor} </Text>
-                    <Text style={styles.editora}>Editora: <Text style={{ fontStyle: 'italic' }}>{editora}</Text></Text>
-                    <TouchableOpacity
-                        style={[styles.add, isFavorited && styles.favoritado]}
+                    <Text style={styles.editora}>Editora: <Text style={{fontStyle: 'italic' }}>{editora}</Text></Text> 
+                    <TouchableOpacity 
+                        style={[styles.add, isFavorited && styles.favoritado]} 
                         onPress={handleFavoritar}
                     >
-                        <Text style={{ textAlign: 'center', fontSize: 22, color: isFavorited ? '#fff' : '#000' }}>
+                        <Text style={{textAlign: 'center', fontSize: 22, color: isFavorited ? '#fff' : '#000'}}>
                             {isFavorited ? 'Favoritado ❤️' : 'Favoritar 🤍'}
                         </Text>
                     </TouchableOpacity>
                 </View>
             </View>
-            <Text style={styles.sinopse}><Text style={{ fontWeight: 'bold' }}>Sinopse:</Text> {sinopse}</Text>
-
+                <Text style={styles.sinopse}><Text style={{fontWeight: 'bold'}}>Sinopse:</Text> {sinopse}</Text>
+                
 
         </ScrollView>
     )
@@ -81,7 +78,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontStyle: 'italic'
     },
-    editora: {
+    editora:{
         textAlign: 'center',
         fontSize: 25,
         fontWeight: '400',
@@ -94,20 +91,20 @@ const styles = StyleSheet.create({
     sinopse: {
         textAlign: 'justify',
         fontSize: 19,
-        fontWeight: '600',
-        lineHeight: 24,
-        letterSpacing: 0.3,
-        marginTop: 20,
+        fontWeight: '600', 
+        lineHeight: 24, 
+        letterSpacing: 0.3, 
+        marginTop: 20, 
         marginBottom: 10,
         paddingHorizontal: 16,
         paddingVertical: 14,
         backgroundColor: 'rgba(255, 255, 255, 0.85)',
-        borderRadius: 12,
+        borderRadius: 12, 
         borderWidth: 1,
         borderColor: 'rgba(0, 0, 0, 0.09)',
         shadowColor: 'black',
         shadowOffset: {
-            width: 0,
+            width: 0, 
             height: 3
         },
         shadowOpacity: 0.20,
@@ -126,6 +123,6 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
     favoritado: {
-        backgroundColor: 'rgb(255, 107, 107)',
+        backgroundColor: 'rgb(255, 107, 107)', 
     }
 })
