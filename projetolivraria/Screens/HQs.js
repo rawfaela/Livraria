@@ -7,7 +7,7 @@ import { useFav } from '../Components/FavsProvider';
 
 export default function HQs(){ 
     const [produtos, setProdutos] = useState([])
-    const { addToFav } = useFav();
+    const {addToFav} = useFav();
 
     useEffect(() => {
         async function carregarProdutos() {
