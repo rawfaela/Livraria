@@ -5,10 +5,6 @@ import { auth } from '../controller';
 
 import { errorFirebase } from '../Utils/AuthError';
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 30e1c8f2046f166501b0add03a1cddcca1d8cb00
 export default function Login({ navigation }) {
 
     const [email, setEmail] = useState("");
