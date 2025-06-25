@@ -5,9 +5,6 @@ import { auth } from '../controller';
 
 import { errorFirebase } from '../Utils/AuthError';
 
-//tudo umas cor generica jeni procura uma paleta de cor e uma logo pra colocar
-
-//DECIDI  PALETA DE COR E LOGO
 export default function Login({ navigation }) {
 
     const [email, setEmail] = useState("");
