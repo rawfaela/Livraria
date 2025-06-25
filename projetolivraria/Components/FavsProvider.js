@@ -1,19 +1,18 @@
-import { createContext, useContext, useState, useEffect } from "react"; // hooks do React para trabalhar com estado e contexto
+import { createContext, useContext, useState, useEffect } from "react";
 import { db, auth } from '../controller';
-import { doc, setDoc, getDoc } from "firebase/firestore"; //funções do Firestore para ler e gravar documentos
-import { onAuthStateChanged } from "firebase/auth"; //escuta quando o usuário entra ou sai da conta
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 
-const FavContext = createContext(); //cria o contexto que vai ser usado para compartilhar dados em outras telas -> context api, guarda dado,funcao afins
-//nesse caso vai guarda os faboritos
+const FavContext = createContext();
 
 export function FavsProvider({children}){
     const [favorito, setFav] = useState([]);
-    const [user, setUser] = useState(null); //guarda favorito e usuario cadastrado
-    const [loadingFavs, setLoadingFavs] = useState(true); //controle para carregar os favoritos
+    const [user, setUser] = useState(null);
+    const [loadingFavs, setLoadingFavs] = useState(true);
 
     useEffect(()=> {
         const unsubscribe = onAuthStateChanged(auth, async (user)=>{
-          setUser(user); 
+          setUser(user);
           setLoadingFavs(true);
     
           if (user){

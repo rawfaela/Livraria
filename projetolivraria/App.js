@@ -19,6 +19,7 @@ import AddProdutos from './Screens/AddProdutos';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
+// ! TODOS OS DESIGNS E CONFIGURAÇÕES SAO DO OUTRO -- MUDAR!!!
 function BottomTabs() {
   const Bottom = createBottomTabNavigator();
 
