@@ -2,7 +2,6 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity, Button } from 'rea
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../controller';
-
 import { errorFirebase } from '../Utils/AuthError';
 
 export default function Login({ navigation }) {
