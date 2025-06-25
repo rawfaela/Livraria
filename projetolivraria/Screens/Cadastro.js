@@ -25,7 +25,7 @@ export default function Cadastro({ navigation }) {
         <View style={styles.container}>
             <Image
             source={require('../assets/JRI.png')}
-            style={{ width: 120, height: 120,top:100}}
+            style={{ width: 120, height: 120,top:70}}
             />
 
             <Text style={styles.title}>Livraria JRI</Text>

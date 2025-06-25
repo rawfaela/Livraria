@@ -33,7 +33,7 @@ export default function Login({ navigation }) {
         <View style={styles.container}>
             <Image
             source={require('../assets/JRI.png')}
-            style={{ width: 120, height: 120,top:100}}
+            style={{ width: 120, height: 120,top:70}}
             />
             <Text style={styles.title}>Livraria JRI</Text>
             <Text style={styles.text1}>Login</Text>
@@ -60,7 +60,7 @@ export default function Login({ navigation }) {
                 </TouchableOpacity>
             <br></br>
             <View style={styles.cadastro}>
-                <Text style={{ fontSize: 24 }}>Não tem cadastro? </Text>
+                <Text style={{ fontSize: 24 }}> Não tem cadastro?</Text>
                 <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Cadastro')}>
                     <Text style={styles.textbotao}>CADASTRE-SE AGORA!</Text>
                 </TouchableOpacity>
